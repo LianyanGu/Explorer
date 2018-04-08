@@ -1,5 +1,6 @@
 package com.explorer.explorerProject.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,9 +12,18 @@ public class Tip {
     @Id
     private String id;
 
-    private String user_id;
-    private String business_id;
+    @Column(name = "user_id")
+    private String userId;
+
+    @Column(name = "business_id")
+    private String businessId;
+
+    @Column(name = "text")
     private String text;
+
+    @Column(name = "date")
     private Date date;
+
+    @Column(name = "likes")
     private int likes;
 }

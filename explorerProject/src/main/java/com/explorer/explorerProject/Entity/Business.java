@@ -1,29 +1,51 @@
 package com.explorer.explorerProject.Entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "Business")
+@Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "business")
 public class Business {
 
     @Id
     private String id;
 
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "neighborhood")
     private String neighborhood;
+
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "city")
     private String city;
+
+    @Column(name = "state")
     private String state;
-    private String postal_code;
+
+    @Column(name = "postal_code")
+    private String postalCode;
+
+    @Column(name = "latitude")
     private float latitude;
+
+    @Column(name = "")
     private float longitude;
+
+    @Column(name = "")
     private float stars;
-    private int review_count;
-    private int is_open;
+
+    @Column(name = "review_count")
+    private int reviewCount;
+
+    @Column(name = "is_open")
+    private int isOpen;
 
     public String getId() {
         return id;
@@ -73,12 +95,12 @@ public class Business {
         this.state = state;
     }
 
-    public String getPostal_code() {
-        return postal_code;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setPostal_code(String postal_code) {
-        this.postal_code = postal_code;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public float getLatitude() {
@@ -105,19 +127,19 @@ public class Business {
         this.stars = stars;
     }
 
-    public int getReview_count() {
-        return review_count;
+    public int getReviewCount() {
+        return reviewCount;
     }
 
-    public void setReview_count(int review_count) {
-        this.review_count = review_count;
+    public void setReviewCount(int reviewCount) {
+        this.reviewCount = reviewCount;
     }
 
-    public int getIs_open() {
-        return is_open;
+    public int getIsOpen() {
+        return isOpen;
     }
 
-    public void setIs_open(int is_open) {
-        this.is_open = is_open;
+    public void setIsOpen(int isOpen) {
+        this.isOpen = isOpen;
     }
 }

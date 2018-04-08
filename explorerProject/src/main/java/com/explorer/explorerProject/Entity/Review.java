@@ -1,14 +1,25 @@
 package com.explorer.explorerProject.Entity;
 
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.sql.Date;
+
+@Entity(name = "Review")
+@Table(name = "review")
 public class Review {
-//    @Indexed(unique = true)
-    private String review_id;
+    @Id
+    private String id;
+
+    private String business_id;
     private String user_id;
 
-//    @Field("business_id")
-    private String businessId;
     private int stars;
-    private String date;
+
+    //Can change Date
+    private Date date;
+
     private String text;
     private int useful;
     private int funny;

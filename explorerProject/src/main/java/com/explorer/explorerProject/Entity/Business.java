@@ -33,13 +33,13 @@ public class Business {
     private String postalCode;
 
     @Column(name = "latitude")
-    private float latitude;
+    private Float latitude;
 
-    @Column(name = "")
-    private float longitude;
+    @Column(name = "longitude")
+    private Float longitude;
 
-    @Column(name = "")
-    private float stars;
+    @Column(name = "stars")
+    private Float stars;
 
     @Column(name = "review_count")
     private int reviewCount;

@@ -38,4 +38,75 @@ public class Review {
     @Column(name = "cool")
     private int cool;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(String businessId) {
+        this.businessId = businessId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public int getStars() {
+        return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public int getUseful() {
+        return useful;
+    }
+
+    public void setUseful(int useful) {
+        this.useful = useful;
+    }
+
+    public int getFunny() {
+        return funny;
+    }
+
+    public void setFunny(int funny) {
+        this.funny = funny;
+    }
+
+    public int getCool() {
+        return cool;
+    }
+
+    public void setCool(int cool) {
+        this.cool = cool;
+    }
 }

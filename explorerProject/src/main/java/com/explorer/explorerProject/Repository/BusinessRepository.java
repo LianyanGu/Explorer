@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface BusinessRepository extends JpaRepository<Business,String> {
     public List<Business> findAll();
+
+    public Business getOne(String id);
 }

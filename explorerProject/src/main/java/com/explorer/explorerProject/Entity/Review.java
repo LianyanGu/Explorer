@@ -1,20 +1,22 @@
 package com.explorer.explorerProject.Entity;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity(name = "Review")
 @Table(name = "review")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Review {
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "business_Id", nullable = false)
+    private Business business;
+
     @Id
     private String id;
-
-    @Column(name = "business_id")
-    private String businessId;
 
     @Column(name = "user_id")
     private String userId;
@@ -46,13 +48,6 @@ public class Review {
         this.id = id;
     }
 
-    public String getBusinessId() {
-        return businessId;
-    }
-
-    public void setBusinessId(String businessId) {
-        this.businessId = businessId;
-    }
 
     public String getUserId() {
         return userId;
@@ -109,4 +104,20 @@ public class Review {
     public void setCool(int cool) {
         this.cool = cool;
     }
+
+    public Review() {}
+
+    public Review(Business business, String id, String userId, int stars, Date date, String text, int useful, int funny, int cool) {
+        this.business = business;
+        this.id = id;
+        this.userId = userId;
+        this.stars = stars;
+        this.date = date;
+        this.text = text;
+        this.useful = useful;
+        this.funny = funny;
+        this.cool = cool;
+    }
+
+
 }

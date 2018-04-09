@@ -1,5 +1,7 @@
 package com.explorer.explorerProject.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,6 +10,7 @@ import java.sql.Date;
 
 @Entity(name = "Tip")
 @Table(name = "tip")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Tip {
     @Id
     private String id;
@@ -72,6 +75,19 @@ public class Tip {
     }
 
     public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public Tip() {
+
+    }
+
+    public Tip(String id, String userId, String businessId, String text, Date date, int likes) {
+        this.id = id;
+        this.userId = userId;
+        this.businessId = businessId;
+        this.text = text;
+        this.date = date;
         this.likes = likes;
     }
 }

@@ -1,7 +1,10 @@
 package com.explorer.explorerProject.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class User {
     public String user_id;
     public String name;

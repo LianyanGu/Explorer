@@ -1,15 +1,26 @@
 package com.explorer.explorerProject.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "business")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Business {
+
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "business")
+    private Set<Review> reviews = new HashSet<>();
+
 
     @Id
     private String id;
@@ -46,6 +57,7 @@ public class Business {
 
     @Column(name = "is_open")
     private int isOpen;
+
 
     public String getId() {
         return id;
@@ -107,7 +119,7 @@ public class Business {
         return latitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(Float latitude) {
         this.latitude = latitude;
     }
 
@@ -115,7 +127,7 @@ public class Business {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(Float longitude) {
         this.longitude = longitude;
     }
 
@@ -123,7 +135,7 @@ public class Business {
         return stars;
     }
 
-    public void setStars(float stars) {
+    public void setStars(Float stars) {
         this.stars = stars;
     }
 
@@ -140,6 +152,25 @@ public class Business {
     }
 
     public void setIsOpen(int isOpen) {
+        this.isOpen = isOpen;
+    }
+
+    public Business() {
+
+    }
+
+    public Business(String id, String name, String neighborhood, String address, String city, String state, String postalCode, Float latitude, Float longitude, Float stars, int reviewCount, int isOpen) {
+        this.id = id;
+        this.name = name;
+        this.neighborhood = neighborhood;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.postalCode = postalCode;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.stars = stars;
+        this.reviewCount = reviewCount;
         this.isOpen = isOpen;
     }
 }

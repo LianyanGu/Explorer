@@ -17,4 +17,8 @@ public class BusinessService {
        return businessRepository.findAll();
     }
 
+    public Business getBusinessById(String id) {
+        return businessRepository.getOne(id);
+    }
+
 }

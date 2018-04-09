@@ -3,6 +3,7 @@ package com.explorer.explorerProject.Controller;
 import com.explorer.explorerProject.Entity.Business;
 import com.explorer.explorerProject.Service.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,5 +20,9 @@ public class BusinessController {
         return businessService.getAllBusiness();
     }
 
+    @RequestMapping(value = "business/{id}", method = RequestMethod.GET)
+    public Business getBusinessById(@PathVariable("id") String id) {
+        return businessService.getBusinessById(id);
+    }
 
 }

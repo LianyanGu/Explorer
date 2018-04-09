@@ -103,7 +103,7 @@ public class Business {
         this.postalCode = postalCode;
     }
 
-    public float getLatitude() {
+    public Float getLatitude() {
         return latitude;
     }
 
@@ -111,7 +111,7 @@ public class Business {
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public Float getLongitude() {
         return longitude;
     }
 
@@ -119,7 +119,7 @@ public class Business {
         this.longitude = longitude;
     }
 
-    public float getStars() {
+    public Float getStars() {
         return stars;
     }
 

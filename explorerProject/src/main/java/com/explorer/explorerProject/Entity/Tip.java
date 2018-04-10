@@ -13,9 +13,6 @@ public class Tip {
     @Id
     private String id;
 
-    @Column(name = "business_id")
-    private String businessId;
-
     @Column(name = "text")
     private String text;
 
@@ -25,10 +22,23 @@ public class Tip {
     @Column(name = "likes")
     private int likes;
 
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "business_Id", nullable = false)
+    @JsonBackReference
+    private Business business;
 
     public String getId() {
         return id;
@@ -44,14 +54,6 @@ public class Tip {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public String getBusinessId() {
-        return businessId;
-    }
-
-    public void setBusinessId(String businessId) {
-        this.businessId = businessId;
     }
 
     public String getText() {
@@ -82,12 +84,12 @@ public class Tip {
 
     }
 
-    public Tip(String id, String businessId, String text, Date date, int likes, User user) {
+    public Tip(String id, String text, Date date, int likes, User user, Business business) {
         this.id = id;
-        this.businessId = businessId;
         this.text = text;
         this.date = date;
         this.likes = likes;
         this.user = user;
+        this.business = business;
     }
 }

@@ -15,7 +15,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/users/{userName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{userName}", method = RequestMethod.GET)
     public List<User> getUsersByName(@PathVariable("userName") String userName) {
         return userService.getUserByName(userName);
     }

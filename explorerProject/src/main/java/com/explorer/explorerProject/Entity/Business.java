@@ -61,12 +61,25 @@ public class Business {
         this.reviews = reviews;
     }
 
+    public Set<Tip> getTips() {
+        return tips;
+    }
+
+    public void setTips(Set<Tip> tips) {
+        this.tips = tips;
+    }
+
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "business")
     @JsonManagedReference
     private Set<Review> reviews = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "business")
+    @JsonManagedReference
+    private Set<Tip> tips = new HashSet<>();
 
     public String getId() {
         return id;

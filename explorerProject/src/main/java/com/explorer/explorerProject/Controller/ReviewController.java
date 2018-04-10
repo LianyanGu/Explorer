@@ -3,10 +3,7 @@ package com.explorer.explorerProject.Controller;
 import com.explorer.explorerProject.Entity.Review;
 import com.explorer.explorerProject.Service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +13,7 @@ public class ReviewController {
     private ReviewService reviewService;
 
     @RequestMapping(value = "/reviews/{businessId}",method = RequestMethod.GET)
+    @ResponseBody
     public List<Review> getReviewByBusinessId(@PathVariable("businessId") String businessId) {
         return reviewService.getReviewByBusinessId(businessId);
     }

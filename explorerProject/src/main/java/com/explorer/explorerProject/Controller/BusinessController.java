@@ -15,9 +15,9 @@ public class BusinessController {
     @Autowired
     private BusinessService businessService;
 
-    @RequestMapping(value = "/businesses/pages/", method = RequestMethod.GET)
+    @RequestMapping(value = "/businesses/pages", params = "page", method = RequestMethod.GET)
     @ResponseBody
-    public List<Business> getAllBusiness(@PageableDefault(value = 10, page = 0) Pageable pageable) {
+    public List<Business> getAllBusiness(@RequestParam("page") int page, @PageableDefault(value = 10, page = 0) Pageable pageable) {
         return businessService.getAllBusiness(pageable);
     }
 

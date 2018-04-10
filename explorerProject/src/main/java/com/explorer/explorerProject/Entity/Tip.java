@@ -1,11 +1,9 @@
 package com.explorer.explorerProject.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity(name = "Tip")
@@ -14,9 +12,6 @@ import java.sql.Date;
 public class Tip {
     @Id
     private String id;
-
-    @Column(name = "user_id")
-    private String userId;
 
     @Column(name = "business_id")
     private String businessId;
@@ -30,6 +25,11 @@ public class Tip {
     @Column(name = "likes")
     private int likes;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
+    private User user;
+
     public String getId() {
         return id;
     }
@@ -38,12 +38,12 @@ public class Tip {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getBusinessId() {
@@ -82,12 +82,12 @@ public class Tip {
 
     }
 
-    public Tip(String id, String userId, String businessId, String text, Date date, int likes) {
+    public Tip(String id, String businessId, String text, Date date, int likes, User user) {
         this.id = id;
-        this.userId = userId;
         this.businessId = businessId;
         this.text = text;
         this.date = date;
         this.likes = likes;
+        this.user = user;
     }
 }

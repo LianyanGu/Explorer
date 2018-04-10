@@ -16,4 +16,8 @@ public class ReviewService {
     public List<Review> getReviewByBusinessId(String businessId) {
         return reviewRepository.findByBusinessId(businessId);
     }
+
+    public List<Review> getAllReviews() {
+        return reviewRepository.findAll();
+    }
 }

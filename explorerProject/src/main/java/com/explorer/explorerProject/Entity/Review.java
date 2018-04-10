@@ -1,6 +1,7 @@
 package com.explorer.explorerProject.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -11,15 +12,8 @@ import java.sql.Date;
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Review {
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "business_Id", nullable = false)
-    private Business business;
-
     @Id
     private String id;
-
-    @Column(name = "user_id")
-    private String userId;
 
     @Column(name = "stars")
     private int stars;
@@ -40,6 +34,24 @@ public class Review {
     @Column(name = "cool")
     private int cool;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "business_Id", nullable = false)
+    @JsonBackReference
+    private Business business;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
+    private User user;
+
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
+
     public String getId() {
         return id;
     }
@@ -48,13 +60,12 @@ public class Review {
         this.id = id;
     }
 
-
-    public String getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getStars() {
@@ -107,17 +118,15 @@ public class Review {
 
     public Review() {}
 
-    public Review(Business business, String id, String userId, int stars, Date date, String text, int useful, int funny, int cool) {
-        this.business = business;
+    public Review(String id, int stars, Date date, String text, int useful, int funny, int cool, Business business, User user) {
         this.id = id;
-        this.userId = userId;
         this.stars = stars;
         this.date = date;
         this.text = text;
         this.useful = useful;
         this.funny = funny;
         this.cool = cool;
+        this.business = business;
+        this.user = user;
     }
-
-
 }

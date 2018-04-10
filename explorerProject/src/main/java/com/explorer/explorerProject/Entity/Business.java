@@ -2,6 +2,7 @@ package com.explorer.explorerProject.Entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -15,12 +16,6 @@ import java.util.Set;
 @Table(name = "business")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Business {
-
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "business")
-    private Set<Review> reviews = new HashSet<>();
-
 
     @Id
     private String id;
@@ -57,6 +52,20 @@ public class Business {
 
     @Column(name = "is_open")
     private int isOpen;
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "business")
+    @JsonManagedReference
+    private Set<Review> reviews = new HashSet<>();
 
 
     public String getId() {

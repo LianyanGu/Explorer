@@ -1,80 +1,128 @@
 package com.explorer.explorerProject.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import java.util.List;
+import javax.persistence.*;
+import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+@Entity(name = "User")
+@Table(name = "user")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class User {
-    public String user_id;
-    public String name;
-    public String yelping_since;
-    public List<String> friends;
-    public List<Integer> elite;
-    public int review_count;
+
+    @Id
+    public String id;
+
+    @Column(name = "name")
+    public String userName;
+
+    @Column(name = "review_count")
+    public int reviewCount;
+
+    @Column(name = "yelping_since")
+    public Date yelpingSince;
+
+    @Column(name = "useful")
     public int useful;
+
+    @Column(name = "funny")
     public int funny;
+
+    @Column(name = "cool")
     public int cool;
+
+    @Column(name = "fans")
     public int fans;
-    public int compliment_hot;
-    public int compliment_more;
-    public int compliment_profile;
-    public int compliment_note;
-    public int compliment_plain;
-    public int compliment_cool;
-    public int compliment_funny;
-    public int compliment_writer;
-    public int compliment_photos;
-    public int compliment_cute;
-    public int compliment_list;
-    public float average_stars;
 
-    public String getUser_id() {
-        return user_id;
+    @Column(name = "average_stars")
+    public Float averageStars;
+
+    @Column(name = "compliment_hot")
+    public int complimentHot;
+
+    @Column(name = "compliment_more")
+    public int complimentMore;
+
+    @Column(name = "compliment_profile")
+    public int complimentProfile;
+
+    @Column(name = "compliment_note")
+    public int complimentNote;
+
+    @Column(name = "compliment_plain")
+    public int complimentPlain;
+
+    @Column(name = "compliment_cool")
+    public int complimentCool;
+
+    @Column(name = "compliment_funny")
+    public int complimentFunny;
+
+    @Column(name = "compliment_writer")
+    public int complimentWriter;
+
+    @Column(name = "compliment_photos")
+    public int complimentPhotos;
+
+    @Column(name = "compliment_cute")
+    public int complimentCute;
+
+    @Column(name = "compliment_list")
+    public int complimentList;
+
+    @OneToMany(cascade = CascadeType.ALL,
+                fetch = FetchType.LAZY,
+                mappedBy = "user")
+    @JsonManagedReference
+    private Set<Tip> tips = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL,
+                fetch = FetchType.LAZY,
+                mappedBy = "user")
+    @JsonManagedReference
+    private Set<Review> reviews = new HashSet<>();
+
+    public Set<Tip> getTips() {
+        return tips;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setTips(Set<Tip> tips) {
+        this.tips = tips;
     }
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getYelping_since() {
-        return yelping_since;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setYelping_since(String yelping_since) {
-        this.yelping_since = yelping_since;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public List<String> getFriends() {
-        return friends;
+    public int getReviewCount() {
+        return reviewCount;
     }
 
-    public void setFriends(List<String> friends) {
-        this.friends = friends;
+    public void setReviewCount(int reviewCount) {
+        this.reviewCount = reviewCount;
     }
 
-    public List<Integer> getElite() {
-        return elite;
+    public Date getYelpingSince() {
+        return yelpingSince;
     }
 
-    public void setElite(List<Integer> elite) {
-        this.elite = elite;
-    }
-
-    public int getReview_count() {
-        return review_count;
-    }
-
-    public void setReview_count(int review_count) {
-        this.review_count = review_count;
+    public void setYelpingSince(Date yelpingSince) {
+        this.yelpingSince = yelpingSince;
     }
 
     public int getUseful() {
@@ -109,99 +157,134 @@ public class User {
         this.fans = fans;
     }
 
-    public int getCompliment_hot() {
-        return compliment_hot;
+    public Float getAverageStars() {
+        return averageStars;
     }
 
-    public void setCompliment_hot(int compliment_hot) {
-        this.compliment_hot = compliment_hot;
+    public void setAverageStars(Float averageStars) {
+        this.averageStars = averageStars;
     }
 
-    public int getCompliment_more() {
-        return compliment_more;
+    public int getComplimentHot() {
+        return complimentHot;
     }
 
-    public void setCompliment_more(int compliment_more) {
-        this.compliment_more = compliment_more;
+    public void setComplimentHot(int complimentHot) {
+        this.complimentHot = complimentHot;
     }
 
-    public int getCompliment_profile() {
-        return compliment_profile;
+    public int getComplimentMore() {
+        return complimentMore;
     }
 
-    public void setCompliment_profile(int compliment_profile) {
-        this.compliment_profile = compliment_profile;
+    public void setComplimentMore(int complimentMore) {
+        this.complimentMore = complimentMore;
     }
 
-    public int getCompliment_note() {
-        return compliment_note;
+    public int getComplimentProfile() {
+        return complimentProfile;
     }
 
-    public void setCompliment_note(int compliment_note) {
-        this.compliment_note = compliment_note;
+    public void setComplimentProfile(int complimentProfile) {
+        this.complimentProfile = complimentProfile;
     }
 
-    public int getCompliment_plain() {
-        return compliment_plain;
+    public int getComplimentNote() {
+        return complimentNote;
     }
 
-    public void setCompliment_plain(int compliment_plain) {
-        this.compliment_plain = compliment_plain;
+    public void setComplimentNote(int complimentNote) {
+        this.complimentNote = complimentNote;
     }
 
-    public int getCompliment_cool() {
-        return compliment_cool;
+    public int getComplimentPlain() {
+        return complimentPlain;
     }
 
-    public void setCompliment_cool(int compliment_cool) {
-        this.compliment_cool = compliment_cool;
+    public void setComplimentPlain(int complimentPlain) {
+        this.complimentPlain = complimentPlain;
     }
 
-    public int getCompliment_funny() {
-        return compliment_funny;
+    public int getComplimentCool() {
+        return complimentCool;
     }
 
-    public void setCompliment_funny(int compliment_funny) {
-        this.compliment_funny = compliment_funny;
+    public void setComplimentCool(int complimentCool) {
+        this.complimentCool = complimentCool;
     }
 
-    public int getCompliment_writer() {
-        return compliment_writer;
+    public int getComplimentFunny() {
+        return complimentFunny;
     }
 
-    public void setCompliment_writer(int compliment_writer) {
-        this.compliment_writer = compliment_writer;
+    public void setComplimentFunny(int complimentFunny) {
+        this.complimentFunny = complimentFunny;
     }
 
-    public int getCompliment_photos() {
-        return compliment_photos;
+    public int getComplimentWriter() {
+        return complimentWriter;
     }
 
-    public void setCompliment_photos(int compliment_photos) {
-        this.compliment_photos = compliment_photos;
+    public void setComplimentWriter(int complimentWriter) {
+        this.complimentWriter = complimentWriter;
     }
 
-    public int getCompliment_cute() {
-        return compliment_cute;
+    public int getComplimentPhotos() {
+        return complimentPhotos;
     }
 
-    public void setCompliment_cute(int compliment_cute) {
-        this.compliment_cute = compliment_cute;
+    public void setComplimentPhotos(int complimentPhotos) {
+        this.complimentPhotos = complimentPhotos;
     }
 
-    public int getCompliment_list() {
-        return compliment_list;
+    public int getComplimentCute() {
+        return complimentCute;
     }
 
-    public void setCompliment_list(int compliment_list) {
-        this.compliment_list = compliment_list;
+    public void setComplimentCute(int complimentCute) {
+        this.complimentCute = complimentCute;
     }
 
-    public float getAverage_stars() {
-        return average_stars;
+    public int getComplimentList() {
+        return complimentList;
     }
 
-    public void setAverage_stars(float average_stars) {
-        this.average_stars = average_stars;
+    public void setComplimentList(int complimentList) {
+        this.complimentList = complimentList;
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public User(){}
+
+    public User(String id, String userName, int reviewCount, Date yelpingSince, int useful, int funny, int cool, int fans, Float averageStars, int complimentHot, int complimentMore, int complimentProfile, int complimentNote, int complimentPlain, int complimentCool, int complimentFunny, int complimentWriter, int complimentPhotos, int complimentCute, int complimentList, Set<Tip> tips, Set<Review> reviews) {
+        this.id = id;
+        this.userName = userName;
+        this.reviewCount = reviewCount;
+        this.yelpingSince = yelpingSince;
+        this.useful = useful;
+        this.funny = funny;
+        this.cool = cool;
+        this.fans = fans;
+        this.averageStars = averageStars;
+        this.complimentHot = complimentHot;
+        this.complimentMore = complimentMore;
+        this.complimentProfile = complimentProfile;
+        this.complimentNote = complimentNote;
+        this.complimentPlain = complimentPlain;
+        this.complimentCool = complimentCool;
+        this.complimentFunny = complimentFunny;
+        this.complimentWriter = complimentWriter;
+        this.complimentPhotos = complimentPhotos;
+        this.complimentCute = complimentCute;
+        this.complimentList = complimentList;
+        this.tips = tips;
+        this.reviews = reviews;
     }
 }

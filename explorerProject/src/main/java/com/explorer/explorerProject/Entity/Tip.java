@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity(name = "Tip")
 @Table(name = "tip")
@@ -84,12 +84,12 @@ public class Tip {
 
     }
 
-    public Tip(String id, String text, Date date, int likes, User user, Business business) {
-        this.id = id;
+    public Tip(String text, Date date, int likes, User user, Business business) {
         this.text = text;
         this.date = date;
         this.likes = likes;
         this.user = user;
         this.business = business;
     }
+
 }

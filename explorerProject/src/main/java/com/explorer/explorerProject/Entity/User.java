@@ -78,7 +78,7 @@ public class User {
                 mappedBy = "user")
     @JsonManagedReference
     private Set<Tip> tips = new HashSet<>();
-    
+
 
     public Set<Tip> getTips() {
         return tips;

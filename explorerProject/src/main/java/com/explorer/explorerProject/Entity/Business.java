@@ -53,13 +53,6 @@ public class Business {
     @Column(name = "is_open")
     private int isOpen;
 
-    public Set<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(Set<Review> reviews) {
-        this.reviews = reviews;
-    }
 
     public Set<Tip> getTips() {
         return tips;
@@ -73,13 +66,21 @@ public class Business {
             fetch = FetchType.LAZY,
             mappedBy = "business")
     @JsonManagedReference
-    private Set<Review> reviews = new HashSet<>();
+    private Set<Tip> tips = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "business")
+                fetch = FetchType.LAZY,
+                mappedBy = "business")
     @JsonManagedReference
-    private Set<Tip> tips = new HashSet<>();
+    private Set<ReviewView> reviewViews = new HashSet<>();
+
+    public Set<ReviewView> getReviewViews() {
+        return reviewViews;
+    }
+
+    public void setReviewViews(Set<ReviewView> reviewViews) {
+        this.reviewViews = reviewViews;
+    }
 
     public String getId() {
         return id;
@@ -181,7 +182,7 @@ public class Business {
 
     }
 
-    public Business(String id, String name, String neighborhood, String address, String city, String state, String postalCode, Float latitude, Float longitude, Float stars, int reviewCount, int isOpen) {
+    public Business(String id, String name, String neighborhood, String address, String city, String state, String postalCode, Float latitude, Float longitude, Float stars, int reviewCount, int isOpen, Set<Tip> tips, Set<ReviewView> reviewViews) {
         this.id = id;
         this.name = name;
         this.neighborhood = neighborhood;
@@ -194,5 +195,7 @@ public class Business {
         this.stars = stars;
         this.reviewCount = reviewCount;
         this.isOpen = isOpen;
+        this.tips = tips;
+        this.reviewViews = reviewViews;
     }
 }

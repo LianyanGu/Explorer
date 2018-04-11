@@ -1,6 +1,7 @@
 package com.explorer.explorerProject.Controller;
 
 import com.explorer.explorerProject.Entity.Review;
+import com.explorer.explorerProject.Entity.ReviewView;
 import com.explorer.explorerProject.Service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ public class ReviewController {
 
     @RequestMapping(value = "/reviews/{businessId}",method = RequestMethod.GET)
     @ResponseBody
-    public List<Review> getReviewByBusinessId(@PathVariable("businessId") String businessId) {
+    public List<ReviewView> getReviewByBusinessId(@PathVariable("businessId") String businessId) {
         return reviewService.getReviewByBusinessId(businessId);
     }
 

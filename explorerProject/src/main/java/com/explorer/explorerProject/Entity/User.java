@@ -78,12 +78,7 @@ public class User {
                 mappedBy = "user")
     @JsonManagedReference
     private Set<Tip> tips = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL,
-                fetch = FetchType.LAZY,
-                mappedBy = "user")
-    @JsonManagedReference
-    private Set<ReviewView> reviews = new HashSet<>();
+    
 
     public Set<Tip> getTips() {
         return tips;
@@ -253,17 +248,10 @@ public class User {
         this.complimentList = complimentList;
     }
 
-    public Set<ReviewView> getReviewViews() {
-        return reviews;
-    }
-
-    public void setReviewViews(Set<ReviewView> reviewViews) {
-        this.reviews = reviewViews;
-    }
 
     public User(){}
 
-    public User(String id, String userName, int reviewCount, Date yelpingSince, int useful, int funny, int cool, int fans, Float averageStars, int complimentHot, int complimentMore, int complimentProfile, int complimentNote, int complimentPlain, int complimentCool, int complimentFunny, int complimentWriter, int complimentPhotos, int complimentCute, int complimentList, Set<Tip> tips, Set<ReviewView> reviewViews) {
+    public User(String id, String userName, int reviewCount, Date yelpingSince, int useful, int funny, int cool, int fans, Float averageStars, int complimentHot, int complimentMore, int complimentProfile, int complimentNote, int complimentPlain, int complimentCool, int complimentFunny, int complimentWriter, int complimentPhotos, int complimentCute, int complimentList, Set<Tip> tips) {
         this.id = id;
         this.userName = userName;
         this.reviewCount = reviewCount;
@@ -285,6 +273,5 @@ public class User {
         this.complimentCute = complimentCute;
         this.complimentList = complimentList;
         this.tips = tips;
-        this.reviews = reviewViews;
     }
 }

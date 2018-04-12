@@ -7,6 +7,7 @@ import com.explorer.explorerProject.Service.TipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*")
 @RestController
 public class TipController {
     @Autowired

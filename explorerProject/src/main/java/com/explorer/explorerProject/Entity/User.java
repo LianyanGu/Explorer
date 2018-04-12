@@ -251,7 +251,10 @@ public class User {
 
     public User(){}
 
-    public User(String id, String userName, int reviewCount, Date yelpingSince, int useful, int funny, int cool, int fans, Float averageStars, int complimentHot, int complimentMore, int complimentProfile, int complimentNote, int complimentPlain, int complimentCool, int complimentFunny, int complimentWriter, int complimentPhotos, int complimentCute, int complimentList, Set<Tip> tips) {
+    public User(String id, String userName, int reviewCount, Date yelpingSince, int useful, int funny, int cool,
+                int fans, Float averageStars, int complimentHot, int complimentMore, int complimentProfile,
+                int complimentNote, int complimentPlain, int complimentCool, int complimentFunny, int complimentWriter,
+                int complimentPhotos, int complimentCute, int complimentList, Set<Tip> tips) {
         this.id = id;
         this.userName = userName;
         this.reviewCount = reviewCount;

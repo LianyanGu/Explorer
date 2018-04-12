@@ -182,7 +182,9 @@ public class Business {
 
     }
 
-    public Business(String id, String name, String neighborhood, String address, String city, String state, String postalCode, Float latitude, Float longitude, Float stars, int reviewCount, int isOpen, Set<Tip> tips, Set<ReviewView> reviewViews) {
+    public Business(String id, String name, String neighborhood, String address, String city, String state,
+                    String postalCode, Float latitude, Float longitude, Float stars, int reviewCount, int isOpen,
+                    Set<Tip> tips, Set<ReviewView> reviewViews) {
         this.id = id;
         this.name = name;
         this.neighborhood = neighborhood;

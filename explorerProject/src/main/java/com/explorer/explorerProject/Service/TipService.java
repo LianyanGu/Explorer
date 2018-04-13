@@ -20,7 +20,7 @@ public class TipService {
     @Autowired
     private TipRepository tipRepository;
 
-    public void addTipForABusiness(String text, User user, Business business) {
+    public void addTip(String text, User user, Business business) {
         if (StringUtils.isEmpty(text)) {
             return;
         }

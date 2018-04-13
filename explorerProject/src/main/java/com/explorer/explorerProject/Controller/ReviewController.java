@@ -1,5 +1,6 @@
 package com.explorer.explorerProject.Controller;
 
+import com.explorer.explorerProject.Entity.Business;
 import com.explorer.explorerProject.Entity.Review;
 import com.explorer.explorerProject.Entity.ReviewView;
 import com.explorer.explorerProject.Service.ReviewService;
@@ -18,6 +19,11 @@ public class ReviewController {
     @ResponseBody
     public List<ReviewView> getReviewByBusinessId(@PathVariable("businessId") String businessId) {
         return reviewService.getReviewByBusinessId(businessId);
+    }
+
+    @RequestMapping(value = "/review", method = RequestMethod.POST)
+    public void addReview(int stars, String text, Business business) {
+        reviewService.addReview(stars, text, business);
     }
 
 }

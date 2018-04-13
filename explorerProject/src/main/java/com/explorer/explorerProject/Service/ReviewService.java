@@ -21,5 +21,5 @@ public class ReviewService {
     public List<ReviewView> getReviewByBusinessId(String businessId) {
         return reviewViewRepository.findByBusinessId(businessId);
     }
-    
+
 }

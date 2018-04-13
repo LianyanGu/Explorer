@@ -1,0 +1,21 @@
+<div>
+  <div>
+    <!--Change businessId to businessName, find by busienssName instead of calling api ??-->
+    <input type="string" placeholder="Please type the name of business" [(ngModel)]='businessId'>
+    <button class="btn btn-primary" (click)="getBusiness()">Get all businesses</button>
+  </div>
+  <div *ngIf="businessLoaded">
+    <div *ngFor="let business of businesses">
+      {{business.name}}
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="getReviewByBusinessId(businessId)">Review By BusinessId</button>
+    <div *ngIf="reviewLoaded">
+      <div *ngFor="let review of reviews">
+        {{review.text}}
+      </div>
+    </div>
+  </div>
+</div>
+

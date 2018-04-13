@@ -15,7 +15,11 @@ public class ReviewService {
     @Autowired
     private ReviewViewRepository reviewViewRepository;
 
+    @Autowired
+    private ReviewRepository reviewRepository;
+
     public List<ReviewView> getReviewByBusinessId(String businessId) {
         return reviewViewRepository.findByBusinessId(businessId);
     }
+    
 }

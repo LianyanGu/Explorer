@@ -39,11 +39,6 @@ public class Review {
     @JsonBackReference
     private Business business;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    @JsonBackReference
-    private User user;
-
     public Business getBusiness() {
         return business;
     }
@@ -58,14 +53,6 @@ public class Review {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public int getStars() {
@@ -118,7 +105,7 @@ public class Review {
 
     public Review() {}
 
-    public Review(String id, int stars, Date date, String text, int useful, int funny, int cool, Business business, User user) {
+    public Review(String id, int stars, Date date, String text, int useful, int funny, int cool, Business business) {
         this.id = id;
         this.stars = stars;
         this.date = date;
@@ -127,6 +114,5 @@ public class Review {
         this.funny = funny;
         this.cool = cool;
         this.business = business;
-        this.user = user;
     }
 }

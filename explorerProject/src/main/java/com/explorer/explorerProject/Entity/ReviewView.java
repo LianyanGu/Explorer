@@ -151,7 +151,8 @@ public class ReviewView {
 
     }
 
-    public ReviewView(String id, String userId, int stars, Date date, String text, int useful, int funny, int cool, String userName, int reviewCount, Date yelpingSince, Business business) {
+    public ReviewView(String id, String userId, int stars, Date date, String text, int useful, int funny,
+                      int cool, String userName, int reviewCount, Date yelpingSince, Business business) {
         this.id = id;
         this.userId = userId;
         this.stars = stars;

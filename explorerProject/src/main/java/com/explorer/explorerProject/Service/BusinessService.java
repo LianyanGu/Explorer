@@ -19,6 +19,10 @@ public class BusinessService {
         return businessRepository.findAll(pageable);
     }
 
+    public List<Business> getAllBusinesswoPagination() {
+        return businessRepository.findAll();
+    }
+
     public Business getBusinessById(String id) {
         return businessRepository.getOne(id);
     }

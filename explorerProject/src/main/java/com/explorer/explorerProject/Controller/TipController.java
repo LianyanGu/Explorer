@@ -7,20 +7,24 @@ import com.explorer.explorerProject.Service.TipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin("*")
 @RestController
 public class TipController {
     @Autowired
     private TipService tipService;
 
-    @RequestMapping(value = "/tips/{tipId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/tips/{businessId}", method = RequestMethod.GET)
     @ResponseBody
-    public Tip getTipById(@PathVariable("tipId") String tipId) {
-        return tipService.getTipById(tipId);
+    public List<Tip> getTipById(@PathVariable("businessId") String businessId) {
+
+        return tipService.getTipByBusinessId(businessId);
     }
 
-    @RequestMapping(value = "/tip",method = RequestMethod.POST)
+    @RequestMapping(value = "/tip", method = RequestMethod.POST)
     public void addTip(String text, User user, Business business) {
+
         tipService.addTip(text, user, business);
     }
 }

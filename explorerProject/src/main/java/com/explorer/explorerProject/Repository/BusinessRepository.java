@@ -13,5 +13,7 @@ import java.util.List;
 public interface BusinessRepository extends CrudRepository<Business,String> {
     public List<Business> findAll(Pageable pageable);
 
+    public List<Business> findAll();
+
     public Business getOne(@Param("id") String id);
 }

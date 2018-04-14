@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class TipService {
@@ -31,8 +32,8 @@ public class TipService {
         tipRepository.save(new Tip(text, date,0, user, business));
     }
 
-    public Tip getTipById(String tipId) {
-        return tipRepository.getTipById(tipId);
+    public List<Tip> getTipByBusinessId(String businessId) {
+        return tipRepository.getTipByBusinessId(businessId);
     }
 }
 

@@ -16,4 +16,6 @@ public interface BusinessRepository extends CrudRepository<Business,String> {
     public List<Business> findAll();
 
     public Business getOne(@Param("id") String id);
+
+    public List<Business> findByCity(@Param("city") String city);
 }

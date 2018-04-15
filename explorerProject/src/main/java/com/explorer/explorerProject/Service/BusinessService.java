@@ -27,4 +27,7 @@ public class BusinessService {
         return businessRepository.getOne(id);
     }
 
+    public List<Business> getBusinessByCity(String city) {
+        return businessRepository.findByCity(city);
+    }
 }

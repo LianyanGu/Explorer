@@ -10,6 +10,7 @@ import java.util.Date;
 @Table(name = "tip")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Tip {
+
     @Id
     private String id;
 
@@ -22,23 +23,27 @@ public class Tip {
     @Column(name = "likes")
     private int likes;
 
-    public Business getBusiness() {
-        return business;
-    }
-
-    public void setBusiness(Business business) {
-        this.business = business;
-    }
+    @Column(name = "business_id")
+    private String businessId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "business_Id", nullable = false)
-    @JsonBackReference
-    private Business business;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "business_Id", nullable = false)
+//    @JsonBackReference
+//    private Business business;
+
+
+    public String getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(String businessId) {
+        this.businessId = businessId;
+    }
 
     public String getId() {
         return id;
@@ -84,12 +89,11 @@ public class Tip {
 
     }
 
-    public Tip(String text, Date date, int likes, User user, Business business) {
+    public Tip(String text, Date date, int likes, String businessId, User user) {
         this.text = text;
         this.date = date;
         this.likes = likes;
+        this.businessId = businessId;
         this.user = user;
-        this.business = business;
     }
-
 }

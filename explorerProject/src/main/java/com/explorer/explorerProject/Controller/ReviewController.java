@@ -22,8 +22,8 @@ public class ReviewController {
     }
 
     @RequestMapping(value = "/review", method = RequestMethod.POST)
-    public void addReview(int stars, String text, Business business) {
-        reviewService.addReview(stars, text, business);
+    public void addReview(String businessId, int stars, String text) {
+        reviewService.addReview(businessId, stars, text);
     }
 
 }

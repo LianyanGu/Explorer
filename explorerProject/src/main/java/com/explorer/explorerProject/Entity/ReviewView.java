@@ -15,6 +15,9 @@ public class ReviewView {
     @Id
     private String id;
 
+    @Column(name = "business_id")
+    private String businessId;
+
     @Column(name = "user_id")
     private String userId;
 
@@ -54,10 +57,10 @@ public class ReviewView {
     @Column(name = "yelping_since")
     public Date yelpingSince;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "business_id", nullable = false)
-    @JsonBackReference
-    private Business business;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "business_id", nullable = false)
+//    @JsonBackReference
+//    private Business business;
 
     public String getId() {
         return id;
@@ -139,21 +142,12 @@ public class ReviewView {
         this.yelpingSince = yelpingSince;
     }
 
-    public Business getBusiness() {
-        return business;
-    }
-
-    public void setBusiness(Business business) {
-        this.business = business;
-    }
-
     private ReviewView() {
 
     }
 
-    public ReviewView(String id, String userId, int stars, Date date, String text, int useful, int funny,
-                      int cool, String userName, int reviewCount, Date yelpingSince, Business business) {
-        this.id = id;
+    public ReviewView(String businessId, String userId, int stars, Date date, String text, int useful, int funny, int cool, String userName, int reviewCount, Date yelpingSince) {
+        this.businessId = businessId;
         this.userId = userId;
         this.stars = stars;
         this.date = date;
@@ -164,6 +158,5 @@ public class ReviewView {
         this.userName = userName;
         this.reviewCount = reviewCount;
         this.yelpingSince = yelpingSince;
-        this.business = business;
     }
 }

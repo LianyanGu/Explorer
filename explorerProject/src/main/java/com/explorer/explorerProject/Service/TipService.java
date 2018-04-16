@@ -21,7 +21,7 @@ public class TipService {
     @Autowired
     private TipRepository tipRepository;
 
-    public void addTip(String text, User user, Business business) {
+    public void addTip(String text, String businessId, User user) {
         if (StringUtils.isEmpty(text)) {
             return;
         }
@@ -29,7 +29,7 @@ public class TipService {
         Date date = new Date();
 //        System.out.println(dateFormat.format(date));
 
-        tipRepository.save(new Tip(text, date,0, user, business));
+        tipRepository.save(new Tip(text, date,0, businessId, user));
     }
 
     public List<Tip> getTipByBusinessId(String businessId) {

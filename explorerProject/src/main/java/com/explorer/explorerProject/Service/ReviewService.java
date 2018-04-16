@@ -26,9 +26,9 @@ public class ReviewService {
         return reviewViewRepository.findByBusinessId(businessId);
     }
 
-    public void addReview(int stars, String text, Business business) {
+    public void addReview(String businessId, int stars, String text) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
-        reviewRepository.save(new Review(stars, date, text, 0, 0, 0, business));
+        reviewRepository.save(new Review(businessId, stars, date, text, 0, 0, 0));
     }
 }

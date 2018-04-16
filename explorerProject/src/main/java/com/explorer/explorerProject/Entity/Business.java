@@ -53,34 +53,17 @@ public class Business {
     @Column(name = "is_open")
     private int isOpen;
 
-
-    public Set<Tip> getTips() {
-        return tips;
-    }
-
-    public void setTips(Set<Tip> tips) {
-        this.tips = tips;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "business")
-    @JsonManagedReference
-    private Set<Tip> tips = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL,
-                fetch = FetchType.LAZY,
-                mappedBy = "business")
-    @JsonManagedReference
-    private Set<ReviewView> reviewViews = new HashSet<>();
-
-    public Set<ReviewView> getReviewViews() {
-        return reviewViews;
-    }
-
-    public void setReviewViews(Set<ReviewView> reviewViews) {
-        this.reviewViews = reviewViews;
-    }
+//    @OneToMany(cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY,
+//            mappedBy = "business")
+//    @JsonManagedReference
+//    private Set<Tip> tips = new HashSet<>();
+//
+//    @OneToMany(cascade = CascadeType.ALL,
+//                fetch = FetchType.LAZY,
+//                mappedBy = "business")
+//    @JsonManagedReference
+//    private Set<ReviewView> reviewViews = new HashSet<>();
 
     public String getId() {
         return id;
@@ -182,10 +165,7 @@ public class Business {
 
     }
 
-    public Business(String id, String name, String neighborhood, String address, String city, String state,
-                    String postalCode, Float latitude, Float longitude, Float stars, int reviewCount, int isOpen,
-                    Set<Tip> tips, Set<ReviewView> reviewViews) {
-        this.id = id;
+    public Business(String name, String neighborhood, String address, String city, String state, String postalCode, Float latitude, Float longitude, Float stars, int reviewCount, int isOpen) {
         this.name = name;
         this.neighborhood = neighborhood;
         this.address = address;
@@ -197,7 +177,5 @@ public class Business {
         this.stars = stars;
         this.reviewCount = reviewCount;
         this.isOpen = isOpen;
-        this.tips = tips;
-        this.reviewViews = reviewViews;
     }
 }

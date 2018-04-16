@@ -23,8 +23,8 @@ public class TipController {
     }
 
     @RequestMapping(value = "/tip", method = RequestMethod.POST)
-    public void addTip(String text, User user, Business business) {
+    public void addTip(String text, String businessId, User user) {
 
-        tipService.addTip(text, user, business);
+        tipService.addTip(text, businessId, user);
     }
 }

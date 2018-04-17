@@ -28,6 +28,6 @@ public class BusinessService {
     }
 
     public List<Business> getBusinessByCity(String city) {
-        return businessRepository.findByCity(city);
+        return businessRepository.findByCityOrderByName(city);
     }
 }

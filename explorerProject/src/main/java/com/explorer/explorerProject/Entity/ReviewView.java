@@ -146,7 +146,9 @@ public class ReviewView {
 
     }
 
-    public ReviewView(String businessId, String userId, int stars, Date date, String text, int useful, int funny, int cool, String userName, int reviewCount, Date yelpingSince) {
+    public ReviewView(String businessId, String userId, int stars, Date date, String text,
+                      int useful, int funny, int cool, String userName, int reviewCount,
+                      Date yelpingSince) {
         this.businessId = businessId;
         this.userId = userId;
         this.stars = stars;

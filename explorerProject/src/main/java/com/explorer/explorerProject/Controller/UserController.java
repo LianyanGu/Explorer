@@ -13,9 +13,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/user/{userName}", method = RequestMethod.GET)
+//    @RequestMapping(value = "/user/{userName}", method = RequestMethod.GET)
+//    @ResponseBody
+//    public List<User> getUsersByName(@PathVariable("userName") String userName) {
+//        return userService.getUserByName(userName);
+//    }
+
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public List<User> getUsersByName(@PathVariable("userName") String userName) {
-        return userService.getUserByName(userName);
+    public User getUser(@PathVariable("id") String id) {
+        return userService.getUser(id);
     }
 }

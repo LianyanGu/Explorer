@@ -30,4 +30,8 @@ public class BusinessService {
     public List<Business> getBusinessByCity(String city) {
         return businessRepository.findByCityOrderByName(city);
     }
+
+    public List<Business> getBusinessByName(String name) {
+        return businessRepository.findByNameIgnoreCaseContaining(name);
+    }
 }

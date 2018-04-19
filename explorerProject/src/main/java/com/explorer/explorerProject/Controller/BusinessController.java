@@ -40,4 +40,12 @@ public class BusinessController {
     public List<Business> getBusinessByCity(@PathVariable("city") String city) {
         return businessService.getBusinessByCity(city);
     }
+
+    @RequestMapping(value = "businesses/{name}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Business> getBusinessByName(@PathVariable("name") String name) {
+        return businessService.getBusinessByName(name);
+    }
+
+
 }

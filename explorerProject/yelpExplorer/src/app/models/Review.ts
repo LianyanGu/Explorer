@@ -10,11 +10,10 @@ export class Review {
   useful: number;
   funny: number;
   cool: number;
-  business: Business;
-  user: User;
 
 
-  constructor(id: string, stars: number, date: string, text: string, useful: number, funny: number, cool: number, business: Business, user: User) {
+  constructor(id: string, stars: number, date: string, text: string, useful: number,
+              funny: number, cool: number) {
     this.id = id;
     this.stars = stars;
     this.date = date;
@@ -22,7 +21,5 @@ export class Review {
     this.useful = useful;
     this.funny = funny;
     this.cool = cool;
-    this.business = business;
-    this.user = user;
   }
 }

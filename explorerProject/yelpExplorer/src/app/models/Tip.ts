@@ -8,16 +8,13 @@ export class Tip {
   date: string;
   likes: number;
   user: User;
-  business: Business;
 
 
-  constructor(id: string, text: string, date: string, likes: number, user: User,
-              business: Business) {
+  constructor(id: string, text: string, date: string, likes: number, user: User) {
     this.id = id;
     this.text = text;
     this.date = date;
     this.likes = likes;
     this.user = user;
-    this.business = business;
   }
 }

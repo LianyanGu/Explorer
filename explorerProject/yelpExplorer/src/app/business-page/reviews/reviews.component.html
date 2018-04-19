@@ -1,0 +1,9 @@
+<div *ngIf="displayReviews">
+  <!--How to change value dynamically-->
+
+  <div *ngFor="let review of reviews">
+    <app-review [review]="review"></app-review>
+    <app-user [id]="review.userId"></app-user>
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="d-flex flex-row">
+    <div class="p-2">
+      <div class="d-flex flex-column">
+        <div class="p-2">
+          <h5 (click)="onClickBusiness()"
+              [routerLink]="['businesses','city',business.city, business.id]"
+              style="cursor: pointer;">
+            {{business.name}}
+          </h5>
+        </div>
+        <div class="p-2">{{business.address}}</div>
+      </div>
+    </div>
+    <div class="p-2">
+      {{business.stars}} stars
+    </div>
+    <div class="p-2">
+      <div class="d-flex flex-column">
+        <div class="p-2">
+          <!--&lt;!&ndash;How to do half a star&ndash;&gt;-->
+          <!--<span class="fa fa-star checked"></span>-->
+          <!--<span class="fa fa-star checked"></span>-->
+          <!--<span class="fa fa-star checked"></span>-->
+          <!--<span class="fa fa-star checked"></span>-->
+          <!--<span class="fa fa-star"></span>-->
+      </div>
+        <div class="p-2">
+          {{business.reviewCount}} reviews
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="d-flex flex-column">
+  <div class="p-2 fontBold">
+    Address
+  </div>
+  <div class="p-2">
+    <div class="row">
+      <!--Need to think about comma usage here, what informatino might be missing,
+      or using spaces instead?-->
+      <div *ngIf="business.address">{{business.address}},</div>
+      <div *ngIf="business.city">{{business.city}},</div>
+      <div *ngIf="business.state">{{business.state}},</div>
+      <div *ngIf="business.postalCode">{{business.postalCode}}</div>
+    </div>
+  </div>
+  <div class="p-2 fontBold">
+    {{isOpen}}
+  </div>
+</div>
+<div>
+  {{business.stars}} stars
+</div>
+
+
+<!--Add more pictures-->

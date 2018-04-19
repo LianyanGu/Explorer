@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BusinessRepository extends CrudRepository<Business,String> {
+public interface BusinessRepository extends CrudRepository<Business, String> {
     public List<Business> findAll(Pageable pageable);
 
     public List<Business> findAll();
@@ -20,5 +20,7 @@ public interface BusinessRepository extends CrudRepository<Business,String> {
     public List<Business> findByCityOrderByName(@Param("city") String city);
 
     public List<Business> findByNameIgnoreCaseContaining(@Param("name") String name);
+
+    public List<Business> findByCityAndNameIgnoreCaseContaining(String city, String name);
 
 }

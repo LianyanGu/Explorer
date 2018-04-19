@@ -34,4 +34,8 @@ public class BusinessService {
     public List<Business> getBusinessByName(String name) {
         return businessRepository.findByNameIgnoreCaseContaining(name);
     }
+
+    public List<Business> getBusinessesByCityAndName(String city, String name) {
+        return businessRepository.findByCityAndNameIgnoreCaseContaining(city,name);
+    }
 }

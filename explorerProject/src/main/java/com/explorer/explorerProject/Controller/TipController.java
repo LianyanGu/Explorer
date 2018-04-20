@@ -2,6 +2,7 @@ package com.explorer.explorerProject.Controller;
 
 import com.explorer.explorerProject.Entity.Business;
 import com.explorer.explorerProject.Entity.Tip;
+import com.explorer.explorerProject.Entity.TipView;
 import com.explorer.explorerProject.Entity.User;
 import com.explorer.explorerProject.Service.TipService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class TipController {
 
     @RequestMapping(value = "/tips/{businessId}", method = RequestMethod.GET)
     @ResponseBody
-    public List<Tip> getTipById(@PathVariable("businessId") String businessId) {
+    public List<TipView> getTipById(@PathVariable("businessId") String businessId) {
 
         return tipService.getTipByBusinessId(businessId);
     }

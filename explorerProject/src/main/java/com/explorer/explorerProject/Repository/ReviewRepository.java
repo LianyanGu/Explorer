@@ -9,6 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, String>{
-    public List<Review> findByBusinessId(@Param("businessId") String businessId);
 
 }

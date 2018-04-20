@@ -23,7 +23,7 @@ public class ReviewService {
     private ReviewRepository reviewRepository;
 
     public List<ReviewView> getReviewByBusinessId(String businessId) {
-        return reviewViewRepository.findByBusinessId(businessId);
+        return reviewViewRepository.findReviewsByBusinessId(businessId);
     }
 
     public void addReview(String businessId, int stars, String text) {

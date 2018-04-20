@@ -31,12 +31,6 @@ public class Tip {
     @JsonBackReference
     private User user;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "business_Id", nullable = false)
-//    @JsonBackReference
-//    private Business business;
-
-
     public String getBusinessId() {
         return businessId;
     }

@@ -2,8 +2,10 @@ package com.explorer.explorerProject.Service;
 
 import com.explorer.explorerProject.Entity.Business;
 import com.explorer.explorerProject.Entity.Tip;
+import com.explorer.explorerProject.Entity.TipView;
 import com.explorer.explorerProject.Entity.User;
 import com.explorer.explorerProject.Repository.TipRepository;
+import com.explorer.explorerProject.Repository.TipViewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
@@ -21,20 +23,24 @@ public class TipService {
     @Autowired
     private TipRepository tipRepository;
 
+    @Autowired
+    private TipViewRepository tipViewRepository;
+
     public void addTip(String text, String businessId, User user) {
         if (StringUtils.isEmpty(text)) {
             return;
         }
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
-//        System.out.println(dateFormat.format(date));
 
-        tipRepository.save(new Tip(text, date,0, businessId, user));
+        tipRepository.save(new Tip(text, date, 0, businessId, user));
     }
 
-    public List<Tip> getTipByBusinessId(String businessId) {
-        return tipRepository.getTipByBusinessId(businessId);
+    public List<TipView> getTipByBusinessId(String businessId) {
+
+        return tipViewRepository.findTipsByBusinessId(businessId);
     }
+
 }
 
 

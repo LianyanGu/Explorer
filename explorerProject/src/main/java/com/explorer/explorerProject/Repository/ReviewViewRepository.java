@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ReviewViewRepository extends CrudRepository<ReviewView,String> {
-    public List<ReviewView> findByBusinessId(String businessId);
+    public List<ReviewView> findReviewsByBusinessId(String businessId);
 }

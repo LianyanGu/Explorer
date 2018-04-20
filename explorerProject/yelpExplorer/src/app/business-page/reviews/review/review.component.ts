@@ -17,7 +17,7 @@ export class ReviewComponent implements OnInit {
   }
 
   getNumberOfStars() {
-    return 'value-' + this.review.stars;
+    return 'value-' + Math.floor(this.review.stars);
   }
 
 }

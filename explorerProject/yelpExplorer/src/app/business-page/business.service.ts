@@ -53,4 +53,10 @@ export class BusinessService {
     return this.httpClient.get<Business[]>(url);
   }
 
+  getBusinessByCityAndName(city: string, name: string): Observable<Business[]> {
+    const apiCall = 'businesses/city';
+    const url = `${this.domain}/${apiCall}/${city}/${name}`;
+    return this.httpClient.get<Business[]>(url);
+  }
+
 }

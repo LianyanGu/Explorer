@@ -22,6 +22,9 @@ export class BusinessComponent implements OnInit {
     this.isOpen = this.business.isOpen === 1 ? 'Business is open' : 'Business is not open';
   }
 
+  getNumberOfStars() {
+    return 'value-' + Math.floor(this.business.stars);
+  }
 
 
 }

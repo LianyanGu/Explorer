@@ -19,4 +19,8 @@ export class BusinessSummaryComponent implements OnInit {
   onClickBusiness() {
     this.businessService.setSelectedBusiness(this.business);
   }
+
+  getNumberOfStars() {
+    return 'value-' + this.business.stars;
+  }
 }

@@ -1,1 +1,13 @@
-<button class="btn btn-primary" (click)="onLoadReviews()">Load Reviews</button>
+<div *ngIf="displayTips">
+  <div *ngFor="let tip of tips">
+    <div class="d-flex flex-row">
+      <div class="p-2">
+        <app-user [id]="tip.userId"></app-user>
+      </div>
+      <div class="p-2">
+        <app-tip [tip]="tip"></app-tip>
+      </div>
+    </div>
+  </div>
+
+</div>

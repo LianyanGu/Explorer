@@ -4,7 +4,7 @@
       <div class="d-flex flex-column">
         <div class="p-2">
           <h5 (click)="onClickBusiness()"
-              [routerLink]="['businesses','city',business.city, business.id]"
+              [routerLink]="['/businesses', business.id]"
               style="cursor: pointer;">
             {{business.name}}
           </h5>
@@ -13,18 +13,39 @@
       </div>
     </div>
     <div class="p-2">
-      {{business.stars}} stars
-    </div>
-    <div class="p-2">
       <div class="d-flex flex-column">
         <div class="p-2">
-          <!--&lt;!&ndash;How to do half a star&ndash;&gt;-->
-          <!--<span class="fa fa-star checked"></span>-->
-          <!--<span class="fa fa-star checked"></span>-->
-          <!--<span class="fa fa-star checked"></span>-->
-          <!--<span class="fa fa-star checked"></span>-->
-          <!--<span class="fa fa-star"></span>-->
-      </div>
+          <div [ngClass]="getNumberOfStars()" class="rating medium star-icon color-negative label-right">
+            <div class="label-value">{{business.stars}}</div>
+            <div class="star-container">
+              <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+              </div>
+              <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+              </div>
+              <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+              </div>
+              <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+              </div>
+              <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="p-2">
           {{business.reviewCount}} reviews
         </div>

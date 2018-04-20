@@ -1,9 +1,13 @@
 <div *ngIf="displayReviews">
-  <!--How to change value dynamically-->
-
   <div *ngFor="let review of reviews">
-    <app-review [review]="review"></app-review>
-    <app-user [id]="review.userId"></app-user>
+    <div class="d-flex flex-row">
+      <div class="p-2">
+        <app-user [id]="review.userId"></app-user>
+      </div>
+      <div class="p-2">
+        <app-review [review]="review"></app-review>
+      </div>
+    </div>
   </div>
 
 </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Tip} from '../../../models/Tip';
 
 @Component({
   selector: 'app-tip',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TipComponent implements OnInit {
 
-  constructor() { }
+  @Input() tip: Tip;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

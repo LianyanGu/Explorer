@@ -4,6 +4,7 @@ import {Business} from '../models/Business';
 import {Tip} from '../models/Tip';
 import {BusinessService} from '../business-page/business.service';
 import {PagerService} from './business-summary/pager.service';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,20 +15,29 @@ export class HomeComponent implements OnInit {
   businessLoaded = false;
   businesses: Business[];
   businessId: string;
-  @Input() city: string;
+  city: string;
   pager: any = {};
   pagedItems: any[];
-  @Input() businessName: string;
+  businessName: string;
 
   constructor(private businessService: BusinessService,
-              private pagerService: PagerService) {
+              private pagerService: PagerService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.city = params['city'];
+          this.businessName = params['businessName'];
+          this.getBusinessesByCityAndName(this.city, this.businessName);
+        }
+      );
   }
 
-  getBusinessesByCity(city: string) {
-    this.businessService.getBusinessesByCity(city)
+  getBusinessesByCityAndName(city: string, name: string) {
+    this.businessService.getBusinessByCityAndName(city, name)
       .subscribe(
         (response) => {
           this.businessLoaded = true;
@@ -37,16 +47,6 @@ export class HomeComponent implements OnInit {
       );
   }
 
-  getBusinessByName(businessName: string) {
-    this.businessService.getBusinessesByName(businessName)
-      .subscribe(
-        (response) => {
-          this.businessLoaded = true;
-          this.businesses = response;
-          this.setPage(1);
-        }
-      );
-  }
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {

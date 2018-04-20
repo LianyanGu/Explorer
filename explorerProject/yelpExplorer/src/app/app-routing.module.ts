@@ -7,10 +7,12 @@ import {BusinessComponent} from './business-page/business/business.component';
 import {BusinessPageComponent} from './business-page/business-page.component';
 
 const appRoutes: Routes = [
-    {path: '', component: HomeComponent},
     {
-      path: 'businesses/city/:city/:businessId',
-      // businesses/city/ajax/-ldren1EOMh3PkExcpyRoA
+      path: 'businesses/city/:city/:businessName',
+      component: HomeComponent
+    },
+    {
+      path: 'businesses/:businessId',
       component: BusinessPageComponent,
       children: [
         {path: 'reviews', component: ReviewsComponent},

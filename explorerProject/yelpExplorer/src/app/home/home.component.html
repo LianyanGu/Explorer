@@ -1,50 +1,27 @@
-<div class="container-fluid">
-  <div class="center">
-    <div class="justify-content-center">
-      <div class="row">
-        <input type="string" placeholder="Please type the city" [(ngModel)]='city'>
-
-        <button class="btn btn-primary" (click)="getBusinessesByCity(city)">
-          <!--Might want to change the input box size-->
-          Find By City
-        </button>
-      </div>
-      <div class="row">
-        <input type="string" placeholder="Please type the businessName" [(ngModel)]='businessName'>
-        <button class="btn btn-primary" (click)="getBusinessByName(businessName)">
-          Find By Name
-        </button>
-      </div>
-    </div>
+<div *ngIf="businessLoaded">
+  <div *ngFor="let business of pagedItems">
+    <app-business-summary [business]="business"></app-business-summary>
   </div>
-
-
-  <div *ngIf="businessLoaded">
-    <div *ngFor="let business of pagedItems">
-      <app-business-summary [business]="business"></app-business-summary>
-    </div>
-    <div class="container">
-      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
-          <a class="page-link" (click)="setPage(1)">First Page</a>
-        </li>
-        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
-          <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
-        </li>
-        <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-          <a class="page-link" (click)="setPage(page)">{{page}}</a>
-        </li>
-        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-          <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
-        </li>
-        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-          <a class="page-link" (click)="setPage(pager.totalPages)">Last Page</a>
-        </li>
-      </ul>
-    </div>
+  <div class="container">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+        <a class="page-link" (click)="setPage(1)">First Page</a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+        <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <a class="page-link" (click)="setPage(page)">{{page}}</a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a class="page-link" (click)="setPage(pager.totalPages)">Last Page</a>
+      </li>
+    </ul>
   </div>
 </div>
-
 
 
 

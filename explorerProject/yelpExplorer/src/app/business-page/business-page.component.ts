@@ -14,8 +14,6 @@ export class BusinessPageComponent implements OnInit {
   business: Business;
   businessId: string;
   attributes: Attribute[];
-  displayReviews = false;
-  displayTips = false;
 
   constructor(private businessService: BusinessService,
               private route: ActivatedRoute) {
@@ -44,14 +42,4 @@ export class BusinessPageComponent implements OnInit {
       }
     );
   }
-
-  toggleReviews() {
-    this.displayReviews = !this.displayReviews;
-  }
-
-  toggleTips() {
-    this.displayTips = !this.displayTips;
-  }
-
-
 }

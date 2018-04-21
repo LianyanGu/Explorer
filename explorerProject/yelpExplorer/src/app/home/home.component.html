@@ -1,4 +1,4 @@
-<div *ngIf="businessLoaded">
+<ng-container *ngIf="businessLoaded">
   <div *ngFor="let business of pagedItems">
     <app-business-summary [business]="business"></app-business-summary>
   </div>
@@ -10,7 +10,8 @@
       <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
         <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
       </li>
-      <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+      <li class="page-item" *ngFor="let page of pager.pages"
+          [ngClass]="{active:pager.currentPage === page}">
         <a class="page-link" (click)="setPage(page)">{{page}}</a>
       </li>
       <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
@@ -21,7 +22,7 @@
       </li>
     </ul>
   </div>
-</div>
+</ng-container>
 
 
 

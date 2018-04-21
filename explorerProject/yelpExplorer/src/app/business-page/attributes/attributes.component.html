@@ -1,0 +1,5 @@
+<ng-container *ngIf="attributes" class="container-fluid">
+  <div *ngFor="let attribute of attributes">
+    <app-attribute [attribute]="attribute"></app-attribute>
+  </div>
+</ng-container>

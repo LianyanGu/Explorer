@@ -1,4 +1,4 @@
-<div *ngIf="displayReviews">
+<ng-container *ngIf="reviews" class="container-fluid">
   <div *ngFor="let review of reviews">
     <div class="d-flex flex-row">
       <div class="p-2">
@@ -10,4 +10,4 @@
     </div>
   </div>
 
-</div>
+</ng-container>

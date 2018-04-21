@@ -1,4 +1,4 @@
-<div *ngIf="displayTips">
+<ng-container *ngIf="tips" class="container-fluid">
   <div *ngFor="let tip of tips">
     <div class="d-flex flex-row">
       <div class="p-2">
@@ -9,5 +9,4 @@
       </div>
     </div>
   </div>
-
-</div>
+</ng-container>

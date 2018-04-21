@@ -9,7 +9,6 @@ import {TipView} from '../../models/TipView';
 })
 export class TipsComponent implements OnInit {
 
-  @Input() displayTips: boolean;
   @Input() businessId: string;
   tips: TipView[];
 

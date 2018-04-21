@@ -8,7 +8,6 @@ import {ReviewView} from '../../models/ReviewView';
   styleUrls: ['./reviews.component.css']
 })
 export class ReviewsComponent implements OnInit {
-  @Input() displayReviews: boolean;
   @Input() businessId: string;
   reviews: ReviewView[];
 
@@ -24,19 +23,4 @@ export class ReviewsComponent implements OnInit {
         }
       );
   }
-
-
-
-
-  // getReviewByBusinessId(businessId: string) {
-  //   this.reviewsService.getReviewByBusinessId(this.businessId)
-  //     .subscribe(
-  //       (response) => {
-  //         this.reviewLoaded = true;
-  //         this.reviews = response;
-  //       },
-  //       (error) => console.log(error)
-  //     );
-  // }
-
 }

@@ -17,9 +17,12 @@ import {TipsService} from './business-page/tips/tips.service';
 import {BusinessService} from './business-page/business.service';
 import {BusinessSummaryComponent} from './home/business-summary/business-summary.component';
 import {PagerService} from './home/business-summary/pager.service';
-import { AttributeComponent } from './business-page/attribute/attribute.component';
+import { AttributeComponent } from './business-page/attributes/attribute/attribute.component';
 import { UserComponent } from './business-page/user/user.component';
 import {UserService} from './business-page/user/user.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
+import { AttributesComponent } from './business-page/attributes/attributes.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +36,16 @@ import {UserService} from './business-page/user/user.service';
     BusinessComponent,
     BusinessSummaryComponent,
     AttributeComponent,
-    UserComponent
+    UserComponent,
+    AttributesComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   exports: [
     HttpClientModule

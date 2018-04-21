@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BusinessService} from '../business.service';
-import {Attribute} from '../../models/Attribute';
-import {Business} from '../../models/Business';
+import {BusinessService} from '../../business.service';
+import {Attribute} from '../../../models/Attribute';
+import {Business} from '../../../models/Business';
 
 @Component({
   selector: 'app-attribute',

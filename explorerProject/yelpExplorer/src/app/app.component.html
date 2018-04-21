@@ -8,19 +8,19 @@
                  [(ngModel)]='city'>
         </div>
         <div class="p-2">
-        <input type="string"
-               placeholder="Please type the businessName"
-               [(ngModel)]='businessName'>
+          <input type="string"
+                 placeholder="Please type the businessName"
+                 [(ngModel)]='businessName'>
         </div>
         <div class="p-2">
-        <button class="btn btn-primary"
-                [routerLink]="['businesses','city',city,businessName]">
-          Search
-        </button>
+          <button class="btn btn-primary"
+                  [routerLink]="['businesses','city']"
+                  [queryParams]="{city:city, businessName: businessName}">
+            Search
+          </button>
         </div>
       </div>
     </div>
     <router-outlet></router-outlet>
   </div>
 </div>
-

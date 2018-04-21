@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params
+    this.route.queryParams
       .subscribe(
         (params: Params) => {
           this.city = params['city'];

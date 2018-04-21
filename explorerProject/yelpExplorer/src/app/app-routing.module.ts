@@ -8,7 +8,7 @@ import {BusinessPageComponent} from './business-page/business-page.component';
 
 const appRoutes: Routes = [
     {
-      path: 'businesses/city/:city/:businessName',
+      path: 'businesses/city',
       component: HomeComponent
     },
     {

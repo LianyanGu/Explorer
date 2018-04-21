@@ -1,10 +1,6 @@
 <div *ngIf="business">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">{{business.name}}</a> <!--Set proper routerlink here-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand">{{business.name}}</a>
   </nav>
   <div class="d-flex flex-row">
     <div class="p-2">
@@ -13,26 +9,20 @@
   </div>
 
   <mat-tab-group>
-    <mat-tab>
-      <ng-template mat-tab-label>
-        More Information
-      </ng-template>
+    <mat-tab label="More Information">
       <div>
         <app-attributes [attributes]="attributes"></app-attributes>
       </div>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
-        Reviews
+        Reviews({{business.reviewCount}})
       </ng-template>
       <div>
         <app-reviews [businessId]="businessId"></app-reviews>
       </div>
     </mat-tab>
-    <mat-tab>
-      <ng-template mat-tab-label>
-        Tips
-      </ng-template>
+    <mat-tab label="Tips">
       <div>
         <app-tips [businessId]="businessId"></app-tips>
       </div>

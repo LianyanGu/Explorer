@@ -6,9 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -53,11 +51,11 @@ public class Business {
     @Column(name = "is_open")
     private int isOpen;
 
-//    @OneToMany(cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY,
-//            mappedBy = "business")
-//    @JsonManagedReference
-//    private Set<Tip> tips = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "business")
+    @JsonManagedReference
+    private Set<Category> categories = new HashSet<>();
 //
 //    @OneToMany(cascade = CascadeType.ALL,
 //                fetch = FetchType.LAZY,
@@ -161,11 +159,19 @@ public class Business {
         this.isOpen = isOpen;
     }
 
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
     public Business() {
 
     }
 
-    public Business(String name, String neighborhood, String address, String city, String state, String postalCode, Float latitude, Float longitude, Float stars, int reviewCount, int isOpen) {
+    public Business(String name, String neighborhood, String address, String city, String state, String postalCode, Float latitude, Float longitude, Float stars, int reviewCount, int isOpen, Set<Category> categories) {
         this.name = name;
         this.neighborhood = neighborhood;
         this.address = address;
@@ -177,5 +183,6 @@ public class Business {
         this.stars = stars;
         this.reviewCount = reviewCount;
         this.isOpen = isOpen;
+        this.categories = categories;
     }
 }

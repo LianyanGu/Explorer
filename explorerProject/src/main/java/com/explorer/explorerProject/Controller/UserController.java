@@ -1,5 +1,6 @@
 package com.explorer.explorerProject.Controller;
 
+import com.explorer.explorerProject.Entity.Friend;
 import com.explorer.explorerProject.Entity.User;
 import com.explorer.explorerProject.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,11 @@ public class UserController {
     @ResponseBody
     public User getUser(@PathVariable("id") String id) {
         return userService.getUser(id);
+    }
+
+    @RequestMapping(value = "/friends/{userId}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Friend> getFriends(@PathVariable("userId") String userId) {
+        return userService.getFriendByUserId(userId);
     }
 }

@@ -1,4 +1,5 @@
 import {Tip} from './Tip';
+import {EliteYear} from './EliteYear';
 
 export class User {
   id: string;
@@ -23,9 +24,15 @@ export class User {
   complimentCute: number;
   complimentList: number;
   tips: Tip[];
+  eliteYears: EliteYear[];
 
 
-  constructor(id: string, userName: string, yelpingSince: string, averageStars, reviewCount: number, useful: number, funny: number, cool: number, fans: number, complimentHot: number, complimentMore: number, complimentProfile: number, complimentNote: number, complimentPlain: number, complimentCool: number, complimentFunny: number, complimentWriter: number, complimentPhotos: number, complimentCute: number, complimentList: number, tips: Tip[]) {
+  constructor(id: string, userName: string, yelpingSince: string, averageStars, reviewCount: number,
+              useful: number, funny: number, cool: number, fans: number, complimentHot: number,
+              complimentMore: number, complimentProfile: number, complimentNote: number,
+              complimentPlain: number, complimentCool: number, complimentFunny: number,
+              complimentWriter: number, complimentPhotos: number, complimentCute: number,
+              complimentList: number, tips: Tip[], eliteYears: EliteYear[]) {
     this.id = id;
     this.userName = userName;
     this.yelpingSince = yelpingSince;
@@ -47,5 +54,6 @@ export class User {
     this.complimentCute = complimentCute;
     this.complimentList = complimentList;
     this.tips = tips;
+    this.eliteYears = eliteYears;
   }
 }

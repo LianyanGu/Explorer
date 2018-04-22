@@ -1,3 +1,5 @@
+import {Category} from './Category';
+
 export class Business {
   id: string;
   name: string;
@@ -11,6 +13,7 @@ export class Business {
   stars: number;
   reviewCount: number;
   isOpen: number;
+  categories: Category[];
 
   constructor(id: string, name: string, neighborhood: string, address: string, city: string,
               state: string, postalCode: string, latitude: number, longitude: number,

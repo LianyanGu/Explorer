@@ -56,12 +56,12 @@ public class Business {
             mappedBy = "business")
     @JsonManagedReference
     private Set<Category> categories = new HashSet<>();
-//
-//    @OneToMany(cascade = CascadeType.ALL,
-//                fetch = FetchType.LAZY,
-//                mappedBy = "business")
-//    @JsonManagedReference
-//    private Set<ReviewView> reviewViews = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL,
+                fetch = FetchType.LAZY,
+                mappedBy = "business")
+    @JsonManagedReference
+    private Set<Attribute> attributes = new HashSet<>();
 
     public String getId() {
         return id;
@@ -167,11 +167,21 @@ public class Business {
         this.categories = categories;
     }
 
+    public Set<Attribute> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Set<Attribute> attributes) {
+        this.attributes = attributes;
+    }
+
     public Business() {
 
     }
 
-    public Business(String name, String neighborhood, String address, String city, String state, String postalCode, Float latitude, Float longitude, Float stars, int reviewCount, int isOpen, Set<Category> categories) {
+    public Business(String name, String neighborhood, String address, String city, String state,
+                    String postalCode, Float latitude, Float longitude, Float stars, int reviewCount,
+                    int isOpen, Set<Category> categories, Set<Attribute> attributes) {
         this.name = name;
         this.neighborhood = neighborhood;
         this.address = address;
@@ -184,5 +194,6 @@ public class Business {
         this.reviewCount = reviewCount;
         this.isOpen = isOpen;
         this.categories = categories;
+        this.attributes = attributes;
     }
 }

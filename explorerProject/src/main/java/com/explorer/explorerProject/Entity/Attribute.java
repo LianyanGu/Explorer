@@ -1,5 +1,6 @@
 package com.explorer.explorerProject.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -14,14 +15,16 @@ public class Attribute {
     @Id
     private String id;
 
-    @Column(name = "business_id")
-    private String businessId;
-
     @Column(name = "name")
     private String name;
 
     @Column(name = "value")
     private String value;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "business_id", nullable = false)
+    @JsonBackReference
+    private Business business;
 
     public String getId() {
         return id;
@@ -31,12 +34,12 @@ public class Attribute {
         this.id = id;
     }
 
-    public String getBusinessId() {
-        return businessId;
+    public Business getBusiness() {
+        return business;
     }
 
-    public void setBusinessId(String businessId) {
-        this.businessId = businessId;
+    public void setBusiness(Business business) {
+        this.business = business;
     }
 
     public String getName() {
@@ -58,9 +61,10 @@ public class Attribute {
     public Attribute() {
     }
 
-    public Attribute(String businessId, String name, String value) {
-        this.businessId = businessId;
+    public Attribute(String name, String value, Business business) {
         this.name = name;
         this.value = value;
+        this.business = business;
     }
+
 }

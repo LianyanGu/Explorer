@@ -1,7 +1,9 @@
 package com.explorer.explorerProject.Service;
 
 import com.explorer.explorerProject.Entity.Business;
+import com.explorer.explorerProject.Entity.Photo;
 import com.explorer.explorerProject.Repository.BusinessRepository;
+import com.explorer.explorerProject.Repository.PhotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class BusinessService {
 
     @Autowired
     private BusinessRepository businessRepository;
+
+    @Autowired
+    private PhotoRepository photoRepository;
 
     public List<Business> getAllBusiness(Pageable pageable) {
 
@@ -36,6 +41,11 @@ public class BusinessService {
     }
 
     public List<Business> getBusinessesByCityAndName(String city, String name) {
-        return businessRepository.findByCityAndNameIgnoreCaseContaining(city,name);
+        return businessRepository.findByCityAndNameIgnoreCaseContaining(city, name);
     }
+
+    public List<Photo> findPhotosByBusinessId(String businessId) {
+        return photoRepository.findPhotosByBusinessId(businessId);
+    }
+
 }

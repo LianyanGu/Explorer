@@ -1,6 +1,7 @@
 package com.explorer.explorerProject.Controller;
 
 import com.explorer.explorerProject.Entity.Business;
+import com.explorer.explorerProject.Entity.Photo;
 import com.explorer.explorerProject.Service.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -51,6 +52,12 @@ public class BusinessController {
     @ResponseBody
     public List<Business> getBusinessByCityAndName(@PathVariable("city") String city, @PathVariable("name") String name) {
         return businessService.getBusinessesByCityAndName(city,name);
+    }
+
+    @RequestMapping(value = "photos/{businessId}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Photo> getPhotosByBusinessId(@PathVariable("businessId") String businessId) {
+        return businessService.findPhotosByBusinessId(businessId);
     }
 
 

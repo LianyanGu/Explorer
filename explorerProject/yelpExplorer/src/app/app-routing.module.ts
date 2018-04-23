@@ -5,6 +5,7 @@ import {TipsComponent} from './business-page/tips/tips.component';
 import {ReviewsComponent} from './business-page/reviews/reviews.component';
 import {BusinessComponent} from './business-page/business/business.component';
 import {BusinessPageComponent} from './business-page/business-page.component';
+import {UserDetailComponent} from './business-page/user/user-detail/user-detail.component';
 
 const appRoutes: Routes = [
     {
@@ -20,6 +21,10 @@ const appRoutes: Routes = [
         {path: '', component: BusinessComponent}
       ]
     },
+    {
+      path: 'user-details',
+      component: UserDetailComponent
+    }
   ]
 ;
 

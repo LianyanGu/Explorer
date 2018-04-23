@@ -27,18 +27,13 @@ export class BusinessPageComponent implements OnInit {
           this.getBusiness(this.businessId);
         }
       );
-    this.businessService.getAttributesByBusinessId(this.businessId)
-      .subscribe(
-        (response) => {
-          this.attributes = response;
-        }
-      );
   }
 
   getBusiness(businessId: string) {
     this.businessService.getSelectedBusiness(businessId).subscribe(
       (selectedBusiness: Business) => {
         this.business = selectedBusiness;
+        this.attributes = this.business.attributes;
       }
     );
   }

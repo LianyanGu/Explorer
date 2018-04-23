@@ -12,7 +12,7 @@ import {ActivatedRoute, Params} from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  businessLoaded = false;
+  businessLoaded: boolean;
   businesses: Business[];
   businessId: string;
   city: string;
@@ -31,11 +31,16 @@ export class HomeComponent implements OnInit {
         (params: Params) => {
           this.city = params['city'];
           this.businessName = params['businessName'];
-          this.getBusinessesByCityAndName(this.city, this.businessName);
+          if (this.city === undefined || this.businessName === undefined) {
+            this.businessLoaded = false;
+          } else {
+            this.getBusinessesByCityAndName(this.city, this.businessName);
+          }
         }
       );
   }
 
+  // TODO: ADD LOGIC, IF CANNOT FIND BUSINESS BASED ON USER INPUT
   getBusinessesByCityAndName(city: string, name: string) {
     this.businessService.getBusinessByCityAndName(city, name)
       .subscribe(

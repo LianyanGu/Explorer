@@ -1,4 +1,4 @@
-<ng-container *ngIf="businessLoaded">
+<ng-container *ngIf="businessLoaded; else missInfo">
   <div *ngFor="let business of pagedItems">
     <app-business-summary [business]="business"></app-business-summary>
   </div>
@@ -23,6 +23,14 @@
     </ul>
   </div>
 </ng-container>
+
+<ng-template #missInfo>
+  <div class="alert alert-danger" role="alert">
+    <strong>Woops!</strong> Please input both city and businessName
+  </div>
+</ng-template>
+
+
 
 
 

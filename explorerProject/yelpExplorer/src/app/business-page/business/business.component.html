@@ -4,8 +4,7 @@
   </div>
   <div class="p-2">
     <div class="row">
-      <!--Need to think about comma usage here, what informatino might be missing,
-      or using spaces instead?-->
+      <!--TODO: Combine strings in to one variable and trim the ending comma, length-1 if ,-->
       <div *ngIf="business.address">{{business.address}},</div>
       <div *ngIf="business.city">{{business.city}},</div>
       <div *ngIf="business.state">{{business.state}},</div>
@@ -16,9 +15,20 @@
     {{isOpen}}
   </div>
 </div>
+
+<div>
+  <!--TODO: ADD PRICE RANGE HERE-->
+  price range is :{{priceRange}}
+  <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 1 ? 'red' : 'grey' }"></i>
+  <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 2 ? 'red' : 'grey' }"></i>
+  <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 3 ? 'red' : 'grey' }"></i>
+  <i class="fa fa-dollar" [ngStyle]="{'color':priceRange === 4  ? 'red' : 'grey' }"></i>
+
+</div>
+
 <div>
   {{business.stars}} stars
-  <div [ngClass]="getNumberOfStars()" class="rating large star-icon color-negative label-top">
+  <div [ngClass]="getNumberOfStars()" class="rating medium star-icon color-negative label-top">
     <div class="star-container">
       <div class="star">
         <i class="star-empty"></i>

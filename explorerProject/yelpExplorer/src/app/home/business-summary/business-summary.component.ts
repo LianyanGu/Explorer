@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Business} from '../../models/Business';
 import {BusinessService} from '../../business-page/business.service';
+import {Category} from '../../models/Category';
 
 @Component({
   selector: 'app-business-summary',
@@ -9,11 +10,13 @@ import {BusinessService} from '../../business-page/business.service';
 })
 export class BusinessSummaryComponent implements OnInit {
   @Input() business: Business;
+  categories: Category[];
 
   constructor(private businessService: BusinessService) {
   }
 
   ngOnInit() {
+    this.categories = this.business.categories;
   }
 
   onClickBusiness() {
@@ -21,6 +24,6 @@ export class BusinessSummaryComponent implements OnInit {
   }
 
   getNumberOfStars() {
-    return 'value-' + this.business.stars;
+    return 'value-' + Math.floor(this.business.stars);
   }
 }

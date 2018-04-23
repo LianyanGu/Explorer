@@ -23,6 +23,7 @@ import {UserService} from './business-page/user/user.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
 import { AttributesComponent } from './business-page/attributes/attributes.component';
+import { UserDetailComponent } from './business-page/user/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AttributesComponent } from './business-page/attributes/attributes.compo
     BusinessSummaryComponent,
     AttributeComponent,
     UserComponent,
-    AttributesComponent
+    AttributesComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

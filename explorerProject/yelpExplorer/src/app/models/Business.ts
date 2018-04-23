@@ -1,4 +1,5 @@
 import {Category} from './Category';
+import {Attribute} from './Attribute';
 
 export class Business {
   id: string;
@@ -14,10 +15,10 @@ export class Business {
   reviewCount: number;
   isOpen: number;
   categories: Category[];
+  attributes: Attribute[];
 
-  constructor(id: string, name: string, neighborhood: string, address: string, city: string,
-              state: string, postalCode: string, latitude: number, longitude: number,
-              stars: number, reviewCount: number, isOpen: number) {
+
+  constructor(id: string, name: string, neighborhood: string, address: string, city: string, state: string, postalCode: string, latitude: number, longitude: number, stars: number, reviewCount: number, isOpen: number, categories: Category[], attributes: Attribute[]) {
     this.id = id;
     this.name = name;
     this.neighborhood = neighborhood;
@@ -30,5 +31,7 @@ export class Business {
     this.stars = stars;
     this.reviewCount = reviewCount;
     this.isOpen = isOpen;
+    this.categories = categories;
+    this.attributes = attributes;
   }
 }

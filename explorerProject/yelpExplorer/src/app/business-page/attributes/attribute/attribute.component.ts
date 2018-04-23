@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BusinessService} from '../../business.service';
-import {Attribute} from '../../../models/Attribute';
-import {Business} from '../../../models/Business';
 
 @Component({
   selector: 'app-attribute',
@@ -15,6 +13,7 @@ export class AttributeComponent implements OnInit {
   attributeValue = '';
   showAttributeName = true;
   numOfAttributeValue = 0;
+  priceRange = 0;
 
   constructor(private businessService: BusinessService) {
   }
@@ -25,7 +24,9 @@ export class AttributeComponent implements OnInit {
     } else if (this.attribute.name !== 'RestaurantsPriceRange2' && this.attribute.value === '1') {
       this.attributeValue = 'Yes';
     } else if (this.attribute.name === 'RestaurantsPriceRange2') {
-      // Case where display the prices
+      this.priceRange = this.attribute.value;
+      console.log('price range is ' + this.priceRange);
+      this.showAttributeName = false;
     } else if (!this.attribute.value.includes('{')) {
       this.attributeValue = this.attribute.value;
     } else {

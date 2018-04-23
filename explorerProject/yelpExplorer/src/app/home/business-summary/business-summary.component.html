@@ -15,7 +15,8 @@
     <div class="p-2">
       <div class="d-flex flex-column">
         <div class="p-2">
-          <div [ngClass]="getNumberOfStars()" class="rating medium star-icon color-negative label-right">
+          <div [ngClass]="getNumberOfStars()"
+               class="rating medium star-icon color-negative label-right">
             <div class="label-value">{{business.stars}}</div>
             <div class="star-container">
               <div class="star">
@@ -49,6 +50,25 @@
         <div class="p-2">
           {{business.reviewCount}} reviews
         </div>
+      </div>
+    </div>
+    <div class="p-2">
+      <div class="d-flex flex-column">
+        <div class="p-2">
+          <!--TODO: ADD PRICE RANGE HERE-->
+          dollar price is:
+          <i class="fa fa-dollar" style="color:grey"></i>
+          <i class="fa fa-dollar" style="color:grey"></i>
+          <i class="fa fa-dollar" style="color:grey"></i>
+          <i class="fa fa-dollar" style="color:grey"></i>
+        </div>
+      </div>
+    </div>
+    <div class="p-2" *ngIf="categories">
+      categories are:
+      <!--TODO: list categoies on a same row-->
+      <div *ngFor="let category of categories">
+        {{category.category}}
       </div>
     </div>
   </div>

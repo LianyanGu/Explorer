@@ -4,11 +4,7 @@
   </div>
   <div class="p-2">
     <div class="row">
-      <!--TODO: Combine strings in to one variable and trim the ending comma, length-1 if ,-->
-      <div *ngIf="business.address">{{business.address}},</div>
-      <div *ngIf="business.city">{{business.city}},</div>
-      <div *ngIf="business.state">{{business.state}},</div>
-      <div *ngIf="business.postalCode">{{business.postalCode}}</div>
+      {{address}}
     </div>
   </div>
   <div class="p-2 fontBold">
@@ -17,7 +13,6 @@
 </div>
 
 <div>
-  <!--TODO: ADD PRICE RANGE HERE-->
   price range is :{{priceRange}}
   <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 1 ? 'red' : 'grey' }"></i>
   <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 2 ? 'red' : 'grey' }"></i>

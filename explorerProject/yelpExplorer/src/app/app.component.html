@@ -1,26 +1,29 @@
-<div class="container-fluid">
-  <div class="center">
-    <div class="justify-content-center">
-      <div class="row d-flex flex-row">
-        <div class="p-2">
-          <input type="string"
-                 placeholder="Please type the city"
-                 [(ngModel)]='city'>
-        </div>
-        <div class="p-2">
-          <input type="string"
-                 placeholder="Please type the businessName"
-                 [(ngModel)]='businessName'>
-        </div>
-        <div class="p-2">
-          <button class="btn btn-primary"
-                  [routerLink]="['businesses','city']"
-                  [queryParams]="{city:city, businessName: businessName}">
-            Search
-          </button>
-        </div>
+<div [ngClass]="{
+  'page-centered':businessLoaded === true,
+  'container-fluid':businessLoaded === false
+  }">
+  <div class="search-bar">
+    <div class="row d-flex flex-row">
+      <div class="p-2">
+        <input type="string"
+               placeholder="Please type the city"
+               [(ngModel)]='city'>
+      </div>
+      <div class="p-2">
+        <input type="string"
+               placeholder="Please type the businessName"
+               [(ngModel)]='businessName'>
+      </div>
+      <div class="p-2">
+        <button class="btn btn-primary"
+                [routerLink]="['businesses','city']"
+                [queryParams]="{city:city, businessName: businessName}">
+          Search
+        </button>
       </div>
     </div>
-    <router-outlet></router-outlet>
   </div>
+  <router-outlet></router-outlet>
 </div>
+
+

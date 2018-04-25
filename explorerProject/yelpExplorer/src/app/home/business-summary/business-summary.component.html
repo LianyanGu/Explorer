@@ -9,6 +9,7 @@
             {{business.name}}
           </h5>
         </div>
+        <div *ngIf="categories" class="p-2">{{categoryNames}}</div>
         <div class="p-2">{{business.address}}</div>
       </div>
     </div>
@@ -55,20 +56,11 @@
     <div class="p-2">
       <div class="d-flex flex-column">
         <div class="p-2">
-          <!--TODO: ADD PRICE RANGE HERE-->
-          dollar price is:
-          <i class="fa fa-dollar" style="color:grey"></i>
-          <i class="fa fa-dollar" style="color:grey"></i>
-          <i class="fa fa-dollar" style="color:grey"></i>
-          <i class="fa fa-dollar" style="color:grey"></i>
+          <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 1 ? 'red' : 'grey' }"></i>
+          <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 2 ? 'red' : 'grey' }"></i>
+          <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 3 ? 'red' : 'grey' }"></i>
+          <i class="fa fa-dollar" [ngStyle]="{'color':priceRange === 4  ? 'red' : 'grey' }"></i>
         </div>
-      </div>
-    </div>
-    <div class="p-2" *ngIf="categories">
-      categories are:
-      <!--TODO: list categoies on a same row-->
-      <div *ngFor="let category of categories">
-        {{category.category}}
       </div>
     </div>
   </div>

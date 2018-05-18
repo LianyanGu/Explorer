@@ -12,7 +12,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "reviewview")
 @Immutable
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ReviewView {
     @Id
     private String id;
@@ -22,14 +22,6 @@ public class ReviewView {
 
     @Column(name = "user_id")
     private String userId;
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     @Column(name = "stars")
     private int stars;
@@ -64,12 +56,28 @@ public class ReviewView {
 //    @JsonBackReference
 //    private Business business;
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(String businessId) {
+        this.businessId = businessId;
     }
 
     public int getStars() {

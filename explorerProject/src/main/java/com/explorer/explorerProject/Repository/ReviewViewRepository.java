@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ReviewViewRepository extends CrudRepository<ReviewView,String> {
     public List<ReviewView> findReviewsByBusinessId(String businessId);
+    public List<ReviewView> findReviewsByUserId(String userId);
 }

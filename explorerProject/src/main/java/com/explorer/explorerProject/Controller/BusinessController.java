@@ -23,13 +23,6 @@ public class BusinessController {
         return businessService.getAllBusiness(pageable);
     }
 
-    @RequestMapping(value = "/businesses", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Business> getAllBusinesswoPage() {
-        return businessService.getAllBusinesswoPagination();
-    }
-
-
     @RequestMapping(value = "business/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Business getBusinessById(@PathVariable("id") String id) {

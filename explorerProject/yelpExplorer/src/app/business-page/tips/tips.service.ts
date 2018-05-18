@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {TipView} from '../../models/TipView';
+import {ReviewView} from '../../models/ReviewView';
 
 const BASE = environment.apiUrl;
 
@@ -19,4 +20,9 @@ export class TipsService {
     return this.httpClient.get<TipView[]>(url);
   }
 
+  getTipsByUserId(userId: string) {
+    const apiCall = 'tips';
+    const url = `${this.domain}/${userId}/${apiCall}`;
+    return this.httpClient.get<TipView[]>(url);
+  }
 }

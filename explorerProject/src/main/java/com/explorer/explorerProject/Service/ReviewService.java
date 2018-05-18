@@ -26,9 +26,17 @@ public class ReviewService {
         return reviewViewRepository.findReviewsByBusinessId(businessId);
     }
 
-    public void addReview(String businessId, int stars, String text) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-        reviewRepository.save(new Review(businessId, stars, date, text, 0, 0, 0));
+//    public void addReview(String businessId, int stars, String text) {
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        Date date = new Date();
+//        reviewRepository.save(new Review(businessId, stars, date, text, 0, 0, 0));
+//    }
+
+    public void addReview(Review review) {
+        reviewRepository.save(review);
+    }
+
+    public List<ReviewView> getReviewsByUserId(String userId) {
+        return reviewViewRepository.findReviewsByUserId(userId);
     }
 }

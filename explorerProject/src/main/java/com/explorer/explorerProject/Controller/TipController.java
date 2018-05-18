@@ -28,4 +28,10 @@ public class TipController {
 
         tipService.addTip(text, businessId, user);
     }
+
+    @RequestMapping(value = "{userId}/tips", method = RequestMethod.GET)
+    @ResponseBody
+    public List<TipView> getReviewsByUserId(@PathVariable("userId") String userId) {
+        return tipService.getTipsByUserId(userId);
+    }
 }

@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {HomeComponent} from './home/home.component';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,14 @@ export class AppComponent implements OnInit {
 
   title = 'app';
 
+
   city: string;
   businessName: string;
 
 
   constructor() {
   }
+
 
   ngOnInit() {
   }

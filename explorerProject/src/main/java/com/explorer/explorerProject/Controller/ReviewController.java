@@ -15,15 +15,21 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
-    @RequestMapping(value = "/reviews/{businessId}",method = RequestMethod.GET)
+    @RequestMapping(value = "/reviews/{businessId}", method = RequestMethod.GET)
     @ResponseBody
     public List<ReviewView> getReviewByBusinessId(@PathVariable("businessId") String businessId) {
         return reviewService.getReviewByBusinessId(businessId);
     }
 
     @RequestMapping(value = "/review", method = RequestMethod.POST)
-    public void addReview(String businessId, int stars, String text) {
-        reviewService.addReview(businessId, stars, text);
+    public void addReview(Review review) {
+        reviewService.addReview(review);
+    }
+
+    @RequestMapping(value = "{userId}/reviews", method = RequestMethod.GET)
+    @ResponseBody
+    public List<ReviewView> getReviewsByUserId(@PathVariable("userId") String userId) {
+        return reviewService.getReviewsByUserId(userId);
     }
 
 }

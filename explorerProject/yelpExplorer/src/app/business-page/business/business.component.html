@@ -1,4 +1,47 @@
 <div class="d-flex flex-column">
+  <div class="p-2">
+    <div [ngClass]="getNumberOfStars()" class="rating medium star-icon color-negative label-right">
+      <div class="label-value">
+        {{business.stars}}
+      </div>
+      <div class="star-container">
+        <div class="star">
+          <i class="star-empty"></i>
+          <i class="star-half"></i>
+          <i class="star-filled"></i>
+        </div>
+        <div class="star">
+          <i class="star-empty"></i>
+          <i class="star-half"></i>
+          <i class="star-filled"></i>
+        </div>
+        <div class="star">
+          <i class="star-empty"></i>
+          <i class="star-half"></i>
+          <i class="star-filled"></i>
+        </div>
+        <div class="star">
+          <i class="star-empty"></i>
+          <i class="star-half"></i>
+          <i class="star-filled"></i>
+        </div>
+        <div class="star">
+          <i class="star-empty"></i>
+          <i class="star-half"></i>
+          <i class="star-filled"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="categories" class="p-2">
+    <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 1 ? 'red' : 'grey' }"></i>
+    <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 2 ? 'red' : 'grey' }"></i>
+    <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 3 ? 'red' : 'grey' }"></i>
+    <i class="fa fa-dollar" [ngStyle]="{'color':priceRange === 4  ? 'red' : 'grey' }"></i>
+    {{categoryNames}}
+  </div>
+
   <div class="p-2 fontBold">
     Address
   </div>
@@ -7,52 +50,35 @@
       {{address}}
     </div>
   </div>
-  <div class="p-2 fontBold">
-    {{isOpen}}
+  <!--<ks-modal-gallery [modalImages]="images"-->
+                    <!--[previewConfig]="{number: 5}"-->
+                    <!--[slideConfig]="{infinite: true}"-->
+                    <!--[plainGalleryConfig]="plainGalleryRow">-->
+  <!--</ks-modal-gallery>-->
+  <div class="my-app-custom-plain-container-row">
+    <ng-container *ngFor="let img of images; let i = index">
+      <div *ngIf="i <= 2">
+        <a class="more" *ngIf="i==2" (click)="openImageModalRow(img)"> +{{images.length - 2 - 1}} more </a>
+        <img *ngIf="img.plain && img.plain.img; else noThumb"
+             class="my-app-custom-image-row"
+             [src]="img.plain.img"
+             (click)="openImageModalRow(img)"
+             [alt]="img.modal.description"/>
+
+        <ng-template #noThumb>
+          <img class="my-app-custom-image-row"
+               [src]="img.modal.img"
+               (click)="openImageModalRow(img)"
+               [alt]="img.modal.description"/>
+        </ng-template>
+      </div>
+    </ng-container>
   </div>
-</div>
+  <ks-modal-gallery [modalImages]="images"
+                    [previewConfig]="{number: 5}"
+                    [plainGalleryConfig]="customPlainGalleryRowConfig">
 
-<div>
-  price range is :{{priceRange}}
-  <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 1 ? 'red' : 'grey' }"></i>
-  <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 2 ? 'red' : 'grey' }"></i>
-  <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 3 ? 'red' : 'grey' }"></i>
-  <i class="fa fa-dollar" [ngStyle]="{'color':priceRange === 4  ? 'red' : 'grey' }"></i>
-
-</div>
-
-<div>
-  {{business.stars}} stars
-  <div [ngClass]="getNumberOfStars()" class="rating medium star-icon color-negative label-top">
-    <div class="star-container">
-      <div class="star">
-        <i class="star-empty"></i>
-        <i class="star-half"></i>
-        <i class="star-filled"></i>
-      </div>
-      <div class="star">
-        <i class="star-empty"></i>
-        <i class="star-half"></i>
-        <i class="star-filled"></i>
-      </div>
-      <div class="star">
-        <i class="star-empty"></i>
-        <i class="star-half"></i>
-        <i class="star-filled"></i>
-      </div>
-      <div class="star">
-        <i class="star-empty"></i>
-        <i class="star-half"></i>
-        <i class="star-filled"></i>
-      </div>
-      <div class="star">
-        <i class="star-empty"></i>
-        <i class="star-half"></i>
-        <i class="star-filled"></i>
-      </div>
-    </div>
-  </div>
+  </ks-modal-gallery>
 </div>
 
 
-<!--Add more pictures-->

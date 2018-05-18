@@ -10,4 +10,5 @@ import java.util.List;
 public interface TipViewRepository extends CrudRepository<TipView, String> {
     public List<TipView> findTipsByBusinessId(String businessId);
 
+    public List<TipView> findTipsByUserId(String userId);
 }

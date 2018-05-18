@@ -14,6 +14,7 @@ export class BusinessPageComponent implements OnInit {
   business: Business;
   businessId: string;
   attributes: Attribute[];
+  isOpen: boolean;
 
   constructor(private businessService: BusinessService,
               private route: ActivatedRoute) {
@@ -34,6 +35,7 @@ export class BusinessPageComponent implements OnInit {
       (selectedBusiness: Business) => {
         this.business = selectedBusiness;
         this.attributes = this.business.attributes;
+        this.isOpen = this.business.isOpen === 1 ? true : false;
       }
     );
   }

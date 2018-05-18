@@ -5,6 +5,8 @@ import {Business} from '../models/Business';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {Attribute} from '../models/Attribute';
+import {Photo} from '../models/Photo';
+import {ResponseContentType} from '@angular/http';
 
 const BASE = environment.apiUrl;
 
@@ -57,6 +59,12 @@ export class BusinessService {
     const apiCall = 'businesses/city';
     const url = `${this.domain}/${apiCall}/${city}/${name}`;
     return this.httpClient.get<Business[]>(url);
+  }
+
+  getPhotoListByBusinessId(businessId: string): Observable<Photo[]> {
+    const apiCall = 'photos';
+    const url = `${this.domain}/${apiCall}/${businessId}`;
+    return this.httpClient.get<Photo[]>(url);
   }
 
 }

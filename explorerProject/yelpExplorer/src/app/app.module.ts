@@ -16,14 +16,24 @@ import {ReviewsService} from './business-page/reviews/reviews.service';
 import {TipsService} from './business-page/tips/tips.service';
 import {BusinessService} from './business-page/business.service';
 import {BusinessSummaryComponent} from './home/business-summary/business-summary.component';
-import {PagerService} from './home/business-summary/pager.service';
-import { AttributeComponent } from './business-page/attributes/attribute/attribute.component';
-import { UserComponent } from './business-page/user/user.component';
+import {PagerService} from './pager.service';
+import {AttributeComponent} from './business-page/attributes/attribute/attribute.component';
+import {UserComponent} from './business-page/user/user.component';
 import {UserService} from './business-page/user/user.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
-import { AttributesComponent } from './business-page/attributes/attributes.component';
-import { UserDetailComponent } from './business-page/user/user-detail/user-detail.component';
+import {MatCardModule} from '@angular/material/card';
+import {AttributesComponent} from './business-page/attributes/attributes.component';
+import {UserDetailComponent} from './business-page/user/user-detail/user-detail.component';
+import {UserReviewsComponent} from './business-page/user/user-detail/user-reviews/user-reviews.component';
+import {UserBusinessSummaryComponent} from './business-page/user/user-detail/user-business-summary/user-business-summary.component';
+import {UserTipsComponent} from './business-page/user/user-detail/user-tips/user-tips.component';
+import {UserFriendsComponent} from './business-page/user/user-detail/user-friends/user-friends.component';
+import {PhotoComponent} from './business-page/photo/photo.component';
+import {PhotoService} from './business-page/photo/photo.service';
+import 'hammerjs';
+import 'mousetrap';
+import { ModalGalleryModule } from 'angular-modal-gallery';
 
 @NgModule({
   declarations: [
@@ -39,7 +49,12 @@ import { UserDetailComponent } from './business-page/user/user-detail/user-detai
     AttributeComponent,
     UserComponent,
     AttributesComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    UserReviewsComponent,
+    UserBusinessSummaryComponent,
+    UserTipsComponent,
+    UserFriendsComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +62,9 @@ import { UserDetailComponent } from './business-page/user/user-detail/user-detai
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule,
+    ModalGalleryModule.forRoot()
   ],
   exports: [
     HttpClientModule
@@ -57,7 +74,8 @@ import { UserDetailComponent } from './business-page/user/user-detail/user-detai
     PagerService,
     ReviewsService,
     TipsService,
-    UserService
+    UserService,
+    PhotoService
   ],
   bootstrap: [AppComponent]
 })

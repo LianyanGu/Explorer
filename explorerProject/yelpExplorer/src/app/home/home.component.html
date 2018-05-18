@@ -26,9 +26,13 @@
 
 <ng-template #missInfo>
   <div class="alert alert-danger" role="alert">
-    <strong>Woops!</strong> Please input both city and businessName
+    <strong>Woops!</strong> {{errorMsg}}
+    <!--TODO: CHAGNE ABOVE STRING TO STRING VARIABLE, SO YOU CAN ASSIGN DIFFERENT STRING VALUES BASED ON INPUT-->
   </div>
 </ng-template>
+
+
+<!--TODO: CREATE ANOTHER ALERT TO DISPLAY CANNOT FIND CORRESPONDING BUSINESS-->
 
 
 

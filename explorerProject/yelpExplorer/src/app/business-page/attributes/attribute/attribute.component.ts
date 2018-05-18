@@ -25,7 +25,6 @@ export class AttributeComponent implements OnInit {
       this.attributeValue = 'Yes';
     } else if (this.attribute.name === 'RestaurantsPriceRange2') {
       this.priceRange = this.attribute.value;
-      console.log('price range is ' + this.priceRange);
       this.showAttributeName = false;
     } else if (!this.attribute.value.includes('{')) {
       this.attributeValue = this.attribute.value;

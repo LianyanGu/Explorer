@@ -1,8 +1,10 @@
 package com.explorer.explorerProject.Service;
 
 import com.explorer.explorerProject.Entity.Friend;
+import com.explorer.explorerProject.Entity.ReviewView;
 import com.explorer.explorerProject.Entity.User;
 import com.explorer.explorerProject.Repository.FriendRepository;
+import com.explorer.explorerProject.Repository.ReviewViewRepository;
 import com.explorer.explorerProject.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,4 +30,5 @@ public class UserService {
     public List<Friend> getFriendByUserId(String userId) {
         return friendRepository.findByUserId(userId);
     }
+
 }

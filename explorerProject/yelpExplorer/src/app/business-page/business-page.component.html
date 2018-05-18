@@ -2,33 +2,36 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand">{{business.name}}</a>
   </nav>
-  <div class="d-flex flex-row">
+  <div class="d-flex flex-row" *ngIf="isOpen; else notOpen">
     <div class="p-2">
       <app-business [business]="business"></app-business>
     </div>
   </div>
-
-  <mat-tab-group>
-    <mat-tab label="More Information">
-      <div>
-        <app-attributes [attributes]="attributes"></app-attributes>
-      </div>
-    </mat-tab>
-    <mat-tab>
-      <ng-template mat-tab-label>
-        Reviews({{business.reviewCount}})
-      </ng-template>
-      <div>
-        <app-reviews [businessId]="businessId"></app-reviews>
-      </div>
-    </mat-tab>
-    <mat-tab label="Tips">
-      <div>
-        <app-tips [businessId]="businessId"></app-tips>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
-
+  <ng-template #notOpen>
+    Business is Not Open
+  </ng-template>
+  <div *ngIf="isOpen">
+    <mat-tab-group>
+      <mat-tab label="More Information">
+        <div>
+          <app-attributes [attributes]="attributes"></app-attributes>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Reviews({{business.reviewCount}})
+        </ng-template>
+        <div>
+          <app-reviews [businessId]="businessId"></app-reviews>
+        </div>
+      </mat-tab>
+      <mat-tab label="Tips">
+        <div>
+          <app-tips [businessId]="businessId"></app-tips>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
 </div>
 
 

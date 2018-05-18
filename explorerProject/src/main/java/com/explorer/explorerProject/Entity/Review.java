@@ -9,10 +9,11 @@ import java.util.Date;
 
 @Entity(name = "Review")
 @Table(name = "review")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Review {
 
     @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     @Column(name = "business_id")
@@ -106,7 +107,8 @@ public class Review {
         this.cool = cool;
     }
 
-    public Review() {}
+    public Review() {
+    }
 
     public Review(String businessId, int stars, Date date, String text, int useful, int funny, int cool) {
         this.businessId = businessId;

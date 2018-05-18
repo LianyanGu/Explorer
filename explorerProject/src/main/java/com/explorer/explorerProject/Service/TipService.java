@@ -41,8 +41,8 @@ public class TipService {
         return tipViewRepository.findTipsByBusinessId(businessId);
     }
 
+    public List<TipView> getTipsByUserId(String userId) {
+        return tipViewRepository.findTipsByUserId(userId);
+    }
+
 }
-
-
-//    String id, String text, Date date, int likes, User user, Business business
-//   How to deal with the id here? Not include it in the db?

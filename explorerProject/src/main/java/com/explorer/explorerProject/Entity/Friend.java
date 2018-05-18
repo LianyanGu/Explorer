@@ -18,7 +18,7 @@ public class Friend {
     private String userId;
 
     @Column(name = "friend_id")
-    private String fiendId;
+    private String friendId;
 
     public String getId() {
         return id;
@@ -36,19 +36,19 @@ public class Friend {
         this.userId = userId;
     }
 
-    public String getFiendId() {
-        return fiendId;
+    public String getfriendId() {
+        return friendId;
     }
 
-    public void setFiendId(String fiendId) {
-        this.fiendId = fiendId;
+    public void setfriendId(String friendId) {
+        this.friendId = friendId;
     }
 
     public Friend() {
     }
 
-    public Friend(String userId, String fiendId) {
+    public Friend(String userId, String friendId) {
         this.userId = userId;
-        this.fiendId = fiendId;
+        this.friendId = friendId;
     }
 }

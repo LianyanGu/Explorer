@@ -10,15 +10,13 @@
     <div class="row">
       {{user.reviewCount}} reviews
     </div>
-    <div class="row">
-      Friends:
-    </div>
   </div>
-  <!--TODO: Check if eliteYears is null here, then show Elite-->
   <ng-container *ngIf="eliteYears&&eliteYears.length>0">
     Elite:
-    <div *ngFor=" let eliteYear of eliteYears">
-      {{eliteYear.year}}
+    <div *ngFor=" let eliteYear of eliteYears; let i=index">
+      <div *ngIf="i<3">
+        {{eliteYear.year}}
+      </div>
     </div>
   </ng-container>
 </div>

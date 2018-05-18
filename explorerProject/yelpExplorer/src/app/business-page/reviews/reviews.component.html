@@ -1,5 +1,13 @@
-<ng-container *ngIf="reviews" class="container-fluid">
-  <div *ngFor="let review of reviews">
+<div>
+  <button class="btn btn-primary" (click)="addReview()">
+    Add a review
+  </button>
+  <input type="string"
+         placeholder="We welcome your review on this business"
+         [(ngModel)]='newReview'>
+</div>
+<ng-container *ngIf="reviews">
+  <div *ngFor="let review of pagedItems">
     <div class="d-flex flex-row">
       <div class="p-2">
         <app-user [id]="review.userId"></app-user>
@@ -9,5 +17,28 @@
       </div>
     </div>
   </div>
-
+  <div class="container">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+        <a class="page-link" (click)="setPage(1)">First Page</a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+        <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pager.pages"
+          [ngClass]="{active:pager.currentPage === page}">
+        <a class="page-link" (click)="setPage(page)">{{page}}</a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a class="page-link" (click)="setPage(pager.totalPages)">Last Page</a>
+      </li>
+    </ul>
+  </div>
 </ng-container>
+
+
+
+

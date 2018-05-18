@@ -1,11 +1,11 @@
 export class Friend {
   id: string;
   userId: string;
-  fiendId: string;
+  friendId: string;
 
-  constructor(id: string, userId: string, fiendId: string) {
+  constructor(id: string, userId: string, friendId: string) {
     this.id = id;
     this.userId = userId;
-    this.fiendId = fiendId;
+    this.friendId = friendId;
   }
 }

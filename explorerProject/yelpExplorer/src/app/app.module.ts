@@ -29,11 +29,9 @@ import {UserReviewsComponent} from './business-page/user/user-detail/user-review
 import {UserBusinessSummaryComponent} from './business-page/user/user-detail/user-business-summary/user-business-summary.component';
 import {UserTipsComponent} from './business-page/user/user-detail/user-tips/user-tips.component';
 import {UserFriendsComponent} from './business-page/user/user-detail/user-friends/user-friends.component';
-import {PhotoComponent} from './business-page/photo/photo.component';
-import {PhotoService} from './business-page/photo/photo.service';
 import 'hammerjs';
 import 'mousetrap';
-import { ModalGalleryModule } from 'angular-modal-gallery';
+import {ModalGalleryModule} from 'angular-modal-gallery';
 
 @NgModule({
   declarations: [
@@ -53,8 +51,7 @@ import { ModalGalleryModule } from 'angular-modal-gallery';
     UserReviewsComponent,
     UserBusinessSummaryComponent,
     UserTipsComponent,
-    UserFriendsComponent,
-    PhotoComponent
+    UserFriendsComponent
   ],
   imports: [
     BrowserModule,
@@ -74,8 +71,7 @@ import { ModalGalleryModule } from 'angular-modal-gallery';
     PagerService,
     ReviewsService,
     TipsService,
-    UserService,
-    PhotoService
+    UserService
   ],
   bootstrap: [AppComponent]
 })

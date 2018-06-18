@@ -53,8 +53,8 @@
 
   <div class="my-app-custom-plain-container-row">
     <ng-container *ngFor="let img of images; let i = index">
-      <div *ngIf="i <= 2">
-        <a class="more" *ngIf="i==2" (click)="openImageModalRow(img)"> +{{images.length - 2 - 1}} more </a>
+      <div *ngIf="i <= 5">
+        <a class="more" *ngIf="i==5" (click)="openImageModalRow(img)"> +{{images.length - 5 - 1}} more </a>
         <img *ngIf="img.plain && img.plain.img; else noThumb"
              class="my-app-custom-image-row"
              [src]="img.plain.img"

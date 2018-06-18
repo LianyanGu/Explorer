@@ -1,6 +1,8 @@
-<div class="d-flex flex-row">
-  <app-user-business-summary [businessId]="tip.businessId"></app-user-business-summary>
-  <div class="p-2">
+<div class="userTips">
+  <div class="userTips-summary">
+    <app-user-business-summary [businessId]="tip.businessId"></app-user-business-summary>
+  </div>
+  <div class="userTips-text">
     {{tip.text}}
   </div>
 </div>

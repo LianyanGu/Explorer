@@ -6,13 +6,13 @@
          placeholder="We welcome your tip on this business"
          [(ngModel)]='newTip'>
 </div>
-<ng-container *ngIf="tips" class="container-fluid">
+<ng-container *ngIf="tips" class="container">
   <div *ngFor="let tip of pagedItems">
-    <div class="d-flex flex-row">
-      <div class="p-2">
+    <div class="tips">
+      <div class="tipsUser">
         <app-user [id]="tip.userId"></app-user>
       </div>
-      <div class="p-2">
+      <div class="tipsTip">
         <app-tip [tip]="tip"></app-tip>
       </div>
     </div>

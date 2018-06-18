@@ -1,1 +1,12 @@
+.reviewContents {
+  flex: 0 0 90%;
+}
 
+.userContents {
+  flex: 0 0 10%;
+}
+
+.reviews {
+  display: flex;
+  margin: 15px;
+}

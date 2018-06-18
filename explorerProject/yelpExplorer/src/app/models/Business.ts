@@ -17,8 +17,10 @@ export class Business {
   categories: Category[];
   attributes: Attribute[];
 
-
-  constructor(id: string, name: string, neighborhood: string, address: string, city: string, state: string, postalCode: string, latitude: number, longitude: number, stars: number, reviewCount: number, isOpen: number, categories: Category[], attributes: Attribute[]) {
+  constructor(id: string, name: string, neighborhood: string, address: string,
+              city: string, state: string, postalCode: string, latitude: number,
+              longitude: number, stars: number, reviewCount: number, isOpen: number,
+              categories: Category[], attributes: Attribute[]) {
     this.id = id;
     this.name = name;
     this.neighborhood = neighborhood;

@@ -1,22 +1,25 @@
-<div class="container-fluid">
-  <div *ngIf="user">
-    <!--TODO: WORK ON CSS HERE-->
-    <div class="row">
+<div class="container">
+  <div class="user" *ngIf="user">
+    <!--Username-->
+    <div class="userName">
       <a [routerLink]="['/user-details']"
          [queryParams]="{userId:id}">
         {{user.userName}}
       </a>
     </div>
-    <div class="row">
+    <!--Number of reviews-->
+    <div>
       {{user.reviewCount}} reviews
     </div>
-  </div>
-  <ng-container *ngIf="eliteYears&&eliteYears.length>0">
-    Elite:
-    <div *ngFor=" let eliteYear of eliteYears; let i=index">
-      <div *ngIf="i<3">
-        {{eliteYear.year}}
+    <!--Elite years-->
+    <ng-container *ngIf="eliteYears&&eliteYears.length>0">
+      Elite:
+      <div *ngFor="let eliteYear of eliteYears; let i=index">
+        <div *ngIf="i<2">
+          {{eliteYear.year}}
+        </div>
       </div>
-    </div>
-  </ng-container>
+    </ng-container>
+  </div>
 </div>
+

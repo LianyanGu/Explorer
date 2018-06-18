@@ -1,62 +1,71 @@
-<div class="container">
-  <div class="d-flex flex-row">
-    <div class="p-2">
-      <div class="d-flex flex-column">
-        <div class="p-2">
-          <h5 (click)="onClickBusiness()"
-              [routerLink]="['/businesses', business.id]"
-              style="cursor: pointer;">
-            {{business.name}}
-          </h5>
-        </div>
-        <div *ngIf="categories" class="p-2">
-          <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 1 ? 'red' : 'grey' }"></i>
-          <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 2 ? 'red' : 'grey' }"></i>
-          <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 3 ? 'red' : 'grey' }"></i>
-          <i class="fa fa-dollar" [ngStyle]="{'color':priceRange === 4  ? 'red' : 'grey' }"></i>
-          {{categoryNames}}
-        </div>
-        <div class="p-2">{{business.address}}</div>
-      </div>
-    </div>
-    <div class="p-2">
-      <div class="d-flex flex-column">
-        <div class="p-2">
-          <div [ngClass]="getNumberOfStars()"
-               class="rating medium star-icon color-negative label-right">
-            <div class="label-value">
-              {{business.reviewCount}} reviews
+<div class="container card shadowMargin">
+  <div class="business-summary card-body">
+    <!--Business Name-->
+    <div class="firstLine">
+      <h5 class="businessName card-title" (click)="onClickBusiness()"
+          [routerLink]="['/businesses', business.id]"
+          style="cursor: pointer;">
+        {{business.name}}
+      </h5>
+      <!--Star rating-->
+      <div class="starRating">
+        <div [ngClass]="getNumberOfStars()"
+             class="rating medium star-icon color-negative label-right">
+          <div class="star-container">
+            <div class="star">
+              <i class="star-empty"></i>
+              <i class="star-half"></i>
+              <i class="star-filled"></i>
             </div>
-            <div class="star-container">
-              <div class="star">
-                <i class="star-empty"></i>
-                <i class="star-half"></i>
-                <i class="star-filled"></i>
-              </div>
-              <div class="star">
-                <i class="star-empty"></i>
-                <i class="star-half"></i>
-                <i class="star-filled"></i>
-              </div>
-              <div class="star">
-                <i class="star-empty"></i>
-                <i class="star-half"></i>
-                <i class="star-filled"></i>
-              </div>
-              <div class="star">
-                <i class="star-empty"></i>
-                <i class="star-half"></i>
-                <i class="star-filled"></i>
-              </div>
-              <div class="star">
-                <i class="star-empty"></i>
-                <i class="star-half"></i>
-                <i class="star-filled"></i>
-              </div>
+            <div class="star">
+              <i class="star-empty"></i>
+              <i class="star-half"></i>
+              <i class="star-filled"></i>
+            </div>
+            <div class="star">
+              <i class="star-empty"></i>
+              <i class="star-half"></i>
+              <i class="star-filled"></i>
+            </div>
+            <div class="star">
+              <i class="star-empty"></i>
+              <i class="star-half"></i>
+              <i class="star-filled"></i>
+            </div>
+            <div class="star">
+              <i class="star-empty"></i>
+              <i class="star-half"></i>
+              <i class="star-filled"></i>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="secLine">
+      <!--Dollar rating-->
+      <div>
+        <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 1 ? 'red' : 'grey' }"></i>
+        <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 2 ? 'red' : 'grey' }"></i>
+        <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 3 ? 'red' : 'grey' }"></i>
+        <i class="fa fa-dollar" [ngStyle]="{'color':priceRange === 4  ? 'red' : 'grey' }"></i>
+      </div>
+      <!--categories-->
+      <div class="categories" *ngIf="categories">
+        {{categoryNames}}
+      </div>
+      <!--Number of reviews-->
+      <div class="reviewCount">
+        {{business.reviewCount}} reviews
+      </div>
+    </div>
+    <div class="thirdLine">
+      <!--Address-->
+      {{business.address}}
+    </div>
+    <div class="businessImage">
+      <img src = {{photoUrl}}>
+    </div>
   </div>
 </div>
+
+

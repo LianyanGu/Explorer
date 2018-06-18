@@ -1,5 +1,6 @@
-<div class="d-flex flex-column">
-  <div class="p-2">
+<div class="business">
+  <!--Star rating-->
+  <div class="business-stars">
     <div [ngClass]="getNumberOfStars()" class="rating medium star-icon color-negative label-right">
       <div class="label-value">
         {{business.stars}}
@@ -33,28 +34,23 @@
       </div>
     </div>
   </div>
-
-  <div *ngIf="categories" class="p-2">
-    <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 1 ? 'red' : 'grey' }"></i>
-    <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 2 ? 'red' : 'grey' }"></i>
-    <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 3 ? 'red' : 'grey' }"></i>
-    <i class="fa fa-dollar" [ngStyle]="{'color':priceRange === 4  ? 'red' : 'grey' }"></i>
-    {{categoryNames}}
-  </div>
-
-  <div class="p-2 fontBold">
-    Address
-  </div>
-  <div class="p-2">
-    <div class="row">
-      {{address}}
+  <div class="secLine">
+    <!--Dollar sign and categories-->
+    <div>
+      <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 1 ? 'red' : 'grey' }"></i>
+      <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 2 ? 'red' : 'grey' }"></i>
+      <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 3 ? 'red' : 'grey' }"></i>
+      <i class="fa fa-dollar" [ngStyle]="{'color':priceRange === 4  ? 'red' : 'grey' }"></i>
+    </div>
+    <div *ngIf="categories" class="categories">
+      {{categoryNames}}
     </div>
   </div>
-  <!--<ks-modal-gallery [modalImages]="images"-->
-                    <!--[previewConfig]="{number: 5}"-->
-                    <!--[slideConfig]="{infinite: true}"-->
-                    <!--[plainGalleryConfig]="plainGalleryRow">-->
-  <!--</ks-modal-gallery>-->
+  <!--Address-->
+  <div class="address">
+    {{address}}
+  </div>
+
   <div class="my-app-custom-plain-container-row">
     <ng-container *ngFor="let img of images; let i = index">
       <div *ngIf="i <= 2">

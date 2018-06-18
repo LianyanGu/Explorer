@@ -1,0 +1,11 @@
+.userTips {
+  display: flex;
+}
+
+.userTips-summary {
+  flex: 0 0 20%
+}
+
+.userTips-text {
+  flex: 0 0 80%
+}

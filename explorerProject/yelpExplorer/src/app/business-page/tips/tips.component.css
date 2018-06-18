@@ -1,0 +1,12 @@
+.tips {
+  display: flex;
+  margin: 15px;
+}
+
+.tipsUser {
+  flex: 0 0 10%;
+}
+
+.tipsTip {
+  flex: 0 0 70%;
+}

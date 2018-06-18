@@ -43,3 +43,29 @@
   text-align: center;
   width: 50px;
 }
+
+.business {
+  display: flex;
+  flex-direction: column;
+}
+
+.business-stars {
+  padding-left: 20px;
+  display: flex;
+}
+
+.secLine {
+  display: flex;
+  padding-left: 20px;
+}
+
+.address {
+  display: flex;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.categories {
+  padding-left: 30px;
+  margin-right: auto;
+}

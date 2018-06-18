@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Business} from '../../models/Business';
 import {BusinessService} from '../../business-page/business.service';
 import {Category} from '../../models/Category';
+import {Photo} from '../../models/Photo';
 
 @Component({
   selector: 'app-business-summary',
@@ -10,10 +11,14 @@ import {Category} from '../../models/Category';
 })
 export class BusinessSummaryComponent implements OnInit {
   @Input() business: Business;
+  @Input() index: number;
   categories: Category[];
   priceRange: number;
   categoryNameList = [];
   categoryNames: string;
+  backgroundColor: string;
+  photo: Photo;
+  photoUrl: string;
 
   constructor(private businessService: BusinessService) {
   }
@@ -21,7 +26,8 @@ export class BusinessSummaryComponent implements OnInit {
   ngOnInit() {
     this.categories = this.business.categories;
     this.getPriceRange();
-    this.loadCategoies();
+    this.loadCategories();
+    this.loadPhotoList();
   }
 
   onClickBusiness() {
@@ -40,10 +46,24 @@ export class BusinessSummaryComponent implements OnInit {
     }
   }
 
-  loadCategoies() {
+  loadCategories() {
     for (const category of this.categories) {
       this.categoryNameList.push(category.category);
     }
     this.categoryNames = this.categoryNameList.join(', ');
+  }
+
+  loadPhotoList() {
+    this.businessService.getPhotoListByBusinessId(this.business.id)
+      .subscribe(
+        (response) => {
+          this.photo = response[0];
+          console.log(this.photo);
+          if (this.photo !== undefined) {
+            this.photoUrl = 'http://localhost:9090/photo/' + this.photo.id;
+          }
+          console.log(this.photoUrl);
+        }
+      );
   }
 }

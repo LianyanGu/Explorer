@@ -1,0 +1,13 @@
+.userReviews {
+  display: flex;
+  margin: 10px;
+}
+
+.userReview-business {
+  flex: 0 0 20%;
+  justify-content: center;
+}
+
+.userReview-text {
+  flex: 0 0 70%;
+}

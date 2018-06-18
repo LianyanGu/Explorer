@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   pagedItems: any[];
   businessName: string;
   errorMsg: string;
+  backgroundColor: string;
 
   constructor(private businessService: BusinessService,
               private pagerService: PagerService,

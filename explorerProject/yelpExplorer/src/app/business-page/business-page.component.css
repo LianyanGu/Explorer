@@ -1,0 +1,4 @@
+.businessPage {
+  display: flex;
+  flex-direction: column;
+}

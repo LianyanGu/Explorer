@@ -35,18 +35,12 @@ export class BusinessComponent implements OnInit {
     this.parseAddress();
     this.loadCategoies();
     this.loadPhotoList();
-    // this.plainGalleryRow = {
-    //   strategy: PlainGalleryStrategy.ROW,
-    //   layout: new LineLayout({width: '200px', height: '200px'},
-    //     {length: 3, wrap: true}, 'flex-start')
-    // };
     this.customPlainGalleryRowConfig = {
       strategy: PlainGalleryStrategy.CUSTOM,
       layout: new AdvancedLayout(-1, true)};
   }
 
   openImageModalRow(image: Image) {
-    console.log('Opening modal gallery from custom plain gallery row, with image: ', image);
     const index: number = this.getCurrentIndexCustomLayout(image, this.images);
     this.customPlainGalleryRowConfig = Object.assign({}, this.customPlainGalleryRowConfig, {layout: new AdvancedLayout(index, true)});
   }
@@ -114,7 +108,6 @@ export class BusinessComponent implements OnInit {
         (response) => {
           this.photosList = response;
           this.images = this.createImages(this.photosList);
-
         }
       );
   }

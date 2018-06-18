@@ -1,3 +1,50 @@
 .checked {
   color: red;
 }
+
+.shadowMargin {
+  margin-bottom: 15px;
+  box-shadow: 4px 5px 8px #888888;
+}
+
+.business-summary {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.firstLine {
+  display: flex;
+}
+
+.businessName {
+  margin-right: auto;
+}
+
+.starRating {
+  margin-right: 0;
+}
+
+.secLine {
+  display: flex;
+}
+
+.thirdLine {
+  padding-top: 5px;
+  display: flex;
+}
+
+.categories {
+  padding-left: 30px;
+  margin-right: auto;
+}
+
+.reviewCount {
+  margin-right: 5px;
+}
+
+.businessImage {
+  height: 100px;
+  width: 100px;
+  object-fit: scale-down;
+}

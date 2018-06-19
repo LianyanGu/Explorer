@@ -4,10 +4,11 @@
 }
 
 .userReview-business {
-  flex: 0 0 20%;
+  flex: 0 0 35%;
   justify-content: center;
 }
 
 .userReview-text {
-  flex: 0 0 70%;
+  padding: 20px;
+  flex: 0 0 65%;
 }

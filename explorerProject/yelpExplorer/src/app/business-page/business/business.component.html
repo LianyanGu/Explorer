@@ -50,31 +50,32 @@
   <div class="address">
     {{address}}
   </div>
-
-  <div class="my-app-custom-plain-container-row">
-    <ng-container *ngFor="let img of images; let i = index">
-      <div *ngIf="i <= 5">
-        <a class="more" *ngIf="i==5" (click)="openImageModalRow(img)"> +{{images.length - 5 - 1}} more </a>
-        <img *ngIf="img.plain && img.plain.img; else noThumb"
-             class="my-app-custom-image-row"
-             [src]="img.plain.img"
-             (click)="openImageModalRow(img)"
-             [alt]="img.modal.description"/>
-
-        <ng-template #noThumb>
-          <img class="my-app-custom-image-row"
-               [src]="img.modal.img"
+  <div class="busPics">
+    <div class="my-app-custom-plain-container-row">
+      <ng-container *ngFor="let img of images; let i = index">
+        <div *ngIf="i <= 5">
+          <a class="more" *ngIf="i==5" (click)="openImageModalRow(img)"> +{{images.length - 5 - 1}} more </a>
+          <img *ngIf="img.plain && img.plain.img; else noThumb"
+               class="my-app-custom-image-row"
+               [src]="img.plain.img"
                (click)="openImageModalRow(img)"
                [alt]="img.modal.description"/>
-        </ng-template>
-      </div>
-    </ng-container>
-  </div>
-  <ks-modal-gallery [modalImages]="images"
-                    [previewConfig]="{number: 5}"
-                    [plainGalleryConfig]="customPlainGalleryRowConfig">
 
-  </ks-modal-gallery>
+          <ng-template #noThumb>
+            <img class="my-app-custom-image-row"
+                 [src]="img.modal.img"
+                 (click)="openImageModalRow(img)"
+                 [alt]="img.modal.description"/>
+          </ng-template>
+        </div>
+      </ng-container>
+    </div>
+    <ks-modal-gallery [modalImages]="images"
+                      [previewConfig]="{number: 5}"
+                      [plainGalleryConfig]="customPlainGalleryRowConfig">
+
+    </ks-modal-gallery>
+  </div>
 </div>
 
 

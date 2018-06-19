@@ -48,7 +48,6 @@
     <mat-tab label="Tips">
 
       <ng-container *ngIf="tips">
-        <h1>Maybe style it like this? https://getbootstrap.com/docs/4.0/components/card/#header-and-footer</h1>
         <div *ngFor="let tip of pagedTips">
           <app-user-tips [tip]="tip"></app-user-tips>
         </div>

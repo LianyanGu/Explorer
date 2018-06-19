@@ -16,7 +16,6 @@ export class BusinessSummaryComponent implements OnInit {
   priceRange: number;
   categoryNameList = [];
   categoryNames: string;
-  backgroundColor: string;
   photo: Photo;
   photoUrl: string;
 
@@ -58,11 +57,9 @@ export class BusinessSummaryComponent implements OnInit {
       .subscribe(
         (response) => {
           this.photo = response[0];
-          console.log(this.photo);
           if (this.photo !== undefined) {
             this.photoUrl = 'http://localhost:9090/photo/' + this.photo.id;
           }
-          console.log(this.photoUrl);
         }
       );
   }

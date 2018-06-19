@@ -1,11 +1,12 @@
 <div class="userReviews">
-  <div class="userReview-business">
-    <app-user-business-summary [businessId]="review.businessId"></app-user-business-summary>
+  <div class="userReview-business" *ngIf="business">
+    <app-business-summary [business]="business"></app-business-summary>
   </div>
   <div class="userReview-text">
     {{review.text}}
   </div>
 </div>
+
 
 
 

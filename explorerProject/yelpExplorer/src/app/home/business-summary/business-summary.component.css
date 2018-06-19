@@ -34,7 +34,12 @@
   display: flex;
 }
 
+.dollarSign {
+  flex-shrink: 0;
+}
+
 .categories {
+  flex-shrink: 1;
   padding-left: 30px;
   margin-right: auto;
 }
@@ -44,7 +49,6 @@
 }
 
 .businessImage {
-  height: 100px;
-  width: 100px;
-  object-fit: scale-down;
+  width: 50%;
+  height: 20%;
 }

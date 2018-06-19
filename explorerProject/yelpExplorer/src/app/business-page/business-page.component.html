@@ -2,7 +2,6 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand">{{business.name}}</a>
   </nav>
-  <!--BusinessInfo-->
   <div *ngIf="isOpen; else notOpen">
     <div>
       <app-business [business]="business"></app-business>
@@ -11,7 +10,6 @@
   <ng-template #notOpen>
     Business is Not Open
   </ng-template>
-  <!--Tabs-->
   <div *ngIf="isOpen">
     <mat-tab-group>
       <mat-tab label="More Information">

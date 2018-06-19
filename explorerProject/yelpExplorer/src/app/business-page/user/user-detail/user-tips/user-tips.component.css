@@ -1,11 +1,13 @@
 .userTips {
   display: flex;
+  margin: 10px;
 }
 
 .userTips-summary {
-  flex: 0 0 20%
+  flex: 0 0 20%;
+  justify-content: center;
 }
 
 .userTips-text {
-  flex: 0 0 80%
+  flex: 0 0 80%;
 }

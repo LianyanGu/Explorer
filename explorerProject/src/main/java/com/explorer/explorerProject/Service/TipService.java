@@ -6,6 +6,7 @@ import com.explorer.explorerProject.Entity.TipView;
 import com.explorer.explorerProject.Entity.User;
 import com.explorer.explorerProject.Repository.TipRepository;
 import com.explorer.explorerProject.Repository.TipViewRepository;
+import com.explorer.explorerProject.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,9 @@ public class TipService {
     @Autowired
     private TipViewRepository tipViewRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public void addTip(String text, String businessId, User user) {
         if (StringUtils.isEmpty(text)) {
             return;
@@ -42,7 +46,14 @@ public class TipService {
     }
 
     public List<TipView> getTipsByUserId(String userId) {
+
         return tipViewRepository.findTipsByUserId(userId);
     }
 
+    public void addTips(String userId, String businessId, String text) {
+//        //Get user based on userId
+//        userRepository.findByUserName()
+//        tipViewRepository.save(new TipView(userId, businessId, text, date, 0, userName,
+//        int reviewCount, Date yelpingSince));
+    }
 }

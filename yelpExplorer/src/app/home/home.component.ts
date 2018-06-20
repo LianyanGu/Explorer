@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
     this.businessService.getBusinessesByCity(city)
       .subscribe(
         (response) => {
+          console.log(city);
           if (response.length !== 0) {
             this.businessLoaded = true;
             this.businesses = response;

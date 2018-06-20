@@ -26,7 +26,6 @@ import {MatCardModule} from '@angular/material/card';
 import {AttributesComponent} from './business-page/attributes/attributes.component';
 import {UserDetailComponent} from './business-page/user/user-detail/user-detail.component';
 import {UserReviewsComponent} from './business-page/user/user-detail/user-reviews/user-reviews.component';
-import {UserBusinessSummaryComponent} from './business-page/user/user-detail/user-business-summary/user-business-summary.component';
 import {UserTipsComponent} from './business-page/user/user-detail/user-tips/user-tips.component';
 import {UserFriendsComponent} from './business-page/user/user-detail/user-friends/user-friends.component';
 import 'hammerjs';
@@ -49,7 +48,6 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
     AttributesComponent,
     UserDetailComponent,
     UserReviewsComponent,
-    UserBusinessSummaryComponent,
     UserTipsComponent,
     UserFriendsComponent
   ],

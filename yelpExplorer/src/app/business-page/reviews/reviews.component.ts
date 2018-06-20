@@ -31,17 +31,17 @@ export class ReviewsComponent implements OnInit {
       );
   }
 
-  addReview() {
-    this.reviewsService.addReview(new Review(this.businessId, 5, '2018/01/01', this.newReview, 0, 0, 0))
-      .subscribe(
-        (response) => {
-          console.log(response);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  }
+  // addReview() {
+  //   this.reviewsService.addReview(new Review(this.businessId, 5, '2018/01/01', this.newReview, 0, 0, 0))
+  //     .subscribe(
+  //       (response) => {
+  //         console.log(response);
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       }
+  //     );
+  // }
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {

@@ -1,6 +1,10 @@
-<div class="userTips">
+<div class="userTips" *ngIf="business">
   <div class="userTips-summary">
-    <app-user-business-summary [businessId]="tip.businessId"></app-user-business-summary>
+    <h5 class="businessName card-title" (click)="onClickBusiness()"
+        [routerLink]="['/businesses', business.id]"
+        style="cursor: pointer;">
+      {{business.name}}
+    </h5>
   </div>
   <div class="userTips-text">
     {{tip.text}}

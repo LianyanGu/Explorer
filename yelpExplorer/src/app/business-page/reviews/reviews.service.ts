@@ -27,11 +27,12 @@ export class ReviewsService {
     return this.httpClient.get<ReviewView[]>(url);
   }
 
-  addReview(review: Review): Observable<any> {
+  addReview(businessId: string, stars: number, text: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
-    const apiCall = 'review';
+    const apiCall = 'addReview';
+    const review = new Review(businessId, stars, 'date', text, 0, 0, 0);
     const url = `${this.domain}/${apiCall}`;
     return this.httpClient.post(url, review, httpOptions);
   }

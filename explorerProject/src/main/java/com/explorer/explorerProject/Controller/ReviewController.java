@@ -21,15 +21,17 @@ public class ReviewController {
         return reviewService.getReviewByBusinessId(businessId);
     }
 
-    @RequestMapping(value = "/review", method = RequestMethod.POST)
-    public void addReview(Review review) {
-        reviewService.addReview(review);
-    }
-
     @RequestMapping(value = "{userId}/reviews", method = RequestMethod.GET)
     @ResponseBody
     public List<ReviewView> getReviewsByUserId(@PathVariable("userId") String userId) {
         return reviewService.getReviewsByUserId(userId);
     }
+
+    @RequestMapping(value = "/addReview", method = RequestMethod.POST)
+    public void addReview(Review review) {
+        System.out.println(review);
+        //reviewService.addReview(businessId, stars, text);
+    }
+
 
 }

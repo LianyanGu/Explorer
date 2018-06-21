@@ -1,8 +1,8 @@
 package com.explorer.explorerProject.Entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,14 +13,15 @@ import java.util.Date;
 public class Review {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
     @Column(name = "business_id")
     private String businessId;
 
     @Column(name = "stars")
-    private int stars;
+    private Integer stars;
 
     //Can change Date
     @Column(name = "date")
@@ -38,11 +39,6 @@ public class Review {
     @Column(name = "cool")
     private int cool;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "business_Id", nullable = false)
-//    @JsonBackReference
-//    private Business business;
-
     public String getId() {
         return id;
     }
@@ -59,11 +55,11 @@ public class Review {
         this.businessId = businessId;
     }
 
-    public int getStars() {
+    public Integer getStars() {
         return stars;
     }
 
-    public void setStars(int stars) {
+    public void setStars(Integer stars) {
         this.stars = stars;
     }
 

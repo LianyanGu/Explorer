@@ -7,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table(name = "reviewview")
@@ -50,11 +50,6 @@ public class ReviewView {
 
     @Column(name = "yelping_since")
     public Date yelpingSince;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "business_id", nullable = false)
-//    @JsonBackReference
-//    private Business business;
 
     public String getUserId() {
         return userId;

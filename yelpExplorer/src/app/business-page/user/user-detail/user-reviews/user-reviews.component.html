@@ -1,9 +1,67 @@
-<div class="userReviews">
-  <div class="userReview-business" *ngIf="business">
-    <app-business-summary [business]="business"></app-business-summary>
-  </div>
-  <div class="userReview-text">
-    {{review.text}}
+<div class="container card shadowMargin">
+  <div class="userReview card-body" *ngIf="business">
+    <h5 class="card-title" (click)="onClickBusiness()"
+        [routerLink]="['/businesses', business.id]"
+        style="cursor: pointer;">
+      {{business.name}}
+    </h5>
+    <div class="business">
+      <div *ngIf="photo" class="photoSection">
+        <img class="userReviewPhoto" src={{photoUrl}}>
+      </div>
+      <div class="businessDescSection">
+        <div *ngIf="categories">
+          {{categoryNames}}
+        </div>
+        <div *ngIf="business">
+          {{business.address}}
+        </div>
+        <div *ngIf="business">
+          <!--Following LINE rephrase-->
+          {{business.city}},{{business.state}},{{business.postalCode}}
+        </div>
+        <div class="LineFour">
+          <div class="starRating">
+            <div [ngClass]="getNumberOfStars()"
+                 class="rating medium star-icon color-negative label-right">
+              <div class="star-container">
+                <div class="star">
+                  <i class="star-empty"></i>
+                  <i class="star-half"></i>
+                  <i class="star-filled"></i>
+                </div>
+                <div class="star">
+                  <i class="star-empty"></i>
+                  <i class="star-half"></i>
+                  <i class="star-filled"></i>
+                </div>
+                <div class="star">
+                  <i class="star-empty"></i>
+                  <i class="star-half"></i>
+                  <i class="star-filled"></i>
+                </div>
+                <div class="star">
+                  <i class="star-empty"></i>
+                  <i class="star-half"></i>
+                  <i class="star-filled"></i>
+                </div>
+                <div class="star">
+                  <i class="star-empty"></i>
+                  <i class="star-half"></i>
+                  <i class="star-filled"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reviewDate">
+            {{review.date.slice(0, 10)}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      {{review.text}}
+    </div>
   </div>
 </div>
 

@@ -1,6 +1,37 @@
-.userReviews {
+.userReview {
   display: flex;
-  margin: 10px;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.userReviewPhoto {
+  height: 100px;
+  weight: 200px;
+}
+
+.business {
+  display: flex;
+}
+
+.photoSection {
+  margin-right: 20px;
+}
+
+.starRating {
+  margin-left: 0;
+}
+
+.LineFour {
+  display: flex;
+}
+
+.reviewDate {
+  margin-left: 10px;
+}
+
+.shadowMargin {
+  margin-bottom: 15px;
+  box-shadow: 4px 5px 8px #888888;
 }
 
 .userReview-business {

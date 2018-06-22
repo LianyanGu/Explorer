@@ -18,6 +18,9 @@ export class BusinessSummaryComponent implements OnInit {
   categoryNames: string;
   photo: Photo;
   photoUrl: string;
+  address: string;
+  addressList = [];
+
 
   constructor(private businessService: BusinessService) {
   }
@@ -26,6 +29,7 @@ export class BusinessSummaryComponent implements OnInit {
     this.categories = this.business.categories;
     this.getPriceRange();
     this.loadCategories();
+    this.parseAddress();
     this.loadPhotoList();
   }
 
@@ -43,6 +47,22 @@ export class BusinessSummaryComponent implements OnInit {
         this.priceRange = +attribute['value'];
       }
     }
+  }
+
+  parseAddress() {
+    if (this.business.address) {
+      this.addressList.push(this.business.address);
+    }
+    if (this.business.city) {
+      this.addressList.push(this.business.city);
+    }
+    if (this.business.state) {
+      this.addressList.push(this.business.state);
+    }
+    if (this.business.postalCode) {
+      this.addressList.push(this.business.postalCode);
+    }
+    this.address = this.addressList.join(', ');
   }
 
   loadCategories() {

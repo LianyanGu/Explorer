@@ -31,6 +31,8 @@ import {UserFriendsComponent} from './business-page/user/user-detail/user-friend
 import 'hammerjs';
 import 'mousetrap';
 import {ModalGalleryModule} from 'angular-modal-gallery';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
     BrowserAnimationsModule,
     MatTabsModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     ModalGalleryModule.forRoot()
   ],
   exports: [

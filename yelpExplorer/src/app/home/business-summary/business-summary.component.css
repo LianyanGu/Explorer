@@ -50,6 +50,20 @@
 }
 
 .businessImage {
-  width: 50%;
-  height: 20%;
+  height: 100px;
+  weight: 200px;
+}
+
+.image {
+  margin-right: 20px;
+}
+
+.business {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rateReview {
+  display: flex;
+  flex-direction: column;
 }

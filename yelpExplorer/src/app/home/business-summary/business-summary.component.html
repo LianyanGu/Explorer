@@ -1,69 +1,72 @@
 <div class="container card shadowMargin">
   <div class="business-summary card-body">
     <!--Business Name-->
-    <div class="firstLine">
-      <h5 class="businessName card-title" (click)="onClickBusiness()"
-          [routerLink]="['/businesses', business.id]"
-          style="cursor: pointer;">
-        {{business.name}}
-      </h5>
-      <!--Star rating-->
-      <div class="starRating">
-        <div [ngClass]="getNumberOfStars()"
-             class="rating small star-icon color-negative label-right">
-          <div class="star-container">
-            <div class="star">
-              <i class="star-empty"></i>
-              <i class="star-half"></i>
-              <i class="star-filled"></i>
-            </div>
-            <div class="star">
-              <i class="star-empty"></i>
-              <i class="star-half"></i>
-              <i class="star-filled"></i>
-            </div>
-            <div class="star">
-              <i class="star-empty"></i>
-              <i class="star-half"></i>
-              <i class="star-filled"></i>
-            </div>
-            <div class="star">
-              <i class="star-empty"></i>
-              <i class="star-half"></i>
-              <i class="star-filled"></i>
-            </div>
-            <div class="star">
-              <i class="star-empty"></i>
-              <i class="star-half"></i>
-              <i class="star-filled"></i>
+    <h5 class="businessName card-title" (click)="onClickBusiness()"
+        [routerLink]="['/businesses', business.id]"
+        style="cursor: pointer;">
+      {{business.name}}
+    </h5>
+    <!--Star rating-->
+    <div class="business">
+      <div class="image">
+        <img class="businessImage" src={{photoUrl}}>
+      </div>
+      <div class="businessDesc">
+        <div class="secLine">
+          <!--Dollar rating-->
+          <div class="dollarSign">
+            <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 1 ? 'red' : 'grey' }"></i>
+            <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 2 ? 'red' : 'grey' }"></i>
+            <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 3 ? 'red' : 'grey' }"></i>
+            <i class="fa fa-dollar" [ngStyle]="{'color':priceRange === 4  ? 'red' : 'grey' }"></i>
+          </div>
+          <!--categories-->
+          <div class="categories" *ngIf="categories">
+            {{categoryNames}}
+          </div>
+          <!--Number of reviews-->
+        </div>
+        <div class="thirdLine">
+          {{address}}
+        </div>
+      </div>
+      <div class="rateReview">
+        <div class="starRating">
+          <div [ngClass]="getNumberOfStars()"
+               class="rating small star-icon color-negative label-right">
+            <div class="star-container">
+              <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+              </div>
+              <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+              </div>
+              <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+              </div>
+              <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+              </div>
+              <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+              </div>
             </div>
           </div>
         </div>
+        <div class="reviewCount">
+          {{business.reviewCount}} reviews
+        </div>
       </div>
-    </div>
-    <div class="secLine">
-      <!--Dollar rating-->
-      <div class="dollarSign">
-        <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 1 ? 'red' : 'grey' }"></i>
-        <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 2 ? 'red' : 'grey' }"></i>
-        <i class="fa fa-dollar" [ngStyle]="{'color':priceRange >= 3 ? 'red' : 'grey' }"></i>
-        <i class="fa fa-dollar" [ngStyle]="{'color':priceRange === 4  ? 'red' : 'grey' }"></i>
-      </div>
-      <!--categories-->
-      <div class="categories" *ngIf="categories">
-        {{categoryNames}}
-      </div>
-      <!--Number of reviews-->
-      <div class="reviewCount">
-        {{business.reviewCount}} reviews
-      </div>
-    </div>
-    <div class="thirdLine">
-      <!--Address-->
-      {{address}}
-    </div>
-    <div class="businessImage">
-      <img src = {{photoUrl}}>
     </div>
   </div>
 </div>

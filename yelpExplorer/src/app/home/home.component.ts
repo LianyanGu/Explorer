@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   businessName: string;
   errorMsg: string;
   backgroundColor: string;
+  error = false;
 
   constructor(private businessService: BusinessService,
               private pagerService: PagerService,
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit {
           this.businessName = params['businessName'];
           if (!this.city) {
             this.businessLoaded = false;
+            this.error = true;
             this.errorMsg = 'Please input the city name you want to search in';
           } else if (!this.businessName) {
             this.getBusinessByCity(this.city);
@@ -44,16 +46,17 @@ export class HomeComponent implements OnInit {
   }
 
   getBusinessByCity(city: string) {
+    this.clearBusinesses();
     this.businessService.getBusinessesByCity(city)
       .subscribe(
         (response) => {
-          console.log(city);
           if (response.length !== 0) {
             this.businessLoaded = true;
             this.businesses = response;
             this.setPage(1);
           } else {
             this.businessLoaded = false;
+            this.error = true;
             this.errorMsg = 'Cannot find business based on the city you input';
           }
         }
@@ -62,6 +65,7 @@ export class HomeComponent implements OnInit {
 
   // TODO: CHECK IF THIS LOGIC IS GOOD, IF CANNOT FIND BUSINESS BASED ON USER INPUT
   getBusinessesByCityAndName(city: string, name: string) {
+    this.clearBusinesses();
     this.businessService.getBusinessByCityAndName(city, name)
       .subscribe(
         (response) => {
@@ -70,6 +74,7 @@ export class HomeComponent implements OnInit {
             this.businesses = response;
             this.setPage(1);
           } else {
+            this.error = true;
             this.businessLoaded = false;
             this.errorMsg = 'Cannot find business based on the city and businessName you input';
           }
@@ -77,6 +82,11 @@ export class HomeComponent implements OnInit {
       );
   }
 
+  clearBusinesses() {
+    this.businesses = [];
+    this.pagedItems = [];
+    this.pager = {};
+  }
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {

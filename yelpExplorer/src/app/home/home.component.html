@@ -1,4 +1,4 @@
-<ng-container *ngIf="businessLoaded; else missInfo">
+<ng-container *ngIf="businessLoaded">
   <div *ngFor="let business of pagedItems; let i = index">
     <app-business-summary
       [business]="business"
@@ -27,10 +27,8 @@
   </div>
 </ng-container>
 
-<div class="align-content-center">
-  <ng-template #missInfo>
-    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-  </ng-template>
+<div *ngIf="!businessLoaded" class="align-content-center">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>
 
 

@@ -15,6 +15,11 @@
 
 .photoSection {
   margin-right: 20px;
+  flex: 0 0 10%;
+}
+
+.businessDescSection {
+  flex: 0 0 50%;
 }
 
 .starRating {

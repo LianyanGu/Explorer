@@ -55,15 +55,37 @@
 }
 
 .image {
-  margin-right: 20px;
+  margin-right: 50px;
 }
 
 .business {
   display: flex;
-  justify-content: space-between;
 }
 
 .rateReview {
   display: flex;
   flex-direction: column;
+  margin-left: auto;
 }
+
+.reviewTab {
+  display: flex;
+}
+
+.reviews {
+  flex: 0 0 70%;
+}
+
+.attributes {
+  flex: 0 0 30%;
+}
+
+.tipTab {
+  display: flex;
+}
+
+.tips {
+  flex: 0 0 70%;
+}
+
+

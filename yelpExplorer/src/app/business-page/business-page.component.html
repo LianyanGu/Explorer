@@ -12,22 +12,19 @@
   </ng-template>
   <div *ngIf="isOpen">
     <mat-tab-group>
-      <mat-tab label="More Information">
-        <div>
-          <app-attributes [attributes]="attributes"></app-attributes>
-        </div>
-      </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label>
           Reviews({{business.reviewCount}})
         </ng-template>
-        <div>
+        <div class="reviews">
           <app-reviews [businessId]="businessId"></app-reviews>
+          <app-attributes [attributes]="attributes"></app-attributes>
         </div>
       </mat-tab>
       <mat-tab label="Tips">
-        <div>
+        <div class="tips">
           <app-tips [businessId]="businessId"></app-tips>
+          <app-attributes [attributes]="attributes"></app-attributes>
         </div>
       </mat-tab>
     </mat-tab-group>

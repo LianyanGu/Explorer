@@ -1,4 +1,4 @@
-<div class="container card shadowMargin">
+<div class="container-fluid card shadowMargin">
   <div class="userReview card-body" *ngIf="business">
     <h5 class="card-title" (click)="onClickBusiness()"
         [routerLink]="['/businesses', business.id]"
@@ -58,9 +58,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      {{review.text}}
+      <div>
+        {{review.text}}
+      </div>
     </div>
   </div>
 </div>

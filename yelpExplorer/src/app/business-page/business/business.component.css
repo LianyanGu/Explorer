@@ -38,10 +38,10 @@
   cursor: pointer;
   color: #FFF !important;
   padding-top: 4px;
-  height: 50px;
+  height: auto;
   position: absolute;
   text-align: center;
-  width: 50px;
+  width: 200px;
 }
 
 .business {

@@ -4,13 +4,17 @@ import {environment} from '../../../environments/environment';
 import {ReviewView} from '../../models/ReviewView';
 import {Review} from '../../models/Review';
 import {Observable} from 'rxjs/Observable';
+import {UserService} from '../user/user.service';
+import {User} from '../../models/User';
 
 const BASE = environment.apiUrl;
 
 @Injectable()
 export class ReviewsService {
 
-  constructor(private httpClient: HttpClient) {
+  user: User;
+
+  constructor(private httpClient: HttpClient, private userService: UserService) {
   }
 
   domain = `${BASE}`;
@@ -27,12 +31,21 @@ export class ReviewsService {
     return this.httpClient.get<ReviewView[]>(url);
   }
 
-  addReview(businessId: string, stars: number, text: string): Observable<any> {
+  addReview(businessId: string, userId: string, stars: number, text: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
     const apiCall = 'addReview';
-    const review = new Review(businessId, stars, 'date', text, 0, 0, 0);
+    this.userService.getUser('QfRT_kE-eYlzbxCO81xctQ')
+      .subscribe(
+        (response) => {
+          console.log('success');
+          this.user = response;
+        }
+      );
+    const review = new ReviewView(businessId, userId, stars, 'date',
+      text, 0, 0, 0, this.user.userName, this.user.reviewCount,
+      this.user.yelpingSince);
     const url = `${this.domain}/${apiCall}`;
     return this.httpClient.post(url, review, httpOptions);
   }

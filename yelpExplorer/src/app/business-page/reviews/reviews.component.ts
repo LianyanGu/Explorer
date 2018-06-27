@@ -15,6 +15,8 @@ export class ReviewsComponent implements OnInit {
   pager: any = {};
   pagedItems: any[];
   newReview: string;
+  stars: number;
+  userId: string;
 
 
   constructor(private reviewsService: ReviewsService,
@@ -31,17 +33,22 @@ export class ReviewsComponent implements OnInit {
       );
   }
 
-  // addReview() {
-  //   this.reviewsService.addReview(new Review(this.businessId, 5, '2018/01/01', this.newReview, 0, 0, 0))
-  //     .subscribe(
-  //       (response) => {
-  //         console.log(response);
-  //       },
-  //       (error) => {
-  //         console.log(error);
-  //       }
-  //     );
-  // }
+  addReview() {
+    console.log(this.businessId);
+    console.log(this.stars);
+    console.log(this.newReview);
+    console.log(this.userId);
+    this.reviewsService.addReview(this.businessId, this.userId, 5, this.newReview)
+      .subscribe(
+        (response) => {
+          console.log('success');
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {

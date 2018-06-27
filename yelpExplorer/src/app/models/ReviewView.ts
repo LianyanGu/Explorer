@@ -13,9 +13,9 @@ export class ReviewView {
   funny: number;
   cool: number;
 
-  constructor(id: string, businessId: string, userId: string, reviewCount: number, yelpingSince: string, stars: number,
-              date: string, userName: string, text: string, useful: number, funny: number, cool: number) {
-    this.id = id;
+  constructor(businessId: string, userId: string, stars: number, date: string, text: string,
+              useful: number, funny: number, cool: number, userName: string,
+              reviewCount: number, yelpingSince: string) {
     this.businessId = businessId;
     this.userId = userId;
     this.reviewCount = reviewCount;

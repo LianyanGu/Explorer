@@ -8,8 +8,11 @@
     </h5>
     <!--Star rating-->
     <div class="business">
-      <div *ngIf="photo" class="image">
+      <div *ngIf="photo">
         <img class="businessImage" src={{photoUrl}}>
+      </div>
+      <div *ngIf="!photo" class="image">
+        <img class="businessImage" src="../assets/images/businessNotFound.jpg" alt="business image is not found">
       </div>
       <div class="businessDesc">
         <div class="secLine">

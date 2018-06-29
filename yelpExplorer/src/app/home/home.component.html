@@ -27,12 +27,12 @@
   </div>
 </ng-container>
 
-<div *ngIf="!businessLoaded" class="spinner">
+<div *ngIf="!businessLoaded && !error" class="spinner">
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>
 
 
-<div *ngIf="error">
+<div *ngIf="error && !businessLoaded">
   <div class="alert alert-danger" role="alert">
     <strong>Woops!</strong> {{errorMsg}}
   </div>

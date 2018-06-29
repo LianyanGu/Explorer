@@ -9,6 +9,9 @@
       <div *ngIf="photo" class="photoSection">
         <img class="userReviewPhoto" src={{photoUrl}}>
       </div>
+      <div *ngIf="!photo" class="photoSection">
+        <img class="userReviewPhoto" src="../../../assets/images/businessNotFound.jpg" alt="business image does not exist">
+      </div>
       <div class="businessDescSection">
         <div *ngIf="categories">
           {{categoryNames}}

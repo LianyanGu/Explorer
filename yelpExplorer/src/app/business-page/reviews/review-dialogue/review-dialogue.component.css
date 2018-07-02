@@ -1,0 +1,12 @@
+.reviewSpace {
+  width: 100%;
+}
+
+.rate {
+  display: flex;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: space-around;
+}

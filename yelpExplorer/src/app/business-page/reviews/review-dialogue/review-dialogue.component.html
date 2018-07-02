@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Please write a review for {{data.businessName}}</h1>
+<div mat-dialog-content>
+  <p>Give your rate</p>
+  <div class="rate">
+    <mat-form-field>
+      <input matInput type="number" min="1" max="5" placeholder="1 to 5, integers please" [(ngModel)]="data.stars">
+    </mat-form-field>
+    <div [ngClass]="getNumberOfStars()" class="rating medium star-icon color-negative label-right">
+      <div class="star-container">
+        <div class="star">
+          <i class="star-empty"></i>
+          <i class="star-half"></i>
+          <i class="star-filled"></i>
+        </div>
+        <div class="star">
+          <i class="star-empty"></i>
+          <i class="star-half"></i>
+          <i class="star-filled"></i>
+        </div>
+        <div class="star">
+          <i class="star-empty"></i>
+          <i class="star-half"></i>
+          <i class="star-filled"></i>
+        </div>
+        <div class="star">
+          <i class="star-empty"></i>
+          <i class="star-half"></i>
+          <i class="star-filled"></i>
+        </div>
+        <div class="star">
+          <i class="star-empty"></i>
+          <i class="star-half"></i>
+          <i class="star-filled"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>Your review</p>
+  <mat-form-field class="reviewSpace">
+    <textarea matInput
+              matTextareaAutosize
+              matAutosizeMinRows=3
+              matAutosizeMaxRows=5
+              [(ngModel)]="data.text"
+              placeholder="Feel free to share what you think of this business with other people ">
+    </textarea>
+  </mat-form-field>
+  <p>userId</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.userId">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="actionButtons">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button color="accent" [mat-dialog-close]="data" cdkFocusInitial>Submit</button>
+</div>
+

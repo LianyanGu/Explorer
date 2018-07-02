@@ -32,6 +32,8 @@ import 'hammerjs';
 import 'mousetrap';
 import {ModalGalleryModule} from 'angular-modal-gallery';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ReviewDialogueComponent } from './business-page/reviews/review-dialogue/review-dialogue.component';
+import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     UserDetailComponent,
     UserReviewsComponent,
     UserTipsComponent,
-    UserFriendsComponent
+    UserFriendsComponent,
+    ReviewDialogueComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     BrowserAnimationsModule,
     MatTabsModule,
     MatCardModule,
+    MatButtonModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
     ModalGalleryModule.forRoot()
   ],
   exports: [
@@ -73,6 +80,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReviewsService,
     TipsService,
     UserService
+  ],
+  entryComponents: [
+    ReviewDialogueComponent
   ],
   bootstrap: [AppComponent]
 })

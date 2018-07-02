@@ -1,16 +1,32 @@
 <div>
-  <button class="btn btn-primary" (click)="addReview(businessId, stars, newReview)">
-    Add a review
+  <!--<button class="btn btn-primary"-->
+  <!--(click)="addReview(businessId, stars, newReview)"-->
+  <!--type="button"-->
+  <!--class="btn btn-primary"-->
+  <!--data-toggle="modal"-->
+  <!--data-target="#exampleModalCenter">-->
+  <!--Add a review-->
+  <!--</button>-->
+
+  <button type="button"
+          (click)="openDialog()"
+          class="btn btn-primary">
+    write a review
   </button>
-  <input type="string"
-         placeholder="We welcome your review on this business"
-         [(ngModel)]='newReview'>
-  <input type="number"
-         placeholder="star rating"
-         [(ngModel)]='stars'>
-  <input type="string"
-         placeholder="userId"
-         [(ngModel)]='userId'>
+
+  <li *ngIf="starsGiven">
+    You give rate: <i>{{starsGiven}}</i>
+  </li>
+
+  <!--<input type="string"-->
+         <!--placeholder="We welcome your review on this business"-->
+         <!--[(ngModel)]='newReview'>-->
+  <!--<input type="number"-->
+         <!--placeholder="star rating"-->
+         <!--[(ngModel)]='starsGiven'>-->
+  <!--<input type="string"-->
+         <!--placeholder="userId"-->
+         <!--[(ngModel)]='userId'>-->
 </div>
 <ng-container *ngIf="reviews">
   <div class="reviews"

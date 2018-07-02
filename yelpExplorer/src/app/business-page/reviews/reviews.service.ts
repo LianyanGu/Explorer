@@ -13,6 +13,10 @@ const BASE = environment.apiUrl;
 export class ReviewsService {
 
   user: User;
+  userName: string;
+  reviewCount: number;
+  yelpingSince: string;
+  review: ReviewView;
 
   constructor(private httpClient: HttpClient, private userService: UserService) {
   }
@@ -31,24 +35,27 @@ export class ReviewsService {
     return this.httpClient.get<ReviewView[]>(url);
   }
 
-  addReview(businessId: string, userId: string, stars: number, text: string): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    };
-    const apiCall = 'addReview';
-    this.userService.getUser('QfRT_kE-eYlzbxCO81xctQ')
-      .subscribe(
-        (response) => {
-          console.log('success');
-          this.user = response;
-        }
-      );
-    const review = new ReviewView(businessId, userId, stars, 'date',
-      text, 0, 0, 0, this.user.userName, this.user.reviewCount,
-      this.user.yelpingSince);
-    const url = `${this.domain}/${apiCall}`;
-    return this.httpClient.post(url, review, httpOptions);
-  }
+  // addReview(businessId: string, userId: string, stars: number, text: string) {
+  //   // const httpOptions = {
+  //   //   headers: new HttpHeaders({'Content-Type': 'application/json'})
+  //   // };
+  //   // const apiCall = 'addReview';
+  //   // const $user = this.userService.getUser('QfRT_kE-eYlzbxCO81xctQ');
+  //   // $user.subscribe(
+  //   //   (response) => {
+  //   //     this.user = response;
+  //   //     this.userName = this.user.userName;
+  //   //     this.reviewCount = this.user.reviewCount;
+  //   //     this.yelpingSince = this.user.yelpingSince;
+  //   //     this.review = new ReviewView(businessId, userId, stars, 'date',
+  //   //       text, 0, 0, 0, this.userName, this.reviewCount,
+  //   //       this.yelpingSince);
+  //   //   });
+  //   // const url = `${this.domain}/${apiCall}`;
+  //   // return this.httpClient.post(url, this.review, httpOptions).subscribe(() => 'review added');
+  //   //
+  //
+  // }
 
 
 }

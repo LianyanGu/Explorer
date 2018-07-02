@@ -1,26 +1,57 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {ReviewsService} from './reviews.service';
 import {ReviewView} from '../../models/ReviewView';
 import {PagerService} from '../../pager.service';
-import {Review} from '../../models/Review';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {ReviewDialogueComponent} from './review-dialogue/review-dialogue.component';
+import {Business} from '../../models/Business';
+import {BusinessService} from '../business.service';
+
+export interface DialogData {
+  businessName: string;
+  stars: number;
+  text: string;
+  userId: string;
+}
 
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.css']
 })
+
 export class ReviewsComponent implements OnInit {
   @Input() businessId: string;
   reviews: ReviewView[];
   pager: any = {};
   pagedItems: any[];
-  newReview: string;
-  stars: number;
+  text: string;
+  starsGiven: number;
   userId: string;
+  businessName: string;
 
 
   constructor(private reviewsService: ReviewsService,
-              private pagerService: PagerService) {
+              private pagerService: PagerService,
+              private businessService: BusinessService,
+              public dialog: MatDialog) {
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ReviewDialogueComponent, {
+      width: '700px',
+      data: {
+        stars: this.starsGiven, text: this.text,
+        userId: this.userId, businessName: this.businessName
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      console.log(this.businessId);
+      this.starsGiven = result;
+    });
   }
 
   ngOnInit() {
@@ -31,24 +62,30 @@ export class ReviewsComponent implements OnInit {
           this.setPage(1);
         }
       );
+    this.getBusinessName(this.businessId);
+  }
+
+  getBusinessName(businessId: string) {
+    this.businessService.getSelectedBusiness(businessId).subscribe(
+      (selectedBusiness: Business) => {
+        this.businessName = selectedBusiness.name;
+      }
+    );
   }
 
   addReview() {
-    console.log(this.businessId);
-    console.log(this.stars);
-    console.log(this.newReview);
-    console.log(this.userId);
-    this.reviewsService.addReview(this.businessId, this.userId, 5, this.newReview)
-      .subscribe(
-        (response) => {
-          console.log('success');
-          console.log(response);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    // this.reviewsService.addReview(this.businessId, this.userId, this.stars, this.newReview)
+    //   .subscribe(
+    //     (response) => {
+    //       console.log('success');
+    //       console.log(response);
+    //     },
+    //     (error) => {
+    //       console.log(error);
+    //     }
+    //   );
   }
+
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
@@ -64,3 +101,4 @@ export class ReviewsComponent implements OnInit {
 
 
 }
+

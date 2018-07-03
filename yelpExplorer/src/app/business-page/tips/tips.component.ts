@@ -2,6 +2,16 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TipsService} from './tips.service';
 import {TipView} from '../../models/TipView';
 import {PagerService} from '../../pager.service';
+import {MatDialog} from '@angular/material';
+import {ReviewDialogueComponent} from '../reviews/review-dialogue/review-dialogue.component';
+import {TipDialogueComponent} from './tip-dialogue/tip-dialogue.component';
+import {Business} from '../../models/Business';
+import {BusinessService} from '../business.service';
+
+export interface DialogData {
+  text: string;
+  businessName: string;
+}
 
 @Component({
   selector: 'app-tips',
@@ -14,10 +24,26 @@ export class TipsComponent implements OnInit {
   tips: TipView[];
   pager: any = {};
   pagedItems: any[];
-  newTip: string;
+  text: string;
+  businessName: string;
 
   constructor(private tipsService: TipsService,
-              private pagerService: PagerService) {
+              private pagerService: PagerService,
+              private businessService: BusinessService,
+              public dialog: MatDialog) {
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(TipDialogueComponent, {
+      width: '700px',
+      data: {text : this.text}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      this.text = result;
+    });
   }
 
   ngOnInit() {
@@ -28,6 +54,15 @@ export class TipsComponent implements OnInit {
           this.setPage(1);
         }
       );
+    this.getBusinessName(this.businessId);
+  }
+
+  getBusinessName(businessId: string) {
+    this.businessService.getSelectedBusiness(businessId).subscribe(
+      (selectedBusiness: Business) => {
+        this.businessName = selectedBusiness.name;
+      }
+    );
   }
 
   setPage(page: number) {

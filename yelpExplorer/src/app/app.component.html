@@ -2,28 +2,52 @@
   'page-centered':businessLoaded === true,
   'container-fluid':businessLoaded === false
   }">
-  <div class="search-bar">
-    <div class="row d-flex flex-row">
-      <div class="p-2">
-        <input type="string"
-               placeholder="Please type the city"
-               [(ngModel)]='city'>
-      </div>
-      <div class="p-2">
-        <input type="string"
-               placeholder="Please type the businessName"
-               [(ngModel)]='businessName'>
-      </div>
-      <div class="p-2">
-        <button class="btn btn-primary"
-                [routerLink]="['businesses','city']"
-                [queryParams]="{city:city, businessName: businessName}">
-          Search
-        </button>
-      </div>
+  <div class="searchLogin">
+    <div class="search-bar">
+      <input type="string"
+             placeholder="city name"
+             [(ngModel)]='city' class="breathSpace">
+      <input type="string"
+             placeholder="business Name"
+             [(ngModel)]='businessName' class="breathSpace">
+      <button mat-stroked-button color="primary"
+              [routerLink]="['businesses','city']"
+              [queryParams]="{city:city, businessName: businessName}">
+        Search
+      </button>
+    </div>
+    <div class="login">
+      <button mat-button color="accent"
+              [routerLink]="['login']">
+        Log In
+      </button>
     </div>
   </div>
   <router-outlet></router-outlet>
+  <footer>
+    <p>&copy; All rights reserved for <i>StickyFooterApp</i> 2018</p>
+    <p>Supporting Technology powered by:</p>
+    <div>
+      java
+      spring boot
+      hibernate
+      sql bench
+      Bootstrap
+      I do not own the images here, the resouces are from Yelp website
+    </div>
+    <a href="https://www.linkedin.com/in/lianyan-g-157513b1/">
+      <button class="-linkedin">
+        <i class="fa fa-linkedin cursor"></i>
+        LinkedIn
+      </button>
+    </a>
+    <a href="https://github.com/LianyanGu">
+      <button class="-github cursor">
+        <i class="fa fa-github"></i>
+        GitHub
+      </button>
+    </a>
+  </footer>
 </div>
 
 

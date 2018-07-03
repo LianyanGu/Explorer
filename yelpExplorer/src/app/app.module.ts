@@ -34,6 +34,8 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ReviewDialogueComponent } from './business-page/reviews/review-dialogue/review-dialogue.component';
 import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import { TipDialogueComponent } from './business-page/tips/tip-dialogue/tip-dialogue.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} fr
     UserReviewsComponent,
     UserTipsComponent,
     UserFriendsComponent,
-    ReviewDialogueComponent
+    ReviewDialogueComponent,
+    TipDialogueComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +86,8 @@ import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} fr
     UserService
   ],
   entryComponents: [
-    ReviewDialogueComponent
+    ReviewDialogueComponent,
+    TipDialogueComponent
   ],
   bootstrap: [AppComponent]
 })

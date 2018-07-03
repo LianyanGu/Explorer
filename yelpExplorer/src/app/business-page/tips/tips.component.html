@@ -1,10 +1,7 @@
 <div>
-  <button class="btn btn-primary" (click)="addTip()">
-    Add a Tip
+  <button class="btn btn-primary" (click)="openDialog()">
+    Write a Tip
   </button>
-  <input type="string"
-         placeholder="We welcome your tip on this business"
-         [(ngModel)]='newTip'>
 </div>
 <ng-container *ngIf="tips" class="container">
   <div *ngFor="let tip of pagedItems">

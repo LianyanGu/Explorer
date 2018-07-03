@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   city: string;
   businessName: string;
 
-
   constructor() {
   }
 

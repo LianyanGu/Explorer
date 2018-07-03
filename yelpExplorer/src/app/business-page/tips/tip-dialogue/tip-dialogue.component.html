@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Please write a tip for {{data.businessName}}</h1>
+<div mat-dialog-content>
+  <p>Your Tip</p>
+  <mat-form-field class="tipSpace">
+    <textarea matInput
+              matTextareaAutosize
+              matAutosizeMinRows=1
+              matAutosizeMaxRows=3
+              [(ngModel)]="data.text"
+              placeholder="Share your tips with other people ">
+    </textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="actionButtons">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button color="accent" [mat-dialog-close]="data" cdkFocusInitial>Submit</button>
+</div>

@@ -18,8 +18,15 @@
     </div>
     <div class="login">
       <button mat-button color="accent"
-              [routerLink]="['login']">
+              [routerLink]="['login']"
+              *ngIf="!loggedIn">
         Log In
+      </button>
+      <button mat-button color="primary"
+              href="#"
+              onclick="signOut();"
+              *ngIf="loggedIn">
+        Sign out
       </button>
     </div>
   </div>

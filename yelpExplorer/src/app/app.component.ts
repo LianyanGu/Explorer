@@ -9,6 +9,7 @@ import {HomeComponent} from './home/home.component';
 export class AppComponent implements OnInit {
 
   title = 'app';
+  loggedIn = false;
 
 
   city: string;

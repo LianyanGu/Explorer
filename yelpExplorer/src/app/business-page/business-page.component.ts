@@ -15,6 +15,7 @@ export class BusinessPageComponent implements OnInit {
   businessId: string;
   attributes: Attribute[];
   isOpen: boolean;
+  displayAllPhotos = false;
 
   constructor(private businessService: BusinessService,
               private route: ActivatedRoute) {
@@ -38,5 +39,9 @@ export class BusinessPageComponent implements OnInit {
         this.isOpen = this.business.isOpen === 1 ? true : false;
       }
     );
+  }
+
+  onDisplayAllPhotos(displayPhotos: boolean) {
+    this.displayAllPhotos = displayPhotos;
   }
 }

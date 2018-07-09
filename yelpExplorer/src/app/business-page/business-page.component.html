@@ -4,30 +4,44 @@
   </nav>
   <div *ngIf="isOpen; else notOpen">
     <div>
-      <app-business [business]="business"></app-business>
+      <app-business
+        (displayAllPhotos)="onDisplayAllPhotos($event)"
+        [business]="business">
+      </app-business>
     </div>
   </div>
   <ng-template #notOpen>
     Business is Not Open
   </ng-template>
-  <div *ngIf="isOpen">
+  <div *ngIf="isOpen && !displayAllPhotos">
     <mat-tab-group>
       <mat-tab>
         <ng-template mat-tab-label>
           Reviews({{business.reviewCount}})
         </ng-template>
         <div class="reviews">
-          <app-reviews [businessId]="businessId"></app-reviews>
-          <app-attributes [attributes]="attributes"></app-attributes>
+          <div class="reviews-reviews">
+            <app-reviews [businessId]="businessId"></app-reviews>
+          </div>
+          <div class="reviews-attributes">
+            <app-attributes [attributes]="attributes"></app-attributes>
+          </div>
         </div>
       </mat-tab>
       <mat-tab label="Tips">
         <div class="tips">
-          <app-tips [businessId]="businessId"></app-tips>
-          <app-attributes [attributes]="attributes"></app-attributes>
+          <div class="tips-tips">
+            <app-tips [businessId]="businessId"></app-tips>
+          </div>
+          <div class="tips-attributes">
+            <app-attributes [attributes]="attributes"></app-attributes>
+          </div>
         </div>
       </mat-tab>
     </mat-tab-group>
+  </div>
+  <div *ngIf="displayAllPhotos">
+    <app-photos></app-photos>
   </div>
 </div>
 

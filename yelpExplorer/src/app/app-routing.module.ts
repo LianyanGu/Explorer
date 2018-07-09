@@ -7,6 +7,7 @@ import {BusinessComponent} from './business-page/business/business.component';
 import {BusinessPageComponent} from './business-page/business-page.component';
 import {UserDetailComponent} from './business-page/user/user-detail/user-detail.component';
 import {LoginComponent} from './login/login.component';
+import {PhotosComponent} from './business-page/photos/photos.component';
 
 const appRoutes: Routes = [
     {
@@ -21,15 +22,18 @@ const appRoutes: Routes = [
       path: 'businesses/:businessId',
       component: BusinessPageComponent,
       children: [
-        {path: 'reviews', component: ReviewsComponent},
-        {path: 'tips', component: TipsComponent},
+        {path: 'photos', component: PhotosComponent},
         {path: '', component: BusinessComponent}
       ]
     },
     {
       path: 'user-details',
       component: UserDetailComponent
-    }
+    },
+    // {
+    //   path: 'photos/:businessId',
+    //   component: PhotosComponent
+    // },
   ]
 ;
 

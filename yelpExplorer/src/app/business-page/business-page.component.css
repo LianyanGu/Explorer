@@ -10,3 +10,19 @@
 .tips {
   display: flex;
 }
+
+.tips-attributes {
+  flex: 0 0 30%;
+}
+
+.tips-tips {
+  flex: 0 0 70%;
+}
+
+.reviews-reviews {
+  flex: 0 0 80%;
+}
+
+.reviews-attributes{
+  flex: 0 0 20%
+}

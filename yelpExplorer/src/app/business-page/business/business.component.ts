@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {Business} from '../../models/Business';
 import {BusinessService} from '../business.service';
 import {AttributeComponent} from '../attributes/attribute/attribute.component';
@@ -26,6 +26,8 @@ export class BusinessComponent implements OnInit {
   plainGalleryRow: PlainGalleryConfig;
   customPlainGalleryRowConfig: PlainGalleryConfig;
 
+  @Output() displayAllPhotos = new EventEmitter<boolean>();
+
   constructor(private businessService: BusinessService) {
   }
 
@@ -37,7 +39,8 @@ export class BusinessComponent implements OnInit {
     this.loadPhotoList();
     this.customPlainGalleryRowConfig = {
       strategy: PlainGalleryStrategy.CUSTOM,
-      layout: new AdvancedLayout(-1, true)};
+      layout: new AdvancedLayout(-1, true)
+    };
   }
 
   openImageModalRow(image: Image) {
@@ -110,6 +113,15 @@ export class BusinessComponent implements OnInit {
           this.images = this.createImages(this.photosList);
         }
       );
+  }
+
+  showAllPhotos() {
+    this.displayAllPhotos.emit(true);
+    // this.displayAllPhotos = true;
+  }
+
+  hidePhotos() {
+    this.displayAllPhotos.emit(false);
   }
 
 }

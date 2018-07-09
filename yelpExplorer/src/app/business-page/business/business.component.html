@@ -75,6 +75,14 @@
                       [plainGalleryConfig]="customPlainGalleryRowConfig">
 
     </ks-modal-gallery>
+    <a [routerLink]="['/businesses', business.id, 'photos']"
+       (click)="showAllPhotos()">
+      See all {{images.length}} photos
+    </a>
+    <a [routerLink]="['/businesses', business.id]"
+    (click)="hidePhotos()">
+      Back to reviews and tips
+    </a>
   </div>
 </div>
 

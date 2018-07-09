@@ -13,10 +13,12 @@
     </div>
     <!--Elite years-->
     <ng-container *ngIf="eliteYears&&eliteYears.length>0">
-      Elite:
-      <div *ngFor="let eliteYear of eliteYears; let i=index">
-        <div *ngIf="i<2">
-          {{eliteYear.year}}
+      <div class="elite">
+        Elite:
+        <div class="eliteYear" *ngFor="let eliteYear of eliteYears; let i=index">
+          <div *ngIf="i<2">
+            {{eliteYear.year}}
+          </div>
         </div>
       </div>
     </ng-container>

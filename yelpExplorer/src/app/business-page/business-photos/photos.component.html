@@ -1,3 +1,30 @@
-<p>
-  photos works!blablabalbalbalal
-</p>
+<!--<ng-container *ngFor="let img of images; let i = index">-->
+  <!--<div *ngIf="i <= 5">-->
+    <!--<a class="more" *ngIf="i==5" (click)="openImageModalRow(img)"> +{{images.length - 5 - 1}} more </a>-->
+    <!--<img *ngIf="img.plain && img.plain.img; else noThumb"-->
+         <!--class="my-app-custom-image-row"-->
+         <!--[src]="img.plain.img"-->
+         <!--(click)="openImageModalRow(img)"-->
+         <!--[alt]="img.modal.description"/>-->
+
+    <!--<ng-template #noThumb>-->
+      <!--<img class="my-app-custom-image-row"-->
+           <!--[src]="img.modal.img"-->
+           <!--(click)="openImageModalRow(img)"-->
+           <!--[alt]="img.modal.description"/>-->
+    <!--</ng-template>-->
+  <!--</div>-->
+<!--</ng-container>-->
+
+<!--<ks-modal-gallery [modalImages]="images"-->
+                  <!--[previewConfig]="{number: 5}"-->
+                  <!--[plainGalleryConfig]="customPlainGalleryRowConfig">-->
+
+<!--</ks-modal-gallery>-->
+
+<mat-tab-group>
+  <mat-tab *ngFor="let label of photoLabels" label={{label}}>
+    something
+  </mat-tab>
+</mat-tab-group>
+

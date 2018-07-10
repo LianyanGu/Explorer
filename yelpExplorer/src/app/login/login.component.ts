@@ -24,7 +24,7 @@ export class LoginComponent implements AfterViewInit {
       });
       this.attachSignin(document.getElementById('googleBtn'));
     });
-    this.checkLoginStatus();
+    // this.checkLoginStatus();
   }
 
   attachSignin(element) {
@@ -49,10 +49,10 @@ export class LoginComponent implements AfterViewInit {
     console.log('User signed out.');
   }
 
-  checkLoginStatus() {
-    this.result = this.auth2.isSignedIn.get();
-    console.log(this.result);
-  }
+  // checkLoginStatus() {
+  //   this.result = this.auth2.isSignedIn.get();
+  //   console.log(this.result);
+  // }
 
   ngAfterViewInit() {
     this.googleInit();

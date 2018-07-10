@@ -36,7 +36,7 @@ import { ReviewDialogueComponent } from './business-page/reviews/review-dialogue
 import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import { TipDialogueComponent } from './business-page/tips/tip-dialogue/tip-dialogue.component';
 import { LoginComponent } from './login/login.component';
-import { PhotosComponent } from './business-page/photos/photos.component';
+import { PhotosComponent } from './business-page/business-photos/photos.component';
 
 
 @NgModule({

@@ -19,7 +19,8 @@
 }
 
 .businessDescSection {
-  flex: 0 0 50%;
+  flex: 0 0 20%;
+  margin-right: 10px;
 }
 
 .starRating {

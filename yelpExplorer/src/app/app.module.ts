@@ -30,7 +30,7 @@ import {UserTipsComponent} from './business-page/user/user-detail/user-tips/user
 import {UserFriendsComponent} from './business-page/user/user-detail/user-friends/user-friends.component';
 import 'hammerjs';
 import 'mousetrap';
-import {ModalGalleryModule} from 'angular-modal-gallery';
+import {ModalGalleryModule} from '@ks89/angular-modal-gallery';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ReviewDialogueComponent } from './business-page/reviews/review-dialogue/review-dialogue.component';
 import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';

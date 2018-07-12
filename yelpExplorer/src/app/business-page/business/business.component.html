@@ -50,7 +50,7 @@
   <div class="address">
     {{address}}
   </div>
-  <div class="busPics">
+  <div class="busPics" *ngIf="!allPhotoVisible">
     <div class="my-app-custom-plain-container-row">
       <ng-container *ngFor="let img of images; let i = index">
         <div *ngIf="i <= 5">
@@ -72,19 +72,18 @@
     </div>
     <ks-modal-gallery [modalImages]="images"
                       [previewConfig]="{number: 5}"
-                      [plainGalleryConfig]="customPlainGalleryRowConfig">
-
+                      [plainGalleryConfig]="customPlainGalleryRowConfig"
+                      [id]="0">
     </ks-modal-gallery>
-    <a [routerLink]="['/businesses', business.id, 'photos']"
-       (click)="showAllPhotos()">
-      See all {{images.length}} photos
-    </a>
-
-    <a [routerLink]="['/businesses', business.id]"
-       (click)="hidePhotos()">
-      Back to reviews and tips
-    </a>
   </div>
+  <a [routerLink]="['/businesses', business.id, 'photos']"
+     (click)="showAllPhotos()" *ngIf="!allPhotoVisible">
+    See all {{images.length}} photos
+  </a>
+  <a [routerLink]="['/businesses', business.id]"
+     (click)="hidePhotos()" *ngIf="allPhotoVisible">
+    Back to reviews and tips
+  </a>
 </div>
 
 

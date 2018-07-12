@@ -1,11 +1,9 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Business} from '../../models/Business';
 import {BusinessService} from '../business.service';
-import {AttributeComponent} from '../attributes/attribute/attribute.component';
 import {Category} from '../../models/Category';
 import {Photo} from '../../models/Photo';
-import {AdvancedLayout, Image, LineLayout, PlainGalleryConfig, PlainGalleryStrategy} from 'angular-modal-gallery';
-import {ModalImage} from 'angular-modal-gallery/src/model/image.class';
+import {AdvancedLayout, Image, PlainGalleryConfig, PlainGalleryStrategy} from '@ks89/angular-modal-gallery';
 
 @Component({
   selector: 'app-business',
@@ -23,9 +21,8 @@ export class BusinessComponent implements OnInit {
   newReview: string;
   photosList: Photo[];
   images: Image[] = [];
-  plainGalleryRow: PlainGalleryConfig;
   customPlainGalleryRowConfig: PlainGalleryConfig;
-
+  allPhotoVisible = false;
   @Output() displayAllPhotos = new EventEmitter<boolean>();
 
   constructor(private businessService: BusinessService) {
@@ -116,12 +113,14 @@ export class BusinessComponent implements OnInit {
   }
 
   showAllPhotos() {
-    this.displayAllPhotos.emit(true);
-    // this.displayAllPhotos = true;
+    this.allPhotoVisible = true;
+    this.displayAllPhotos.emit(this.allPhotoVisible);
   }
 
   hidePhotos() {
-    this.displayAllPhotos.emit(false);
+    this.allPhotoVisible = false;
+    this.displayAllPhotos.emit(this.allPhotoVisible);
+
   }
 
 }

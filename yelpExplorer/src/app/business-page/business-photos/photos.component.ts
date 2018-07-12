@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Photo} from '../../models/Photo';
-import {AdvancedLayout, Image, PlainGalleryConfig, PlainGalleryStrategy} from 'angular-modal-gallery';
+import {AdvancedLayout, GridLayout, Image, PlainGalleryConfig, PlainGalleryStrategy} from '@ks89/angular-modal-gallery';
 import {BusinessService} from '../business.service';
 import {Business} from '../../models/Business';
 
@@ -15,6 +15,11 @@ export class PhotosComponent implements OnInit {
   customPlainGalleryRowConfig: PlainGalleryConfig;
   @Input() business: Business;
   photoLabels = new Array<string>();
+  plainGalleryGrid: PlainGalleryConfig = {
+    strategy: PlainGalleryStrategy.GRID,
+    layout: new GridLayout({width: '300px', height: 'auto'}, {length: 5, wrap: true})
+  };
+  categorizedPhotoLists: Photo[][] = [];
 
   constructor(private businessService: BusinessService) {
   }
@@ -25,15 +30,6 @@ export class PhotosComponent implements OnInit {
       strategy: PlainGalleryStrategy.CUSTOM,
       layout: new AdvancedLayout(-1, true)
     };
-  }
-
-  openImageModalRow(image: Image) {
-    const index: number = this.getCurrentIndexCustomLayout(image, this.images);
-    this.customPlainGalleryRowConfig = Object.assign({}, this.customPlainGalleryRowConfig, {layout: new AdvancedLayout(index, true)});
-  }
-
-  private getCurrentIndexCustomLayout(image: Image, images: Image[]): number {
-    return image ? images.indexOf(image) : -1;
   }
 
   createImages(photosList: Photo[]) {
@@ -56,19 +52,30 @@ export class PhotosComponent implements OnInit {
           this.photosList = response;
           this.images = this.createImages(this.photosList);
           this.createPhotoTabs();
+          this.categorizeImages();
         }
       );
   }
 
+  categorizeImages() {
+    for (const label of this.photoLabels) {
+      const photoLists = this.photosList.filter((photo) => photo.label === label);
+      this.categorizedPhotoLists.push(photoLists);
+    }
+  }
+
+  convertPhotoToImages(photos: Photo[]) {
+    return this.createImages(photos);
+  }
+
   createPhotoTabs() {
-    const length = this.photosList.length;
     for (const photo of this.photosList) {
       const label = photo.label;
       if (this.photoLabels.indexOf(label) === -1) {
         this.photoLabels.push(label);
       }
     }
-    console.log(this.photoLabels);
   }
+
 
 }

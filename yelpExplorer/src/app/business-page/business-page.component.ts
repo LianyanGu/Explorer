@@ -36,7 +36,7 @@ export class BusinessPageComponent implements OnInit {
       (selectedBusiness: Business) => {
         this.business = selectedBusiness;
         this.attributes = this.business.attributes;
-        this.isOpen = this.business.isOpen === 1 ? true : false;
+        this.isOpen = this.business.isOpen === 1;
       }
     );
   }

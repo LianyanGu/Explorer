@@ -31,6 +31,7 @@ import {UserFriendsComponent} from './business-page/user/user-detail/user-friend
 import 'hammerjs';
 import 'mousetrap';
 import {ModalGalleryModule} from '@ks89/angular-modal-gallery';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ReviewDialogueComponent } from './business-page/reviews/review-dialogue/review-dialogue.component';
 import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
@@ -75,7 +76,8 @@ import { PhotosComponent } from './business-page/business-photos/photos.componen
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    ModalGalleryModule.forRoot()
+    ModalGalleryModule.forRoot(),
+    NgbModule.forRoot()
   ],
   exports: [
     HttpClientModule

@@ -10,3 +10,8 @@
   display: flex;
   justify-content: space-around;
 }
+
+.redStar {
+  color: red;
+  margin-bottom: 1rem;
+}

@@ -10,16 +10,13 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 export class ReviewDialogueComponent implements OnInit {
 
+
   constructor(public dialogRef: MatDialogRef<ReviewDialogueComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DialogData) {
   }
 
   onNoClick(): void {
     this.dialogRef.close();
-  }
-
-  getNumberOfStars() {
-    return 'value-' + Math.floor(this.data.stars);
   }
 
   ngOnInit() {

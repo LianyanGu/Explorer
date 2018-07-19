@@ -1,3 +1,35 @@
-<p>
-  user-friends works!
-</p>
+<div class="friendUsers">
+  <!--<ng-container *ngIf="eliteYears&&eliteYears.length>0">-->
+    <!--<div class="elite">-->
+      <!--Elite:-->
+      <!--<div class="eliteYear" *ngFor="let eliteYear of eliteYears; let i=index">-->
+        <!--<div *ngIf="i<2">-->
+          <!--{{eliteYear.year}}-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</ng-container>-->
+
+  <div class="card">
+    <div class="user">
+      <a [routerLink]="['/user-details']"
+         [queryParams]="{userId:id}">
+        {{friendUser.userName}}
+      </a>
+      <div>
+        {{friendUser.reviewCount}} reviews
+      </div>
+      <div>
+        {{friendUser.tips.length}} tips
+      </div>
+      <div>
+        yelping for {{yelpingYear}} years
+      </div>
+      <div>
+        Rating average: {{friendUser.averageStars}}
+      </div>
+    </div>
+  </div>
+
+
+</div>

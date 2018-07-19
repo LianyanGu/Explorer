@@ -7,5 +7,14 @@
 }
 
 .reviewText {
-  flex: 0 0 85%;
+  flex: 0 0 80%;
+}
+
+.reviewRate {
+  display: flex;
+  margin-top: 10px;
+}
+
+.buttonBreath {
+  margin-right: 10px;
 }

@@ -1,0 +1,9 @@
+.friendUsers {
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+}

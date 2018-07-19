@@ -32,5 +32,28 @@
   </div>
   <div class="reviewText">
     {{review.text}}
+    <div class="reviewRate">
+      <button
+        mat-stroked-button
+        color="primary"
+        class="buttonBreath"
+        (click)="reviewLabelClicked('useful')">
+        Useful {{review.useful}}
+      </button>
+      <button
+        mat-stroked-button
+        color="primary"
+        class="buttonBreath"
+        (click)="reviewLabelClicked('funny')">
+        Funny {{review.funny}}
+      </button>
+      <button
+        mat-stroked-button
+        color="primary"
+        class="buttonBreath"
+      (click)="reviewLabelClicked('cool')">
+        Cool {{review.cool}}
+      </button>
+    </div>
   </div>
 </div>

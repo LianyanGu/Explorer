@@ -42,11 +42,9 @@
           </ul>
         </div>
       </ng-container>
-
     </mat-tab>
 
     <mat-tab label="Tips ({{tips.length}})">
-
       <ng-container *ngIf="tips">
         <div *ngFor="let tip of pagedTips">
           <app-user-tips [tip]="tip"></app-user-tips>
@@ -72,13 +70,34 @@
           </ul>
         </div>
       </ng-container>
-
     </mat-tab>
 
     <mat-tab label="Friends">
-      <div>
-        <app-user-friends></app-user-friends>
-      </div>
+      <ng-container *ngIf="friendUsers">
+        <div *ngFor="let friendUser of friendUsers">
+          <app-user-friends [friendUser]="friendUser"></app-user-friends>
+        </div>
+        <div class="container">
+          <ul *ngIf="userPager.pages && userPager.pages.length" class="pagination">
+            <li class="page-item" [ngClass]="{disabled:userPager.currentPage === 1}">
+              <a class="page-link" (click)="setUserPage(1)">First Page</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:userPager.currentPage === 1}">
+              <a class="page-link" (click)="setUserPage(userPager.currentPage - 1)">Previous</a>
+            </li>
+            <li class="page-item" *ngFor="let userPage of userPager.pages"
+                [ngClass]="{active:userPager.currentPage === userPage}">
+              <a class="page-link" (click)="setUserPage(userPage)">{{userPage}}</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:userPager.currentPage === userPager.totalPages}">
+              <a class="page-link" (click)="setUserPage(userPager.currentPage + 1)">Next</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:userPager.currentPage === userPager.totalPages}">
+              <a class="page-link" (click)="setUserPage(userPager.totalPages)">Last Page</a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
     </mat-tab>
   </mat-tab-group>
 </div>

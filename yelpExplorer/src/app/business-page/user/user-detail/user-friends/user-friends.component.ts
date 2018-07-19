@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../../user.service';
-import {Friend} from '../../../../models/Friend';
+import {User} from '../../../../models/User';
 
 @Component({
   selector: 'app-user-friends',
@@ -8,20 +8,21 @@ import {Friend} from '../../../../models/Friend';
   styleUrls: ['./user-friends.component.css']
 })
 export class UserFriendsComponent implements OnInit {
+  @Input() friendUser: User;
+  yelpingYear: number;
 
-  userId: string;
-  friends: Friend[];
-
-  constructor(private userService: UserService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.userService.getFriendsByUser(this.userId)
-      .subscribe(
-        (response) => {
-          this.friends = response;
-        }
-      );
+    this.calculateYelpingYear(this.friendUser.yelpingSince);
   }
 
+  calculateYelpingYear(yelpingSince: string) {
+    if (yelpingSince) {
+      this.yelpingYear = 2018 - (parseInt(yelpingSince, 10));
+      return this.yelpingYear;
+    }
+    return 0;
+  }
 }

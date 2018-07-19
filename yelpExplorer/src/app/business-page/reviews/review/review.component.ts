@@ -8,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ReviewComponent implements OnInit {
   @Input() review;
   userId: string;
+  labelAlreadyClicked = false;
 
   constructor() {
   }
@@ -18,6 +19,21 @@ export class ReviewComponent implements OnInit {
 
   getNumberOfStars() {
     return 'value-' + Math.floor(this.review.stars);
+  }
+
+  reviewLabelClicked(label: string) {
+    switch (label) {
+      case 'useful':
+        this.review.useful += this.labelAlreadyClicked ? -1 : 1;
+        break;
+      case 'funny':
+        this.review.funny += this.labelAlreadyClicked ? -1 : 1;
+        break;
+      case 'cool':
+        this.review.cool += this.labelAlreadyClicked ? -1 : 1;
+        break;
+    }
+    this.labelAlreadyClicked = !this.labelAlreadyClicked;
   }
 
 }

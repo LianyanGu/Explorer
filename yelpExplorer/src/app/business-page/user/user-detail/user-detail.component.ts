@@ -10,6 +10,7 @@ import {Business} from '../../../models/Business';
 import {BusinessService} from '../../business.service';
 import {PagerService} from '../../../pager.service';
 import {EliteYear} from '../../../models/EliteYear';
+import {Friend} from '../../../models/Friend';
 
 @Component({
   selector: 'app-user-detail',
@@ -23,9 +24,19 @@ export class UserDetailComponent implements OnInit {
   tips: TipView[];
   user: User;
   pager: any = {};
+
   tipPager: any = {};
   pagedItems: any[];
   pagedTips: any[];
+
+  friends: Friend[];
+  friendUsers = [];
+  friendUser: User;
+  eliteYears: EliteYear[];
+
+  pagedUsers: any[];
+  userPager: any = {};
+
 
   constructor(private route: ActivatedRoute,
               private reviewsService: ReviewsService,
@@ -49,6 +60,7 @@ export class UserDetailComponent implements OnInit {
       );
     this.getReviewsByUserId(this.userId);
     this.getTipsByUserId(this.userId);
+    this.getFriendsByUser(this.userId);
   }
 
   getReviewsByUserId(userId: string) {
@@ -71,6 +83,35 @@ export class UserDetailComponent implements OnInit {
       );
   }
 
+  getFriendsByUser(userId: string) {
+    this.userService.getFriendsByUser(userId)
+      .subscribe(
+        (response) => {
+          this.friends = response;
+          console.log('this.friends');
+          console.log(this.friends);
+          this.setUserPage(1);
+          this.getEachFriend(this.friends);
+        },
+        (error) => {
+          console.log('error here');
+        }
+      );
+  }
+
+  getEachFriend(friends: Friend[]) {
+    for (const friend of friends) {
+      this.userService.getUser(friend.friendId)
+        .subscribe(
+          (response) => {
+            this.friendUser = response;
+            this.eliteYears = this.friendUser.eliteYears;
+            this.friendUsers.push(this.friendUser);
+          }
+        );
+    }
+  }
+
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
       return;
@@ -80,12 +121,18 @@ export class UserDetailComponent implements OnInit {
   }
 
   setTipPage(tipPage: number) {
-    if (tipPage < 1 || tipPage > this.pager.totalPages) {
+    if (tipPage < 1 || tipPage > this.tipPager.totalPages) {
       return;
     }
     this.tipPager = this.pagerService.getPager(this.tips.length, tipPage);
     this.pagedTips = this.tips.slice(this.tipPager.startIndex, this.tipPager.endIndex + 1);
-
   }
 
+  setUserPage(userPage: number) {
+    if (userPage < 1 || userPage > this.userPager.totalPages) {
+      return;
+    }
+    this.userPager = this.pagerService.getPager(this.friends.length, userPage);
+    this.pagedUsers = this.friends.slice(this.userPager.startIndex, this.userPager.endIndex + 1);
+  }
 }

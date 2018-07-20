@@ -5,10 +5,23 @@
     write a review
   </button>
 
-  <li *ngIf="starsGiven">
-    You give rate: <i>{{starsGiven}}</i>
-  </li>
+  <Input type="text"
+         [(ngModel)]="searchKeyword"
+         ngDefaultControl>
+  <button
+    (click)="filterReviews(searchKeyword)">
+    <i class="fa fa-search"></i>
+  </button>
+  <div *ngIf="searched">
+    <div>
+      We found {{filteredReviewList.length}} reviews containing
+      <!--TODO fix 2 way binding after first search, show typed word after press button-->
+      <span class="searchKeyword">{{searchKeyword.slice(0,70)}}</span>
+    </div>
+  </div>
 </div>
+
+<!--TODO reload the page after do the search, refresh pagination-->
 <ng-container *ngIf="reviews">
   <div class="reviews"
        *ngFor="let review of pagedItems">

@@ -10,3 +10,13 @@
   display: flex;
   margin: 15px;
 }
+
+.writeReviewSearch {
+  display: flex;
+}
+
+.searchKeyword {
+  color: red;
+  font-style: italic;
+  font-weight: bold;
+}

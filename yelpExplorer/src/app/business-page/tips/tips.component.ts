@@ -26,6 +26,7 @@ export class TipsComponent implements OnInit {
   pagedItems: any[];
   text: string;
   businessName: string;
+  searchKeyword: string;
 
   constructor(private tipsService: TipsService,
               private pagerService: PagerService,
@@ -36,7 +37,7 @@ export class TipsComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(TipDialogueComponent, {
       width: '700px',
-      data: {text : this.text}
+      data: {text: this.text}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -74,6 +75,10 @@ export class TipsComponent implements OnInit {
     this.pager = this.pagerService.getPager(this.tips.length, page);
     // get current page of items
     this.pagedItems = this.tips.slice(this.pager.startIndex, this.pager.endIndex + 1);
+  }
+
+  filterTips(searchKeyword: string) {
+    console.log(searchKeyword);
   }
 
   addTip() {

@@ -29,7 +29,9 @@ export class ReviewsComponent implements OnInit {
   starsGiven: number;
   userId: string;
   businessName: string;
-
+  searchKeyword = '';
+  searched = false;
+  filteredReviewList = [];
 
   constructor(private reviewsService: ReviewsService,
               private pagerService: PagerService,
@@ -91,12 +93,24 @@ export class ReviewsComponent implements OnInit {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
+    console.log('inside set page' + this.searched);
+    if (this.searched) {
+      console.log('you have searched');
+      this.pager = this.pagerService.getPager(this.filteredReviewList.length, page);
+      this.pagedItems = this.filteredReviewList.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    } else {
+      this.pager = this.pagerService.getPager(this.reviews.length, page);
+      this.pagedItems = this.reviews.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    }
+  }
 
-    // get pager object from service
-    this.pager = this.pagerService.getPager(this.reviews.length, page);
-    // get current page of items
-    this.pagedItems = this.reviews.slice(this.pager.startIndex, this.pager.endIndex + 1);
-
+  filterReviews(searchKeyword: string) {
+    this.searched = true;
+    console.log('inside filterReviews' + this.searched);
+    this.filteredReviewList = this.reviews.filter(
+      (reviewView) => reviewView.text.includes(this.searchKeyword)
+    );
+    console.log(this.filteredReviewList);
   }
 
 

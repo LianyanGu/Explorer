@@ -108,7 +108,7 @@ export class ReviewsComponent implements OnInit {
     this.searched = true;
     console.log('inside filterReviews' + this.searched);
     this.filteredReviewList = this.reviews.filter(
-      (reviewView) => reviewView.text.includes(this.searchKeyword)
+      (reviewView) => reviewView.text.toLowerCase().includes(this.searchKeyword.toLowerCase())
     );
     console.log(this.filteredReviewList);
   }

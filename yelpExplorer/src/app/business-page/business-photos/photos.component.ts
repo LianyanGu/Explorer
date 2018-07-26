@@ -3,6 +3,7 @@ import {Photo} from '../../models/Photo';
 import {AdvancedLayout, GridLayout, Image, PlainGalleryConfig, PlainGalleryStrategy} from '@ks89/angular-modal-gallery';
 import {BusinessService} from '../business.service';
 import {Business} from '../../models/Business';
+import {PagerService} from '../../pager.service';
 
 @Component({
   selector: 'app-photos',
@@ -20,6 +21,7 @@ export class PhotosComponent implements OnInit {
     layout: new GridLayout({width: '300px', height: 'auto'}, {length: 5, wrap: true})
   };
   categorizedPhotoLists: Photo[][] = [];
+
 
   constructor(private businessService: BusinessService) {
   }

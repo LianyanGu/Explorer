@@ -74,7 +74,8 @@
 
     <mat-tab label="Friends">
       <ng-container *ngIf="friendUsers">
-        <div *ngFor="let friendUser of friendUsers">
+        <div *ngFor="let friendUser of friendUsers"
+             class="friendUser">
           <app-user-friends [friendUser]="friendUser"></app-user-friends>
         </div>
         <div class="container">

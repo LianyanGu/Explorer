@@ -46,6 +46,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('reloaded user detail page');
     this.route.queryParams
       .subscribe(
         (params: Params) => {
@@ -56,11 +57,11 @@ export class UserDetailComponent implements OnInit {
               console.log(this.user);
             }
           );
+          this.getReviewsByUserId(this.userId);
+          this.getTipsByUserId(this.userId);
+          this.getFriendsByUser(this.userId);
         }
       );
-    this.getReviewsByUserId(this.userId);
-    this.getTipsByUserId(this.userId);
-    this.getFriendsByUser(this.userId);
   }
 
   getReviewsByUserId(userId: string) {

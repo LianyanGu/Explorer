@@ -59,6 +59,7 @@ export class UserDetailComponent implements OnInit {
           );
           this.getReviewsByUserId(this.userId);
           this.getTipsByUserId(this.userId);
+          this.friendUsers = [];
           this.getFriendsByUser(this.userId);
         }
       );

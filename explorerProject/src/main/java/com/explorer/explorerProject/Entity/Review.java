@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity(name = "Review")
 @Table(name = "review")
@@ -25,7 +25,7 @@ public class Review {
 
     //Can change Date
     @Column(name = "date")
-    private Date date;
+    private Timestamp timestamp;
 
     @Column(name = "text")
     private String text;
@@ -63,12 +63,12 @@ public class Review {
         this.stars = stars;
     }
 
-    public Date getDate() {
-        return date;
+    public Timestamp getDate() {
+        return timestamp;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(Timestamp date) {
+        this.timestamp = date;
     }
 
     public String getText() {
@@ -106,10 +106,10 @@ public class Review {
     public Review() {
     }
 
-    public Review(String businessId, int stars, Date date, String text, int useful, int funny, int cool) {
+    public Review(String businessId, int stars, Timestamp timestamp, String text, int useful, int funny, int cool) {
         this.businessId = businessId;
         this.stars = stars;
-        this.date = date;
+        this.timestamp = timestamp;
         this.text = text;
         this.useful = useful;
         this.funny = funny;

@@ -30,16 +30,19 @@ public class ReviewService {
         return reviewViewRepository.findReviewsByBusinessId(businessId);
     }
 
-    public void addReview(String businessId, String userId, int stars, String text) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-        User user = userService.getUser(userId);
-        reviewViewRepository.save(new ReviewView(businessId, userId, stars, date, text,
-                0, 0, 0, user.userName, user.reviewCount, user.yelpingSince));
+    public void addReview(Review review) {
+        reviewRepository.save(review);
     }
-
 
     public List<ReviewView> getReviewsByUserId(String userId) {
         return reviewViewRepository.findReviewsByUserId(userId);
+    }
+
+    public void updateReview(ReviewView reviewView) {
+        ReviewView oldReviewView = reviewViewRepository.getOne(reviewView.getId());
+        oldReviewView.setUseful(reviewView.getUseful());
+        reviewView.setFunny(reviewView.getFunny());
+        reviewView.setCool(reviewView.getCool());
+        reviewViewRepository.save(oldReviewView);
     }
 }

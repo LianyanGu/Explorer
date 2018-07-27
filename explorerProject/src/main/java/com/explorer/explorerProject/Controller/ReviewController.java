@@ -5,6 +5,8 @@ import com.explorer.explorerProject.Entity.Review;
 import com.explorer.explorerProject.Entity.ReviewView;
 import com.explorer.explorerProject.Service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,8 +31,14 @@ public class ReviewController {
 
     @RequestMapping(value = "/addReview", method = RequestMethod.POST)
     public void addReview(Review review) {
-        System.out.println(review);
-        //reviewService.addReview(businessId, stars, text);
+        System.out.println("backend get review star:" + review.getStars());
+    }
+
+    @RequestMapping(value = "/review", method = RequestMethod.PUT)
+    @ResponseBody
+    public ResponseEntity<?> updateReview(ReviewView reviewView) {
+        reviewService.updateReview(reviewView);
+        return new ResponseEntity<String>("Updated review", HttpStatus.OK);
     }
 
 

@@ -6,14 +6,14 @@ export class Review {
   id: string;
   stars: number;
   // Might need to change the datatype here
-  date: string;
+  date: Date;
   text: string;
   useful: number;
   funny: number;
   cool: number;
 
 
-  constructor(businessId: string, stars: number, date: string, text: string, useful: number, funny: number, cool: number) {
+  constructor(businessId: string, stars: number, date: Date, text: string, useful: number, funny: number, cool: number) {
     this.businessId = businessId;
     this.stars = stars;
     this.date = date;

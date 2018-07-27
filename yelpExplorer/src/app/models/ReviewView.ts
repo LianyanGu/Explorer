@@ -6,14 +6,14 @@ export class ReviewView {
   yelpingSince: string;
   stars: number;
   // Might need to change the datatype here
-  date: string;
+  date: Date;
   userName: string;
   text: string;
   useful: number;
   funny: number;
   cool: number;
 
-  constructor(businessId: string, userId: string, stars: number, date: string, text: string,
+  constructor(businessId: string, userId: string, stars: number, date: Date, text: string,
               useful: number, funny: number, cool: number, userName: string,
               reviewCount: number, yelpingSince: string) {
     this.businessId = businessId;

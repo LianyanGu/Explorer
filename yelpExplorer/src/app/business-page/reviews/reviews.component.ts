@@ -12,6 +12,7 @@ export interface DialogData {
   stars: number;
   text: string;
   userId: string;
+  businessId: string;
 }
 
 @Component({
@@ -44,7 +45,8 @@ export class ReviewsComponent implements OnInit {
       width: '700px',
       data: {
         stars: this.starsGiven, text: this.text,
-        userId: this.userId, businessName: this.businessName
+        userId: this.userId, businessName: this.businessName,
+        businessId: this.businessId
       }
     });
 
@@ -74,20 +76,6 @@ export class ReviewsComponent implements OnInit {
       }
     );
   }
-
-  addReview() {
-    // this.reviewsService.addReview(this.businessId, this.userId, this.stars, this.newReview)
-    //   .subscribe(
-    //     (response) => {
-    //       console.log('success');
-    //       console.log(response);
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //     }
-    //   );
-  }
-
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {

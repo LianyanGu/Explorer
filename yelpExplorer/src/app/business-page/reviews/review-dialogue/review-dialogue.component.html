@@ -19,6 +19,13 @@
 </div>
 <div mat-dialog-actions class="actionButtons">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button color="accent" [mat-dialog-close]="data" cdkFocusInitial>Submit</button>
+  <button
+    mat-button
+    color="accent"
+    [mat-dialog-close]="data"
+    cdkFocusInitial
+    (click)="submitReview(data)">
+    Submit
+  </button>
 </div>
 

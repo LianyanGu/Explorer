@@ -1,9 +1,11 @@
 <div class="card">
-  <div class="user">
+  <div class="card-title friendName">
     <a [routerLink]="['/user-details']"
        [queryParams]="{userId:friendUser.id}">
       {{friendUser.userName}}
     </a>
+  </div>
+  <div class="user">
     <div>
       {{friendUser.reviewCount}} reviews
     </div>

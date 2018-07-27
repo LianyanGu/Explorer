@@ -1,7 +1,10 @@
 package com.explorer.explorerProject.Entity;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -10,7 +13,8 @@ import java.util.Set;
 
 @Entity(name = "User")
 @Table(name = "user")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class User {
 
     @Id
@@ -74,8 +78,8 @@ public class User {
     public int complimentList;
 
     @OneToMany(cascade = CascadeType.ALL,
-                fetch = FetchType.LAZY,
-                mappedBy = "user")
+            fetch = FetchType.LAZY,
+            mappedBy = "user")
     @JsonManagedReference
     private Set<Tip> tips = new HashSet<>();
 
@@ -262,7 +266,8 @@ public class User {
         this.eliteYears = eliteYears;
     }
 
-    public User(){}
+    public User() {
+    }
 
     public User(String userName, int reviewCount, Date yelpingSince, int useful, int funny, int cool,
                 int fans, Float averageStars, int complimentHot, int complimentMore,

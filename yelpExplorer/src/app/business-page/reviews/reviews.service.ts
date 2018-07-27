@@ -16,7 +16,7 @@ export class ReviewsService {
   userName: string;
   reviewCount: number;
   yelpingSince: string;
-  review: ReviewView;
+  review: Review;
 
   constructor(private httpClient: HttpClient, private userService: UserService) {
   }
@@ -35,27 +35,21 @@ export class ReviewsService {
     return this.httpClient.get<ReviewView[]>(url);
   }
 
-  // addReview(businessId: string, userId: string, stars: number, text: string) {
-  //   // const httpOptions = {
-  //   //   headers: new HttpHeaders({'Content-Type': 'application/json'})
-  //   // };
-  //   // const apiCall = 'addReview';
-  //   // const $user = this.userService.getUser('QfRT_kE-eYlzbxCO81xctQ');
-  //   // $user.subscribe(
-  //   //   (response) => {
-  //   //     this.user = response;
-  //   //     this.userName = this.user.userName;
-  //   //     this.reviewCount = this.user.reviewCount;
-  //   //     this.yelpingSince = this.user.yelpingSince;
-  //   //     this.review = new ReviewView(businessId, userId, stars, 'date',
-  //   //       text, 0, 0, 0, this.userName, this.reviewCount,
-  //   //       this.yelpingSince);
-  //   //   });
-  //   // const url = `${this.domain}/${apiCall}`;
-  //   // return this.httpClient.post(url, this.review, httpOptions).subscribe(() => 'review added');
-  //   //
-  //
-  // }
+  addReview(review: Review) {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+    const apiCall = 'addReview';
+    const url = `${this.domain}/${apiCall}`;
+    return this.httpClient.post(url, review, httpOptions);
+  }
+
+  updateReview(reviewView: ReviewView) {
+    console.log('calling update Review');
+    const apiCall = 'review';
+    const url = `${this.domain}/${apiCall}`;
+    return this.httpClient.put(url, reviewView);
+  }
 
 
 }

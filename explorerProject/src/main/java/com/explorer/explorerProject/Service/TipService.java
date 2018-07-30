@@ -1,22 +1,14 @@
 package com.explorer.explorerProject.Service;
 
-import com.explorer.explorerProject.Entity.Business;
+import com.explorer.explorerProject.Entity.ReviewView;
 import com.explorer.explorerProject.Entity.Tip;
 import com.explorer.explorerProject.Entity.TipView;
-import com.explorer.explorerProject.Entity.User;
 import com.explorer.explorerProject.Repository.TipRepository;
 import com.explorer.explorerProject.Repository.TipViewRepository;
 import com.explorer.explorerProject.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,14 +22,8 @@ public class TipService {
     @Autowired
     private UserRepository userRepository;
 
-    public void addTip(String text, String businessId, User user) {
-        if (StringUtils.isEmpty(text)) {
-            return;
-        }
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-
-        tipRepository.save(new Tip(text, date, 0, businessId, user));
+    public void addTip(Tip tip) {
+        tipRepository.save(tip);
     }
 
     public List<TipView> getTipByBusinessId(String businessId) {
@@ -50,10 +36,9 @@ public class TipService {
         return tipViewRepository.findTipsByUserId(userId);
     }
 
-    public void addTips(String userId, String businessId, String text) {
-//        //Get user based on userId
-//        userRepository.findByUserName()
-//        tipViewRepository.save(new TipView(userId, businessId, text, date, 0, userName,
-//        int reviewCount, Date yelpingSince));
+    public void updateTip(Tip tip) {
+        Tip oldTip = tipRepository.getOne(tip.getId());
+        oldTip.setLikes(tip.getLikes());
+        tipRepository.save(oldTip);
     }
 }

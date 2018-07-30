@@ -6,6 +6,8 @@ import com.explorer.explorerProject.Entity.TipView;
 import com.explorer.explorerProject.Entity.User;
 import com.explorer.explorerProject.Service.TipService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,10 +25,11 @@ public class TipController {
         return tipService.getTipByBusinessId(businessId);
     }
 
-    @RequestMapping(value = "/tip", method = RequestMethod.POST)
-    public void addTip(String text, String businessId, User user) {
+    @RequestMapping(value = "/addTip", method = RequestMethod.POST)
+    public ResponseEntity<?> addTip(@RequestBody Tip tip) {
+        tipService.addTip(tip);
+        return new ResponseEntity<String>("Tip Added", HttpStatus.OK);
 
-        tipService.addTip(text, businessId, user);
     }
 
     @RequestMapping(value = "{userId}/tips", method = RequestMethod.GET)
@@ -34,4 +37,5 @@ public class TipController {
     public List<TipView> getReviewsByUserId(@PathVariable("userId") String userId) {
         return tipService.getTipsByUserId(userId);
     }
+
 }

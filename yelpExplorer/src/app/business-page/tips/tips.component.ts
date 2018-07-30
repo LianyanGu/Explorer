@@ -7,6 +7,7 @@ import {ReviewDialogueComponent} from '../reviews/review-dialogue/review-dialogu
 import {TipDialogueComponent} from './tip-dialogue/tip-dialogue.component';
 import {Business} from '../../models/Business';
 import {BusinessService} from '../business.service';
+import {Tip} from '../../models/Tip';
 
 export interface DialogData {
   text: string;
@@ -81,7 +82,14 @@ export class TipsComponent implements OnInit {
     console.log(searchKeyword);
   }
 
-  addTip() {
-    //
+  upVote(tip: Tip) {
+    tip.likes++;
+    return true;
+    //  TODO: CAN ONLY CLICK ONCE
+  }
+
+  downVote(tip: Tip) {
+    tip.likes--;
+    return true;
   }
 }

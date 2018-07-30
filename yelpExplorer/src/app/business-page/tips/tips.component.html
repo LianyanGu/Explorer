@@ -16,6 +16,12 @@
       <div class="tipsUser">
         <app-user [id]="tip.userId"></app-user>
       </div>
+      <div>
+        <div class="upVote"
+             (click)="upVote(tip)"></div>
+        {{tip.likes}}
+        <div class="downVote" (click)="downVote(tip)"></div>
+      </div>
       <div class="tipsTip">
         <app-tip [tip]="tip"></app-tip>
       </div>

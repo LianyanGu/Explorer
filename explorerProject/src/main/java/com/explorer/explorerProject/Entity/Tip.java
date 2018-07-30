@@ -2,9 +2,10 @@ package com.explorer.explorerProject.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity(name = "Tip")
 @Table(name = "tip")
@@ -12,13 +13,15 @@ import java.util.Date;
 public class Tip {
 
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
     @Column(name = "text")
     private String text;
 
     @Column(name = "date")
-    private Date date;
+    private Timestamp timestamp;
 
     @Column(name = "likes")
     private int likes;
@@ -63,12 +66,12 @@ public class Tip {
         this.text = text;
     }
 
-    public Date getDate() {
-        return date;
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
     public int getLikes() {
@@ -83,9 +86,9 @@ public class Tip {
 
     }
 
-    public Tip(String text, Date date, int likes, String businessId, User user) {
+    public Tip(String text, Timestamp timestamp, int likes, String businessId, User user) {
         this.text = text;
-        this.date = date;
+        this.timestamp = timestamp;
         this.likes = likes;
         this.businessId = businessId;
         this.user = user;

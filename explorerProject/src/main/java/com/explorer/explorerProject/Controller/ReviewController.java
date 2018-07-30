@@ -30,8 +30,10 @@ public class ReviewController {
     }
 
     @RequestMapping(value = "/addReview", method = RequestMethod.POST)
-    public void addReview(Review review) {
+    public ResponseEntity<?> addReview(@RequestBody Review review) {
         System.out.println("backend get review star:" + review.getStars());
+        reviewService.addReview(review);
+        return new ResponseEntity<String>("Review Added", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/review", method = RequestMethod.PUT)

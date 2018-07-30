@@ -12,5 +12,4 @@ public interface ReviewViewRepository extends CrudRepository<ReviewView,String> 
     public List<ReviewView> findReviewsByBusinessId(String businessId);
     public List<ReviewView> findReviewsByUserId(String userId);
     public ReviewView getOne(@Param("id") String id);
-
 }

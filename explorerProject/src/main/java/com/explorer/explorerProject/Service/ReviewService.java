@@ -41,8 +41,8 @@ public class ReviewService {
     public void updateReview(ReviewView reviewView) {
         ReviewView oldReviewView = reviewViewRepository.getOne(reviewView.getId());
         oldReviewView.setUseful(reviewView.getUseful());
-        reviewView.setFunny(reviewView.getFunny());
-        reviewView.setCool(reviewView.getCool());
+        oldReviewView.setFunny(reviewView.getFunny());
+        oldReviewView.setCool(reviewView.getCool());
         reviewViewRepository.save(oldReviewView);
     }
 }

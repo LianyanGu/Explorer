@@ -51,9 +51,6 @@ export class ReviewsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
-      console.log(this.businessId);
       this.starsGiven = result;
     });
   }
@@ -81,9 +78,7 @@ export class ReviewsComponent implements OnInit {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
-    console.log('inside set page' + this.searched);
     if (this.searched) {
-      console.log('you have searched');
       this.pager = this.pagerService.getPager(this.filteredReviewList.length, page);
       this.pagedItems = this.filteredReviewList.slice(this.pager.startIndex, this.pager.endIndex + 1);
     } else {
@@ -94,13 +89,11 @@ export class ReviewsComponent implements OnInit {
 
   filterReviews(searchKeyword: string) {
     this.searched = true;
-    console.log('inside filterReviews' + this.searched);
     this.filteredReviewList = this.reviews.filter(
       (reviewView) => reviewView.text.toLowerCase().includes(this.searchKeyword.toLowerCase())
     );
     console.log(this.filteredReviewList);
+    this.setPage(1);
   }
-
-
 }
 

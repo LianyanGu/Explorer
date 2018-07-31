@@ -2,19 +2,19 @@ import {User} from './User';
 import {Business} from './Business';
 
 export class Tip {
-  id: string;
   text: string;
   // Might need to change the datatype here
-  date: string;
+  date: Date;
   likes: number;
-  user: User;
+  userId: string;
+  businessId: string;
 
 
-  constructor(id: string, text: string, date: string, likes: number, user: User) {
-    this.id = id;
+  constructor(text: string, date: Date, likes: number, businessId: string, userId: string) {
     this.text = text;
     this.date = date;
     this.likes = likes;
-    this.user = user;
+    this.businessId = businessId;
+    this.userId = userId;
   }
 }

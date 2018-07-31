@@ -12,6 +12,8 @@ import {Tip} from '../../models/Tip';
 export interface DialogData {
   text: string;
   businessName: string;
+  businessId: string;
+  userId: string;
 }
 
 @Component({
@@ -28,6 +30,7 @@ export class TipsComponent implements OnInit {
   text: string;
   businessName: string;
   searchKeyword: string;
+  userId: string;
 
   constructor(private tipsService: TipsService,
               private pagerService: PagerService,
@@ -38,12 +41,13 @@ export class TipsComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(TipDialogueComponent, {
       width: '700px',
-      data: {text: this.text}
+      data: {
+        text: this.text, userId: this.userId, businessName: this.businessName,
+        businessId: this.businessId
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
       this.text = result;
     });
   }

@@ -10,8 +10,19 @@
               placeholder="Share your tips with other people ">
     </textarea>
   </mat-form-field>
+  <p>userId</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.userId">
+  </mat-form-field>
 </div>
 <div mat-dialog-actions class="actionButtons">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button color="accent" [mat-dialog-close]="data" cdkFocusInitial>Submit</button>
+  <button
+    mat-button
+    color="accent"
+    [mat-dialog-close]="data"
+    cdkFocusInitial
+    (click)="submitTip(data)">
+    Submit
+    </button>
 </div>

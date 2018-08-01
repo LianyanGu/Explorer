@@ -2,13 +2,6 @@
   <button class="btn btn-primary" (click)="openDialog()">
     Write a Tip
   </button>
-  <Input type="text"
-         [(ngModel)]="searchKeyword"
-         ngDefaultControl>
-  <button
-    (click)="filterTips(searchKeyword)">
-    <i class="fa fa-search"></i>
-  </button>
 </div>
 <ng-container *ngIf="tips" class="container">
   <div *ngFor="let tip of pagedItems">

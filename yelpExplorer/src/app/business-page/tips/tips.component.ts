@@ -82,10 +82,6 @@ export class TipsComponent implements OnInit {
     this.pagedItems = this.tips.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
-  filterTips(searchKeyword: string) {
-    console.log(searchKeyword);
-  }
-
   upVote(tip: Tip) {
     tip.likes++;
     return true;
